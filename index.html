@@ -8,13 +8,55 @@
   <title>B2Vibe - E-commerce Service Provider & Merchant of Record</title>
   <meta name="description"
     content="Offriamo servizi di full-outsourcing multicanale e Merchant of Record (MoR) per brand che vogliono scalare sui marketplace internazionali." />
+
+  <!-- Critical CSS to avoid FOUC and Layout Shift -->
+  <style>
+    :root {
+      --primary: #07eba6;
+      --background: #FFFFFF;
+      --foreground: #000000;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      opacity: 0;
+      animation: fadeIn 0.3s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .hero-section {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .heading-xl {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .hero-desc-box {
+      min-height: 120px;
+      margin-top: 2rem;
+      max-width: 900px;
+    }
+  </style>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@700;800&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
 </head>
 
 <body>

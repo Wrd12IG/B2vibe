@@ -57,7 +57,7 @@ const Hero = () => (
     </FadeInUp>
 
     <FadeInUp delay={0.2}>
-      <div style={{ marginTop: '2rem', maxWidth: '900px' }}>
+      <div className="hero-desc-box">
         <p style={{ fontSize: 'clamp(1rem, 4vw, 1.4rem)', color: 'var(--muted)', lineHeight: 1.6 }}>
           Siamo un <strong>e-commerce service provider</strong> ed offriamo servizi di <strong>full-outsourcing multicanale</strong> per aziende che vogliono commercializzare i propri prodotti online a livello nazionale ed internazionale.
         </p>
