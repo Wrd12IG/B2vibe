@@ -130,7 +130,16 @@ export const Footer = ({ onCookieClick }) => (
             <div>
                 <h4 style={{ marginBottom: '25px', fontSize: '1.1rem', fontWeight: 800 }}>Contatti</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', fontSize: '0.95rem', color: 'var(--muted)' }}>
-                    <p style={{ lineHeight: 1.5 }}>Via Ferdinando Santi 11/13,<br /> 20037 Paderno Dugnano (MI)</p>
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=Via+Ferdinando+Santi+11/13+Paderno+Dugnano"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: 'none', color: 'inherit', transition: 'color 0.3s' }}
+                        onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'inherit'}
+                    >
+                        <p style={{ lineHeight: 1.5 }}>Via Ferdinando Santi 11/13,<br /> 20037 Paderno Dugnano (MI)</p>
+                    </a>
                     <p><strong>T.</strong> +39 02 80016631</p>
                     <p><strong>E.</strong> info@b2vibe.com</p>
                 </div>
@@ -139,7 +148,7 @@ export const Footer = ({ onCookieClick }) => (
 
         <div style={{ borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '30px', textAlign: 'center', fontSize: '0.75rem', color: 'var(--muted)', lineHeight: 1.8 }}>
             <p style={{ marginBottom: '5px' }}>
-                | Sede Legale: Via Paradiso 5, Seregno 20831 | Sede Operativa: Via Ferdinando Santi 11/13, 20037 Paderno Dugnano (MI) |
+                | Sede Legale: Via Paradiso 5, Seregno 20831 | Sede Operativa: <a href="https://www.google.com/maps/search/?api=1&query=Via+Ferdinando+Santi+11/13+Paderno+Dugnano" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Via Ferdinando Santi 11/13, 20037 Paderno Dugnano (MI)</a> |
             </p>
             <p>
                 | info@b2vibe.com | 02 80016631 | P.IVA 14234560960 | Capitale sociale € 1.000.000 |
@@ -149,7 +158,7 @@ export const Footer = ({ onCookieClick }) => (
                 <RouterLink to="/cookie-policy" style={{ color: 'var(--muted)', textDecoration: 'none' }}>Cookie Policy</RouterLink>
                 <button onClick={onCookieClick} style={{ background: 'none', border: 'none', padding: 0, color: 'var(--muted)', cursor: 'pointer', fontSize: '0.75rem' }}>Personalizza Cookie</button>
             </p>
-            <p style={{ marginTop: '15px', opacity: 0.6 }}>© 2024 B2Vibe S.r.l. All rights reserved. (Build: 29/01/2026 12:40)</p>
+            <p style={{ marginTop: '15px', opacity: 0.6 }}>© 2024 B2Vibe S.r.l. All rights reserved. (Build: 29/01/2026 13:08)</p>
         </div>
     </footer>
 );
