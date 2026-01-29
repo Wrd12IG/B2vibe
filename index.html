@@ -15,16 +15,27 @@
       --primary: #07eba6;
       --background: #FFFFFF;
       --foreground: #000000;
+      --muted: #666666;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      font-family: sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
       opacity: 0;
-      animation: fadeIn 0.3s forwards;
+      animation: fadeIn 0.4s ease-in forwards;
+      background: #fff;
     }
 
     @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
       to {
         opacity: 1;
       }
@@ -37,26 +48,40 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 0 5%;
     }
 
     .heading-xl {
-      font-size: clamp(3rem, 10vw, 6rem);
+      font-size: clamp(2.5rem, 8vw, 6rem);
       font-weight: 800;
       line-height: 1.1;
       margin: 0;
+      color: #000;
+      letter-spacing: -0.02em;
     }
 
     .hero-desc-box {
-      min-height: 120px;
+      min-height: 160px;
       margin-top: 2rem;
       max-width: 900px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-desc-box {
+        min-height: 220px;
+      }
     }
   </style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@700;800&display=swap"
+  <link rel="preconnect" href="https://b2vibe.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700;800&display=swap"
     rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700;800&display=swap"
+      rel="stylesheet">
+  </noscript>
 </head>
 
 <body>

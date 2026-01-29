@@ -20,24 +20,28 @@ export const Navbar = ({ onContactClick }) => {
     useEffect(() => {
         if (!isHome) return;
 
-        const handleScroll = () => {
-            const sections = ['soluzione', 'mor', 'servizi', 'tecnologia', 'timeline'];
-            const scrollPosition = window.scrollY + 100;
-
-            for (const section of sections) {
-                const element = document.getElementById(section);
-                if (element) {
-                    const { offsetTop, offsetHeight } = element;
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                        setActiveSection(section);
-                        break;
-                    }
-                }
-            }
+        const sections = ['soluzione', 'mor', 'servizi', 'tecnologia', 'timeline'];
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        sections.forEach((section) => {
+            const element = document.getElementById(section);
+            if (element) observer.observe(element);
+        });
+
+        return () => observer.disconnect();
     }, [isHome]);
 
     const linkStyle = (section) => ({
@@ -158,7 +162,7 @@ export const Footer = ({ onCookieClick }) => (
                 <RouterLink to="/cookie-policy" style={{ color: 'var(--muted)', textDecoration: 'none' }}>Cookie Policy</RouterLink>
                 <button onClick={onCookieClick} style={{ background: 'none', border: 'none', padding: 0, color: 'var(--muted)', cursor: 'pointer', fontSize: '0.75rem' }}>Personalizza Cookie</button>
             </p>
-            <p style={{ marginTop: '15px', opacity: 0.6 }}>© 2024 B2Vibe S.r.l. All rights reserved. (Build: 29/01/2026 15:28)</p>
+            <p style={{ marginTop: '15px', opacity: 0.6 }}>© 2024 B2Vibe S.r.l. All rights reserved. (Build: 29/01/2026 15:35)</p>
         </div>
     </footer>
 );
