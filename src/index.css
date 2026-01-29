@@ -472,11 +472,26 @@ p {
   min-height: 60px;
 }
 
+/* Performance: Skip rendering for off-screen sections */
+section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+  /* Estimate section height */
+}
+
 .heartbeat-path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: drawHeartbeat 6s linear infinite;
   filter: drop-shadow(0 0 12px var(--primary));
+  will-change: stroke-dashoffset;
+}
+
+@media (max-width: 768px) {
+  .heartbeat-path {
+    filter: none;
+    /* Disable expensive filter on mobile */
+  }
 }
 
 @keyframes drawHeartbeat {
