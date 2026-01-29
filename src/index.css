@@ -410,3 +410,56 @@ p {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
   border-color: var(--primary);
 }
+
+/* Heartbeat Line Mobile */
+.heartbeat-wrapper {
+  display: none;
+  width: 100%;
+  height: 2px;
+  position: relative;
+  overflow: hidden;
+  margin: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .heartbeat-wrapper {
+    display: block;
+  }
+}
+
+.heartbeat-line {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  left: -100%;
+  animation: heartbeatScan 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes heartbeatScan {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(8);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}

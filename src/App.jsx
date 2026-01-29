@@ -658,13 +658,15 @@ const TechnologySection = () => (
         </div>
       </div>
       <div className="col-span-5" style={{ position: 'relative' }}>
-        <h4 style={{ marginBottom: '2.5rem', textAlign: 'center', fontSize: '1.2rem', fontWeight: 800 }}>Technology Partners</h4>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '25px', alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}>
+        <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem', justifyContent: window.innerWidth < 1024 ? 'center' : 'flex-start' }}>
+          <ChevronRight color="var(--primary)" /> Technology Partners
+        </h4>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}>
           {[
             "Amazon Ads", "CommerceClarity", "Poleepo",
             "Qapla", "Zendesk", "Scalapay", "Heres"
           ].map((p, i) => (
-            <span key={i} className="outfit" style={{ fontSize: '1rem', fontWeight: 800 }}>{p.toUpperCase()}</span>
+            <span key={i} className="outfit" style={{ fontSize: '1.1rem', fontWeight: 800 }}>{p.toUpperCase()}</span>
           ))}
         </div>
       </div>
@@ -1163,8 +1165,11 @@ const HomePage = ({ onContactClick, onCookieClick }) => (
   <div style={{ background: '#FFF' }}>
     <Navbar onContactClick={onContactClick} />
     <Hero />
-
+    <div className="heartbeat-wrapper">
+      <div className="heartbeat-line"></div>
+    </div>
     <FadeInUp><Stats /></FadeInUp>
+
     <FadeInUp><Complexity /></FadeInUp>
     <FadeInUp><DNA /></FadeInUp>
     <FadeInUp><Ecosystem /></FadeInUp>
