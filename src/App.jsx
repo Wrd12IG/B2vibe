@@ -29,9 +29,9 @@ import { AnimatePresence } from 'framer-motion';
 import { BrowserRouter, Routes, Route, Link as RouterLink, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import SEO from './components/SEO';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import CookiePolicy from './pages/CookiePolicy';
-import MerchantOfRecordGuide from './pages/MerchantOfRecordGuide';
+const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
+const CookiePolicy = React.lazy(() => import('./pages/CookiePolicy'));
+const MerchantOfRecordGuide = React.lazy(() => import('./pages/MerchantOfRecordGuide'));
 import { Navbar, Footer, SectionTitle, BackToTop } from './components/SharedLayout';
 import { B2VibeLogo } from './components/Logo';
 
@@ -1413,37 +1413,39 @@ export default function App() {
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={
-            <HomePage
-              onContactClick={() => setIsModalOpen(true)}
-              onQuoteClick={() => setIsQuoteOpen(true)}
-              onCookieClick={() => setShowCookieBanner(true)}
-            />
-          } />
-          <Route path="/privacy-policy" element={
-            <>
-              <SEO title="Privacy Policy" description="Informativa sulla privacy di B2Vibe S.r.l." />
-              <PrivacyPolicy onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />
-            </>
-          } />
-          <Route path="/cookie-policy" element={
-            <>
-              <SEO title="Cookie Policy" description="Informativa sui cookie di B2Vibe S.r.l." />
-              <CookiePolicy onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />
-            </>
-          } />
-          <Route path="/merchant-of-record-guida" element={
-            <>
-              <SEO
-                title="Merchant of Record (MoR) Guida 2026"
-                description="Scopri cos'è un Merchant of Record e come può aiutare il tuo e-commerce a vendere all'estero senza complicazioni fiscali."
-                canonical="https://www.b2vibe.com/merchant-of-record-guida"
+        <React.Suspense fallback={<div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Caricamento...</div>}>
+          <Routes>
+            <Route path="/" element={
+              <HomePage
+                onContactClick={() => setIsModalOpen(true)}
+                onQuoteClick={() => setIsQuoteOpen(true)}
+                onCookieClick={() => setShowCookieBanner(true)}
               />
-              <MerchantOfRecordGuide onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />
-            </>
-          } />
-        </Routes>
+            } />
+            <Route path="/privacy-policy" element={
+              <>
+                <SEO title="Privacy Policy" description="Informativa sulla privacy di B2Vibe S.r.l." />
+                <PrivacyPolicy onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />
+              </>
+            } />
+            <Route path="/cookie-policy" element={
+              <>
+                <SEO title="Cookie Policy" description="Informativa sui cookie di B2Vibe S.r.l." />
+                <CookiePolicy onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />
+              </>
+            } />
+            <Route path="/merchant-of-record-guida" element={
+              <>
+                <SEO
+                  title="Merchant of Record (MoR) Guida 2026"
+                  description="Scopri cos'è un Merchant of Record e come può aiutare il tuo e-commerce a vendere all'estero senza complicazioni fiscali."
+                  canonical="https://www.b2vibe.com/merchant-of-record-guida"
+                />
+                <MerchantOfRecordGuide onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />
+              </>
+            } />
+          </Routes>
+        </React.Suspense>
         <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
         <CookieBanner
