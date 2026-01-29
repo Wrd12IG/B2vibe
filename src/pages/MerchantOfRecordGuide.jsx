@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Footer, SectionTitle, BackToTop } from '../components/SharedLayout';
-import { ShieldCheck, Globe, Zap, Scale, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Globe, Zap, Scale, ArrowRight, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
