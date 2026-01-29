@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Navbar, Footer, SectionTitle, BackToTop } from '../components/SharedLayout';
-import { ShieldCheck, Globe, Zap, Scale, ArrowRight, Users, Box, Database, TrendingUp, CheckCircle2, Layout, BarChart3 } from 'lucide-react';
+import { ShieldCheck, Globe, Zap, Scale, ArrowRight, Users, Box, Database, TrendingUp, CheckCircle2, Layout, BarChart3, Lock, Cpu, Rocket, Headphones } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
@@ -8,9 +8,22 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
 
     useEffect(() => {
         if (hash) {
-            const element = document.getElementById(hash.replace('#', ''));
+            const id = hash.replace('#', '');
+            const element = document.getElementById(id);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                // Delay per permettere al browser di renderizzare il layout post-navigazione
+                setTimeout(() => {
+                    const offset = 80; // Offset per la navbar fissa
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = element.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
             }
         }
     }, [hash]);
@@ -20,145 +33,205 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
             <Navbar onContactClick={onContactClick} />
 
             {/* Header Content */}
-            <header style={{ padding: '150px 5% 60px 5%', textAlign: 'center', background: 'linear-gradient(180deg, rgba(7, 235, 166, 0.05) 0%, rgba(255,255,255,0) 100%)' }}>
-                <span className="badge">Pillar Page 2026</span>
-                <h1 className="heading-xl" style={{ marginTop: '1rem', marginBottom: '1.5rem', color: '#000' }}>
-                    E-commerce Full Outsourcing:<br />La Guida Definitiva
+            <header style={{ padding: '160px 5% 100px 5%', textAlign: 'center', background: 'linear-gradient(180deg, rgba(7, 235, 166, 0.08) 0%, rgba(255,255,255,0) 100%)' }}>
+                <span className="badge" style={{ marginBottom: '1.5rem' }}>Pillar Page - Analisi Professionale 2026</span>
+                <h1 className="heading-xl" style={{ marginTop: '0', marginBottom: '2rem', color: '#000', fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+                    E-commerce Full Outsourcing:<br />Guida Strategica alla Crescita
                 </h1>
-                <p style={{ fontSize: '1.2rem', color: 'var(--muted)', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
-                    Dalla gestione fiscale (MoR) alla logistica avanzata: tutto il supporto necessario per scalare il tuo brand sui mercati internazionali.
+                <p style={{ fontSize: '1.3rem', color: 'var(--muted)', maxWidth: '900px', margin: '0 auto', lineHeight: 1.8, fontWeight: 400 }}>
+                    In un mercato saturo e complesso, l'efficienza operativa è l'unico vero vantaggio competitivo. Scopri come B2Vibe gestisce ogni aspetto del tuo business online, trasformando la burocrazia in opportunità di vendita.
                 </p>
             </header>
 
-            <main style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 5% 100px 5%' }}>
+            <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 5% 150px 5%' }}>
 
                 {/* --- SEZIONE MERCHANT OF RECORD --- */}
-                <section id="mor-detail" style={{ padding: '4rem 0', borderBottom: '1px solid var(--glass-border)' }}>
-                    <div className="glass-card" style={{ padding: '3rem', marginBottom: '2rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                            <ShieldCheck size={40} color="var(--primary)" />
-                            <h2 className="heading-lg" style={{ fontSize: '2.2rem', margin: 0 }}>Merchant of Record (MoR)</h2>
+                <section id="mor-detail" style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
+                        <div style={{ background: 'var(--primary)', padding: '15px', borderRadius: '18px' }}>
+                            <ShieldCheck size={40} color="#000" />
                         </div>
-                        <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', lineHeight: 1.8 }}>
-                            Un <strong>Merchant of Record</strong> non è un semplice intermediario di pagamento. È l'entità legale che si assume la piena responsabilità di ogni transazione effettuata sul tuo e-commerce o sui marketplace. Quando utilizzi B2Vibe come MoR, noi diventiamo i venditori legali agli occhi delle autorità fiscali locali.
+                        <h2 className="heading-lg" style={{ fontSize: '2.8rem', margin: 0 }}>Merchant of Record (MoR)</h2>
+                    </div>
+
+                    <div style={{ fontSize: '1.2rem', lineHeight: 1.9, color: '#444', marginBottom: '3rem' }}>
+                        <p style={{ marginBottom: '1.5rem' }}>
+                            Il modello <strong>Merchant of Record</strong> rappresenta la soluzione definitiva per i brand che desiderano espandersi internazionalmente senza l'onere di aprire società locali o gestire la frammentazione fiscale globale. B2Vibe non si limita a processare pagamenti: <strong>diventiamo il venditore legale dei tuoi prodotti</strong>, assumendo su di noi tutte le responsabilità legate a IVA (VAT), dazi doganali e normative locali.
                         </p>
-
-                        <div className="grid-12" style={{ gap: '2rem' }}>
-                            <div className="col-span-6">
-                                <h4 style={{ fontWeight: 800, marginBottom: '1rem' }}>Semplificazione Fiscale</h4>
-                                <p style={{ color: 'var(--muted)', fontSize: '1rem' }}>
-                                    Gestiamo l'apertura delle posizioni IVA nei paesi target, il calcolo delle imposte (Sales Tax, VAT) e il versamento periodico. Non dovrai più preoccuparti delle soglie di vendita intracomunitarie.
-                                </p>
-                            </div>
-                            <div className="col-span-6">
-                                <h4 style={{ fontWeight: 800, marginBottom: '1rem' }}>Compliance & Rischio</h4>
-                                <p style={{ color: 'var(--muted)', fontSize: '1rem' }}>
-                                    Ci occupiamo noi dei chargeback, delle dispute e del monitoraggio delle frodi. Il tuo brand è protetto da sanzioni legali derivanti da normative locali in continua evoluzione.
-                                </p>
-                            </div>
-                        </div>
+                        <p>
+                            Questo significa che il tuo dipartimento amministrativo riceverà un unico pagamento consolidato, libero da ogni complessità di riconciliazione fiscale estera. Gestiamo noi le soglie di vendita in ogni nazione europea e internazionale, garantendo la totale compliance.
+                        </p>
                     </div>
-                </section>
 
-                {/* --- SEZIONE LOGISTICA --- */}
-                <section id="logistica-detail" style={{ padding: '4rem 0', borderBottom: '1px solid var(--glass-border)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                        <Box size={40} color="var(--primary)" />
-                        <h2 className="heading-lg" style={{ fontSize: '2.2rem', margin: 0 }}>Logistica & Magazzino</h2>
-                    </div>
-                    <p style={{ fontSize: '1.15rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
-                        La logistica è il cuore pulsante dell'e-commerce. B2Vibe mette a disposizione un'infrastruttura proprietaria di oltre 3.300 mq certificata per l'eccellenza operativa. Non siamo un semplice centro di smistamento, ma un hub tecnologico che integra stoccaggio, packaging personalizzato e spedizioni last-mile.
-                    </p>
-
-                    <div className="grid-12" style={{ gap: '1.5rem' }}>
+                    <div className="grid-12" style={{ gap: '2rem' }}>
                         {[
-                            { t: "Gestione Amazon Prime", d: "Certificati per il programma Seller Fulfilled Prime, per garantire la massima velocità e affidabilità." },
-                            { t: "Packaging Custom", d: "Personalizziamo l'esperienza di unboxing per rafforzare il tuo brand in ogni spedizione." },
-                            { t: "Resi Internazionali", d: "Gestione centralizzata della logistica inversa per rendere i resi un punto di forza, non un costo." }
-                        ].map((item, i) => (
-                            <div key={i} className="col-span-4" style={{ padding: '1.5rem', background: '#F8F9FA', borderRadius: '15px' }}>
-                                <CheckCircle2 size={24} color="var(--primary)" style={{ marginBottom: '1rem' }} />
-                                <h4 style={{ fontWeight: 700, marginBottom: '0.5rem' }}>{item.t}</h4>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>{item.d}</p>
+                            {
+                                icon: Lock,
+                                t: "Sicurezza Globale",
+                                d: "Gestione di chargeback, frodi e normative KYC/AML. Siamo noi a rispondere in caso di dispute finanziarie, tutelando la stabilità del tuo business."
+                            },
+                            {
+                                icon: Scale,
+                                t: "Fiscalità Semplificata",
+                                d: "Calcolo e versamento automatico di VAT, Sales Tax e Imposte Indirecte in oltre 150 paesi. Eliminiamo il rischio di sanzioni per errori di calcolo fiscale."
+                            },
+                            {
+                                icon: Globe,
+                                t: "Espansione Immediata",
+                                d: "Vendi in nuovi mercati in soli 4 step. Non serve attendere mesi per l'apertura di branch locali: la nostra licenza MoR è già attiva a livello globale."
+                            }
+                        ].map((card, i) => (
+                            <div key={i} className="col-span-4" style={{ padding: '2.5rem', background: '#F9F9F9', borderRadius: '25px', border: '1px solid #EEE' }}>
+                                <card.icon size={28} color="var(--primary)" style={{ marginBottom: '1.5rem' }} />
+                                <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>{card.t}</h4>
+                                <p style={{ fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.6 }}>{card.d}</p>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* --- SEZIONE TECNOLOGIA --- */}
-                <section id="tecnologia-detail" style={{ padding: '4rem 0', borderBottom: '1px solid var(--glass-border)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                        <Database size={40} color="var(--primary)" />
-                        <h2 className="heading-lg" style={{ fontSize: '2.2rem', margin: 0 }}>Tecnologia & AI</h2>
+                {/* --- SEZIONE LOGISTICA --- */}
+                <section id="logistica-detail" style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
+                        <div style={{ background: '#000', padding: '15px', borderRadius: '18px' }}>
+                            <Box size={40} color="var(--primary)" />
+                        </div>
+                        <h2 className="heading-lg" style={{ fontSize: '2.8rem', margin: 0 }}>Logistica & Operations</h2>
                     </div>
-                    <p style={{ fontSize: '1.15rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-                        La nostra tecnologia proprietaria collega il tuo business a tutto il mondo. Utilizziamo sistemi di PIM (Product Information Management) e OMS (Order Management System) evoluti per garantire che ogni dato sia sincronizzato in tempo reale.
-                    </p>
 
-                    <div className="glass-card" style={{ background: '#121212', color: '#FFF', padding: '2.5rem' }}>
-                        <div className="grid-12" style={{ gap: '2rem' }}>
-                            <div className="col-span-6">
-                                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Automazione AI</h4>
-                                <p style={{ opacity: 0.8 }}>
-                                    Utilizziamo algoritmi di intelligenza artificiale per l'arricchimento dei cataloghi, la traduzione semantica delle schede prodotto e l'ottimizzazione del pricing dinamico sui marketplace.
-                                </p>
-                            </div>
-                            <div className="col-span-6">
-                                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Integrazione Real-time</h4>
-                                <p style={{ opacity: 0.8 }}>
-                                    API dirette con i principali corrieri e marketplace per tracciabilità totale, dalle scorte in magazzino alla consegna finale nelle mani del cliente.
-                                </p>
-                            </div>
+                    <div style={{ fontSize: '1.2rem', lineHeight: 1.9, color: '#444', marginBottom: '3rem' }}>
+                        <p style={{ marginBottom: '1.5rem' }}>
+                            La logistica moderna richiede precisione millimetrica. B2Vibe gestisce un hub operativo di oltre <strong>3.300 mq</strong> a Paderno Dugnano, strategicamente posizionato per servire l'intero mercato europeo. La nostra eccellenza è certificata per il programma <strong>Amazon Seller Fulfilled Prime (SFP)</strong>, che permette ai nostri brand partner di godere del badge Prime pur mantenendo la merce nei nostri magazzini.
+                        </p>
+                        <p>
+                            Non offriamo solo stoccaggio: gestiamo picchi stagionali (Black Friday, Saldi) e spedizioni delicate in modalità <strong>White-Glove</strong>, garantendo che l'unboxing sia all'altezza della reputazione del tuo brand.
+                        </p>
+                    </div>
+
+                    <div className="grid-12" style={{ gap: '2rem' }}>
+                        <div className="col-span-8">
+                            <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                                {[
+                                    { t: "Picking & Packing", d: "Efficienza del 99.8% nella preparazione degli ordini entro 24h." },
+                                    { t: "Gestione Resi", d: "Controllo qualità immediato e ricondizionamento pack." },
+                                    { t: "Tracking Real-time", d: "Aggregazione flussi dati con oltre 15 corrieri europei." },
+                                    { t: "Packaging Custom", d: "Progettazione di soluzioni di imballaggio eco-sostenibili e brandizzate." }
+                                ].map((item, i) => (
+                                    <li key={i} style={{ display: 'flex', gap: '15px' }}>
+                                        <CheckCircle2 color="var(--primary)" size={24} style={{ flexShrink: 0 }} />
+                                        <div>
+                                            <strong style={{ display: 'block', fontSize: '1.1rem', marginBottom: '5px' }}>{item.t}</strong>
+                                            <span style={{ fontSize: '0.95rem', color: 'var(--muted)' }}>{item.d}</span>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="col-span-4" style={{ background: 'var(--primary-glow)', padding: '2.5rem', borderRadius: '30px', border: '1px solid var(--primary)' }}>
+                            <h4 style={{ fontWeight: 800, marginBottom: '1rem' }}>Target: Amazon Prime</h4>
+                            <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>
+                                Ottimizziamo le scorte per evitare stock-out e garantiamo i tempi di consegna richiesti dai marketplace più severi, migliorando il tuo Buy Box win-rate.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- SEZIONE TECNOLOGIA --- */}
+                <section id="tecnologia-detail" style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
+                        <div style={{ background: 'var(--primary)', padding: '15px', borderRadius: '18px' }}>
+                            <Cpu size={40} color="#000" />
+                        </div>
+                        <h2 className="heading-lg" style={{ fontSize: '2.8rem', margin: 0 }}>Tecnologia & Ecosistema AI</h2>
+                    </div>
+
+                    <div style={{ fontSize: '1.2rem', lineHeight: 1.9, color: '#444', marginBottom: '4rem' }}>
+                        <p style={{ marginBottom: '1.5rem' }}>
+                            Il cuore di B2Vibe è <strong>B2Vibe Admin</strong>, il nostro stack tecnologico proprietario. Si tratta di un'architettura modulare che integra funzioni di <strong>PIM (Product Information Management)</strong> e <strong>OMS (Order Management System)</strong>, permettendo una sincronizzazione perfetta tra il tuo catalogo, i magazzini e i marketplace.
+                        </p>
+                        <p>
+                            Oggi la tecnologia B2Vibe sfrutta l'<strong>Intelligenza Artificiale Generativa</strong> per arricchire automaticamente i cataloghi prodotti, traducendo schede tecniche in descrizioni persuasive in 12 lingue e ottimizzando il pricing attraverso algoritmi predittivi di mercato.
+                        </p>
+                    </div>
+
+                    <div className="grid-12" style={{ gap: '2.5rem' }}>
+                        <div className="col-span-6 glass-card" style={{ background: '#121212', padding: '3rem', color: '#FFF' }}>
+                            <Database size={32} color="var(--primary)" style={{ marginBottom: '1.5rem' }} />
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#FFF' }}>Centralizzazione Dati</h3>
+                            <p style={{ opacity: 0.8, lineHeight: 1.7 }}>
+                                Un solo pannello per controllare Shopify, Amazon, eBay e i marketplace verticali. Fine dei caricamenti manuali e delle discrepanze di magazzino.
+                            </p>
+                        </div>
+                        <div className="col-span-6 glass-card" style={{ background: '#F9F9F9', padding: '3rem' }}>
+                            <TrendingUp size={32} color="#000" style={{ marginBottom: '1.5rem' }} />
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Business Intelligence</h3>
+                            <p style={{ color: 'var(--muted)', lineHeight: 1.7 }}>
+                                Dashboard personalizzate che mostrano il ROAS reale, i costi di spedizione e la profittabilità netta per ogni singolo SKU e mercato.
+                            </p>
                         </div>
                     </div>
                 </section>
 
                 {/* --- SEZIONE MARKETPLACE --- */}
-                <section id="marketplace-detail" style={{ padding: '4rem 0' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                        <Globe size={40} color="var(--primary)" />
-                        <h2 className="heading-lg" style={{ fontSize: '2.2rem', margin: 0 }}>Marketplace Management</h2>
-                    </div>
-                    <div className="grid-12" style={{ gap: '3rem', alignItems: 'center' }}>
-                        <div className="col-span-7">
-                            <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-                                Scalare su Amazon, eBay, ManoMano o Leroy Merlin richiede strategie dedicate per ogni canale. B2Vibe gestisce la creazione dei contenuti, l'ottimizzazione SEO organica e le campagne di advertising (PPC) per massimizzare il ROAS.
-                            </p>
-                            <ul style={{ listStyle: 'none', padding: 0 }}>
-                                {[
-                                    "Storefront Design su marketplace",
-                                    "Analisi competitiva dei prezzi",
-                                    "Gestione promozioni e deal stagionali",
-                                    "Monitoraggio performance e rating seller"
-                                ].map((li, i) => (
-                                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                                        <TrendingUp size={18} color="var(--primary)" />
-                                        <span>{li}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                <section id="marketplace-detail" style={{ padding: '6rem 0' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
+                        <div style={{ background: '#000', padding: '15px', borderRadius: '18px' }}>
+                            <Rocket size={40} color="var(--primary)" />
                         </div>
-                        <div className="col-span-5">
-                            <div style={{ background: 'var(--primary-glow)', padding: '2rem', borderRadius: '30px', textAlign: 'center' }}>
-                                <BarChart3 size={60} color="var(--primary)" style={{ marginBottom: '1rem' }} />
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>+45%</h3>
-                                <p style={{ fontSize: '0.9rem' }}>Incremento medio delle vendite nei primi 6 mesi di gestione.</p>
+                        <h2 className="heading-lg" style={{ fontSize: '2.8rem', margin: 0 }}>Marketplace Management</h2>
+                    </div>
+
+                    <div style={{ fontSize: '1.2rem', lineHeight: 1.9, color: '#444', marginBottom: '4rem' }}>
+                        <p style={{ marginBottom: '1.5rem' }}>
+                            Vendere sui marketplace non significa solo caricare un file CSV. Richiede una cura ossessiva del posizionamento SEO, del rating venditore e delle performance pubblicitarie. B2Vibe gestisce attivamente il tuo presidio su canali come <strong>Amazon, eBay, Veepee, ManoMano, Leroy Merlin e Zalando</strong>.
+                        </p>
+                        <p>
+                            Il nostro team di specialisti ottimizza le immagini (A+ Content), gestisce le campagne PPC (Pay-Per-Click) e monitora i prezzi dei competitor in tempo reale per garantirti la massima visibilità organica e sponsorizzata.
+                        </p>
+                    </div>
+
+                    <div className="grid-12" style={{ gap: '2rem' }}>
+                        {[
+                            { t: "SEO Optimization", d: "Ricerca parole chiave localizzate per ogni mercato (DE, FR, ES, UK) per massimizzare il traffico gratuito." },
+                            { t: "Ad Management", d: "Gestione budget advertising con focus sul ROAS. Strategie Full Funnel per nuovi lanci prodotto." },
+                            { t: "Brand Storefront", d: "Creazione di mini-siti proprietari all'interno dei marketplace per migliorare il Brand Equity." },
+                            { t: "Review Management", d: "Monitoraggio attivo delle recensioni e feedback per proteggere la reputazione del brand." }
+                        ].map((serv, i) => (
+                            <div key={i} className="col-span-6" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', padding: '2rem', border: '1px solid #EEE', borderRadius: '20px' }}>
+                                <Zap color="var(--primary)" size={24} style={{ flexShrink: 0, marginTop: '5px' }} />
+                                <div>
+                                    <h4 style={{ fontSize: '1.1rem', fontWeight: 800, marginBottom: '0.8rem' }}>{serv.t}</h4>
+                                    <p style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.6 }}>{serv.d}</p>
+                                </div>
                             </div>
+                        ))}
+                    </div>
+
+                    {/* Customer Care Box */}
+                    <div className="glass-card" style={{ marginTop: '5rem', background: 'linear-gradient(135deg, #121212 0%, #222 100%)', color: '#FFF', padding: '4rem', borderRadius: '40px', display: 'flex', alignItems: 'center', gap: '3rem', flexWrap: 'wrap' }}>
+                        <div style={{ flex: '1', minWidth: '300px' }}>
+                            <Headphones size={48} color="var(--primary)" style={{ marginBottom: '1.5rem' }} />
+                            <h3 style={{ fontSize: '2rem', color: '#FFF', marginBottom: '1rem' }}>Customer Care Multilingue</h3>
+                            <p style={{ opacity: 0.8, fontSize: '1.1rem', lineHeight: 1.7 }}>
+                                Non lasciamo mai solo il tuo cliente. Gestiamo ticket e chat in tempo reale in tutte le principali lingue europee, integrando strumenti AI per risposte immediate e personale dedicato per risolvere le casistiche più complesse.
+                            </p>
+                        </div>
+                        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '2.5rem', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                            <div style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)' }}>92%</div>
+                            <div style={{ fontSize: '0.9rem', opacity: 0.6, textTransform: 'uppercase', letterSpacing: '1px' }}>First Call Resolution</div>
                         </div>
                     </div>
                 </section>
 
                 {/* Call to Action Final */}
-                <div style={{ marginTop: '5rem', background: '#000', color: '#FFF', padding: '4rem 5%', borderRadius: '40px', textAlign: 'center' }}>
-                    <h2 style={{ color: '#FFF', fontSize: '2.5rem', marginBottom: '1.5rem' }}>Pronto a trasformare il tuo E-commerce?</h2>
-                    <p style={{ opacity: 0.8, marginBottom: '2.5rem', maxWidth: '700px', margin: '0 auto 2.5rem auto', fontSize: '1.1rem' }}>
-                        Pianifica una consulenza gratuita con i nostri specialisti e scopri come il modello Full-Outsourcing di B2Vibe può accelerare la tua crescita internazionale.
+                <div style={{ marginTop: '8rem', textAlign: 'center', borderTop: '2px solid var(--primary)', paddingTop: '6rem' }}>
+                    <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', fontWeight: 900 }}>Iniziamo il tuo percorso di crescita?</h2>
+                    <p style={{ color: 'var(--muted)', fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 3rem auto' }}>
+                        Parla con uno dei nostri esperti di internazionalizzazione. Analizzeremo il tuo catalogo e ti proporremo una roadmap personalizzata.
                     </p>
-                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <button className="primary" onClick={onContactClick} style={{ padding: '15px 40px', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                            Richiedi una Demo <ArrowRight size={20} />
-                        </button>
-                    </div>
+                    <button className="primary" onClick={onContactClick} style={{ padding: '20px 50px', fontSize: '1.2rem', display: 'inline-flex', alignItems: 'center', gap: '15px' }}>
+                        Pianifica una consulenza gratuita <ArrowRight size={22} />
+                    </button>
                 </div>
             </main>
 
