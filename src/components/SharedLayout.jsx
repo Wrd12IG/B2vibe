@@ -3,18 +3,13 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { B2VibeLogo } from './Logo';
 import { Linkedin, Instagram } from 'lucide-react';
 
-export const SectionTitle = ({ badge, title, subtitle, align = 'left' }) => {
-    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
-    const finalAlign = isMobile ? 'center' : align;
-
-    return (
-        <div style={{ marginBottom: '3rem', textAlign: finalAlign }}>
-            <span className="badge">{badge}</span>
-            <h2 className="heading-lg" style={{ marginBottom: '1rem', color: '#000' }}>{title}</h2>
-            {subtitle && <p style={{ color: 'var(--muted)', fontSize: '1.2rem', maxWidth: '800px', margin: finalAlign === 'center' ? '0 auto' : '0' }}>{subtitle}</p>}
-        </div>
-    );
-};
+export const SectionTitle = ({ badge, title, subtitle, align = 'left' }) => (
+    <div className={`section-title align-${align}`}>
+        <span className="badge">{badge}</span>
+        <h2 className="heading-lg" style={{ marginBottom: '1rem', color: '#000' }}>{title}</h2>
+        {subtitle && <p className="subtitle">{subtitle}</p>}
+    </div>
+);
 
 export const Navbar = ({ onContactClick }) => {
     const location = useLocation();
@@ -163,7 +158,7 @@ export const Footer = ({ onCookieClick }) => (
                 <RouterLink to="/cookie-policy" style={{ color: 'var(--muted)', textDecoration: 'none' }}>Cookie Policy</RouterLink>
                 <button onClick={onCookieClick} style={{ background: 'none', border: 'none', padding: 0, color: 'var(--muted)', cursor: 'pointer', fontSize: '0.75rem' }}>Personalizza Cookie</button>
             </p>
-            <p style={{ marginTop: '15px', opacity: 0.6 }}>© 2024 B2Vibe S.r.l. All rights reserved. (Build: 29/01/2026 15:15)</p>
+            <p style={{ marginTop: '15px', opacity: 0.6 }}>© 2024 B2Vibe S.r.l. All rights reserved. (Build: 29/01/2026 15:21)</p>
         </div>
     </footer>
 );

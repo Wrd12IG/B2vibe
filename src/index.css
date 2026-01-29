@@ -174,6 +174,96 @@ p {
   white-space: nowrap;
 }
 
+/* Performance & CLS Fixes */
+.section-title {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.section-title.align-center {
+  text-align: center;
+}
+
+.section-title .subtitle {
+  color: var(--muted);
+  font-size: 1.2rem;
+  max-width: 800px;
+}
+
+.section-title.align-left .subtitle {
+  margin: 0;
+}
+
+.section-title.align-center .subtitle {
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+
+  .section-title,
+  .section-title.align-left,
+  .section-title.align-center {
+    text-align: center !important;
+  }
+
+  .section-title .subtitle {
+    margin: 0 auto !important;
+  }
+}
+
+.hero-logo-box {
+  min-height: 38px;
+  /* Reserve space for logo */
+}
+
+/* Performance Optimizations */
+.analysis-card {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 4rem;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+}
+
+.channels-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.channel-item {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .analysis-card {
+    gap: 2rem;
+  }
+
+  .channels-grid {
+    gap: 15px;
+  }
+
+  .channel-item {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- RESPONSIVE UTILITIES --- */
 
 @media (max-width: 768px) {
@@ -379,6 +469,7 @@ p {
   align-items: center;
   z-index: 10;
   margin: 1.5rem 0;
+  min-height: 60px;
 }
 
 .heartbeat-path {
