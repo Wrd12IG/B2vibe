@@ -87,7 +87,7 @@ h4,
 }
 
 section {
-  padding: 80px 5%;
+  padding: 100px 5%;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -186,6 +186,14 @@ p {
 }
 
 /* Desktop Spans */
+.col-span-1 {
+  grid-column: span 1;
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
+
 .col-span-3 {
   grid-column: span 3;
 }
@@ -202,8 +210,24 @@ p {
   grid-column: span 6;
 }
 
+.col-span-7 {
+  grid-column: span 7;
+}
+
 .col-span-8 {
   grid-column: span 8;
+}
+
+.col-span-9 {
+  grid-column: span 9;
+}
+
+.col-span-10 {
+  grid-column: span 10;
+}
+
+.col-span-11 {
+  grid-column: span 11;
 }
 
 .col-span-12 {
@@ -211,17 +235,22 @@ p {
 }
 
 /* Mobile Overrides used by grid-12 on small screens */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .grid-12 {
     grid-template-columns: 1fr !important;
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     height: auto !important;
   }
 
-  .glass-card {
+  /* Reset all col-spans on mobile */
+  [class*="col-span-"] {
     grid-column: span 1 !important;
     grid-row: auto !important;
+  }
+
+  .glass-card {
+    width: 100% !important;
   }
 }
 
@@ -240,7 +269,7 @@ p {
   color: #000;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .nav-links {
     display: none;
     position: fixed;

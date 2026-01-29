@@ -70,7 +70,7 @@ const Stats = () => (
       title="Un mercato dinamico e in crescita..."
       subtitle="Analisi del posizionamento e delle opportunità nel panorama e-commerce europeo."
     />
-    <div className="grid-12">
+    <div className="grid-12" style={{ gridAutoRows: 'minmax(200px, auto)' }}>
       {/* Card 1: Main Stat */}
       <div className="glass-card col-span-4" style={{
         gridRow: 'span 2',
@@ -79,7 +79,8 @@ const Stats = () => (
         flexDirection: 'column',
         justifyContent: 'center',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        minHeight: '400px'
       }}>
         <div style={{ position: 'absolute', top: '-20px', right: '-20px', opacity: 0.05 }}>
           <Globe size={180} />
@@ -189,8 +190,8 @@ const Complexity = () => (
       <div className="glass-card col-span-12" style={{
         padding: '3rem',
         background: '#F8F9FA',
-        display: 'flex',
-        flexWrap: 'wrap',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '4rem',
         alignItems: 'center'
       }}>
@@ -691,8 +692,8 @@ const TechnologySection = () => (
 
 const Comparison = () => (
   <section style={{ background: '#F8F9FA' }}>
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '6rem', alignItems: 'start' }}>
-      <div>
+    <div className="grid-12" style={{ alignItems: 'start', gap: '6rem' }}>
+      <div className="col-span-6">
         <SectionTitle
           badge="Il Vantaggio"
           title="Tu pensi al brand, noi a tutto il resto."
@@ -727,28 +728,30 @@ const Comparison = () => (
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
-        <div style={{ marginBottom: '1rem' }}>
-          <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.2rem', marginBottom: '1.5rem', color: '#FF4D4D' }}>
-            <Zap size={20} /> Gestione In-House
-          </h4>
-          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {["Apertura e gestione IVA estere", "Costi commercialista per gestione DTC", "2 FTE amministrativo/logistica/c.c.", "Rischio compliance e blocco account", "IT e tech stack per canali di vendita"].map((v, i) => (
-              <li key={i} style={{ color: 'var(--muted)', display: 'flex', gap: '10px' }}>• {v}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.2rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>
-            <Zap size={20} /> Gestione B2Vibe
-          </h4>
-          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {["Costi semi-variabili", "Zero burocrazia", "Focus sul core-business", "100% compliant", "Spedizione \"Prime\" per Amazon"].map((v, i) => (
-              <li key={i} style={{ fontSize: '1rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <CheckCircle2 color="var(--primary)" size={18} /> {v}
-              </li>
-            ))}
-          </ul>
+      <div className="col-span-6">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.2rem', marginBottom: '1.5rem', color: '#FF4D4D' }}>
+              <Zap size={20} /> Gestione In-House
+            </h4>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {["Apertura e gestione IVA estere", "Costi commercialista per gestione DTC", "2 FTE amministrativo/logistica/c.c.", "Rischio compliance e blocco account", "IT e tech stack per canali di vendita"].map((v, i) => (
+                <li key={i} style={{ color: 'var(--muted)', display: 'flex', gap: '10px' }}>• {v}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.2rem', marginBottom: '1.5rem', color: 'var(--primary)' }}>
+              <Zap size={20} /> Gestione B2Vibe
+            </h4>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {["Costi semi-variabili", "Zero burocrazia", "Focus sul core-business", "100% compliant", "Spedizione \"Prime\" per Amazon"].map((v, i) => (
+                <li key={i} style={{ fontSize: '1rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <CheckCircle2 color="var(--primary)" size={18} /> {v}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
