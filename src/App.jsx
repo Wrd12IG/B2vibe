@@ -927,7 +927,10 @@ const QuoteModal = ({ isOpen, onClose }) => {
                       <input type="text" placeholder="Cognome" className="col-span-6" style={inputStyles} required />
                     </div>
                     <input type="email" placeholder="Email aziendale" style={inputStyles} required />
-                    <input type="text" placeholder="Sito Web" style={inputStyles} />
+                    <div>
+                      <input type="text" placeholder="Sito Web" style={inputStyles} />
+                      <span style={{ fontSize: '0.7rem', color: 'var(--muted)', display: 'block', marginTop: '4px', marginLeft: '5px' }}>* Campo opzionale</span>
+                    </div>
                     <button className="primary" style={{ width: '100%', padding: '15px', marginTop: '1rem' }}>Continua</button>
                   </div>
                 </motion.div>
@@ -1084,7 +1087,10 @@ const ContactModal = ({ isOpen, onClose }) => (
               <input type="text" placeholder="Cognome" className="col-span-6" style={inputStyles} />
             </div>
             <input type="email" placeholder="Email aziendale" style={inputStyles} />
-            <input type="text" placeholder="Sito Web (URL)" style={inputStyles} />
+            <div>
+              <input type="text" placeholder="Sito Web (URL)" style={inputStyles} />
+              <span style={{ fontSize: '0.7rem', color: 'var(--muted)', display: 'block', marginTop: '4px', marginLeft: '5px' }}>* Campo opzionale</span>
+            </div>
             <select style={inputStyles}>
               <option value="">Servizio di interesse</option>
               <option value="marketplace">Marketplace Management</option>
