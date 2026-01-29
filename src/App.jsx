@@ -837,41 +837,44 @@ const ContactModal = ({ isOpen, onClose }) => (
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
           onClick={e => e.stopPropagation()}
           style={{
-            background: '#121212',
+            background: '#FFF',
             width: '100%',
-            maxWidth: '550px',
-            borderRadius: '40px',
-            padding: '3rem',
+            maxWidth: '480px',
+            borderRadius: '24px',
+            padding: '2rem 1.5rem',
             position: 'relative',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 30px 60px rgba(0,0,0,0.5)'
+            border: '2px solid var(--primary)',
+            boxShadow: '0 30px 60px rgba(0,0,0,0.1)',
+            maxHeight: '90vh',
+            overflowY: 'auto'
           }}
         >
           <button
             onClick={onClose}
             style={{
               position: 'absolute',
-              top: '30px',
-              right: '30px',
-              background: 'rgba(255, 255, 255, 0.05)',
+              top: '20px',
+              right: '20px',
+              background: 'rgba(0, 0, 0, 0.05)',
               border: 'none',
-              width: '40px',
-              height: '40px',
+              width: '32px',
+              height: '32px',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#FFF',
-              cursor: 'pointer'
+              color: '#000',
+              cursor: 'pointer',
+              zIndex: 10
             }}
           >
-            <X size={20} />
+            <X size={18} />
           </button>
 
-          <h2 className="heading-lg" style={{ color: '#FFF', marginBottom: '1rem', fontSize: '2.5rem' }}>Parliamo.</h2>
-          <p style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2.5rem' }}>Raccontaci il tuo progetto e scopriamo come possiamo aiutarti a scalare.</p>
+          <h2 className="heading-lg" style={{ color: '#000', marginBottom: '0.5rem', fontSize: '2rem' }}>Parliamo.</h2>
+          <p style={{ color: 'var(--muted)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>Raccontaci il tuo progetto e scopriamo come possiamo aiutarti a scalare.</p>
 
-          <form style={{ display: 'grid', gap: '1.5rem' }}>
+          <form style={{ display: 'grid', gap: '1rem' }}>
             <div className="grid-12" style={{ gap: '1rem' }}>
               <input type="text" placeholder="Nome" className="col-span-6" style={inputStyles} />
               <input type="text" placeholder="Cognome" className="col-span-6" style={inputStyles} />
@@ -885,11 +888,11 @@ const ContactModal = ({ isOpen, onClose }) => (
               <option value="logistica">Logistica & Magazzino</option>
               <option value="tecnologia">Asset Digitali / PIM</option>
             </select>
-            <textarea placeholder="Il tuo obiettivo / messaggio" style={{ ...inputStyles, minHeight: '120px', resize: 'none' }} />
+            <textarea placeholder="Il tuo obiettivo / messaggio" style={{ ...inputStyles, minHeight: '80px', resize: 'none' }} />
 
             <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
               <input type="checkbox" id="privacy" style={{ marginTop: '5px' }} />
-              <label htmlFor="privacy" style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.5)' }}>
+              <label htmlFor="privacy" style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>
                 Accetto la Privacy Policy. I tuoi dati verranno trattati con la massima riservatezza secondo le normative GDPR.
               </label>
             </div>
@@ -905,11 +908,11 @@ const ContactModal = ({ isOpen, onClose }) => (
 );
 
 const inputStyles = {
-  background: 'rgba(255, 255, 255, 0.05)',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
-  padding: '14px 20px',
-  borderRadius: '15px',
-  color: '#FFF',
+  background: '#F8F9FA',
+  border: '1px solid var(--glass-border)',
+  padding: '12px 18px',
+  borderRadius: '12px',
+  color: '#000',
   fontSize: '0.95rem',
   outline: 'none',
   width: '100%',
