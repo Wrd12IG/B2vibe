@@ -811,6 +811,191 @@ const NextSteps = ({ onContactClick }) => (
     </div>
   </section>
 );
+const QuoteModal = ({ isOpen, onClose }) => {
+  const [step, setStep] = useState(1);
+  const totalSteps = 4;
+
+  const nextStep = (e) => {
+    e?.preventDefault();
+    if (step < totalSteps) setStep(step + 1);
+  };
+
+  const prevStep = () => {
+    if (step > 1) setStep(step - 1);
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0, 0, 0, 0.8)',
+            backdropFilter: 'blur(10px)',
+            zIndex: 2000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: '#FFF',
+              width: '100%',
+              maxWidth: '500px',
+              borderRadius: '24px',
+              padding: '2rem 1.5rem',
+              position: 'relative',
+              border: '2px solid var(--primary)',
+              boxShadow: '0 30px 60px rgba(0,0,0,0.1)',
+              maxHeight: '90vh',
+              overflowY: 'auto'
+            }}
+          >
+            <button
+              onClick={onClose}
+              style={{
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
+                background: 'rgba(0, 0, 0, 0.05)',
+                border: 'none',
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#000',
+                cursor: 'pointer',
+                zIndex: 10
+              }}
+            >
+              <X size={18} />
+            </button>
+
+            {/* Progress Bar */}
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '2rem', marginTop: '10px' }}>
+              {[1, 2, 3, 4].map((s) => (
+                <div key={s} style={{
+                  flex: 1,
+                  height: '4px',
+                  background: s <= step ? 'var(--primary)' : 'rgba(0,0,0,0.05)',
+                  borderRadius: '2px',
+                  transition: 'all 0.3s'
+                }} />
+              ))}
+            </div>
+
+            <form onSubmit={nextStep}>
+              {step === 1 && (
+                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '0.5rem' }}>Dati Richiedente</h2>
+                  <p style={{ color: 'var(--muted)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>Inserisci i tuoi recapiti aziendali.</p>
+                  <div style={{ display: 'grid', gap: '1rem' }}>
+                    <div className="grid-12" style={{ gap: '1rem' }}>
+                      <input type="text" placeholder="Nome" className="col-span-6" style={inputStyles} required />
+                      <input type="text" placeholder="Cognome" className="col-span-6" style={inputStyles} required />
+                    </div>
+                    <input type="email" placeholder="Email aziendale" style={inputStyles} required />
+                    <input type="text" placeholder="Sito Web" style={inputStyles} />
+                    <button className="primary" style={{ width: '100%', padding: '15px', marginTop: '1rem' }}>Continua</button>
+                  </div>
+                </motion.div>
+              )}
+
+              {step === 2 && (
+                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '0.5rem' }}>Tempistiche</h2>
+                  <p style={{ color: 'var(--muted)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>Quanto è urgente il tuo progetto?</p>
+                  <div style={{ display: 'grid', gap: '10px' }}>
+                    {["Urgente (subito)", "Entro 3 mesi", "Solo informazioni / Esplorativo"].map((opt) => (
+                      <label key={opt} className="glass-card" style={{
+                        padding: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px',
+                        background: '#F8F9FA', border: '1px solid var(--glass-border)', fontSize: '0.95rem'
+                      }}>
+                        <input type="radio" name="timing" required /> {opt}
+                      </label>
+                    ))}
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '1rem' }}>
+                      <button type="button" onClick={prevStep} style={{ flex: 1, padding: '15px', borderRadius: '12px', border: '1px solid var(--glass-border)', background: 'none', cursor: 'pointer' }}>Indietro</button>
+                      <button className="primary" style={{ flex: 2, padding: '15px' }}>Continua</button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {step === 3 && (
+                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '0.5rem' }}>Budget</h2>
+                  <p style={{ color: 'var(--muted)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>Qual è il budget allocato per l'outsourcing?</p>
+                  <div style={{ display: 'grid', gap: '10px' }}>
+                    {["Non so, consigliami", "5k - 15k / mese", "15k - 50k / mese", "Oltre 50k / mese", "Investimento libero"].map((opt) => (
+                      <label key={opt} className="glass-card" style={{
+                        padding: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px',
+                        background: '#F8F9FA', border: '1px solid var(--glass-border)', fontSize: '0.95rem'
+                      }}>
+                        <input type="radio" name="budget" required /> {opt}
+                      </label>
+                    ))}
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '1rem' }}>
+                      <button type="button" onClick={prevStep} style={{ flex: 1, padding: '15px', borderRadius: '12px', border: '1px solid var(--glass-border)', background: 'none', cursor: 'pointer' }}>Indietro</button>
+                      <button className="primary" style={{ flex: 2, padding: '15px' }}>Continua</button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {step === 4 && (
+                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                  <h2 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '0.5rem' }}>Contatto</h2>
+                  <p style={{ color: 'var(--muted)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>Quando preferisci essere ricontattato?</p>
+                  <div style={{ display: 'grid', gap: '10px' }}>
+                    {["Mattina (9:00 - 12:30)", "Pomeriggio (14:30 - 18:00)", "Sera (dopo le 18:30)"].map((opt) => (
+                      <label key={opt} className="glass-card" style={{
+                        padding: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px',
+                        background: '#F8F9FA', border: '1px solid var(--glass-border)', fontSize: '0.95rem'
+                      }}>
+                        <input type="radio" name="contact_time" required /> {opt}
+                      </label>
+                    ))}
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '1rem' }}>
+                      <button type="button" onClick={prevStep} style={{ flex: 1, padding: '15px', borderRadius: '12px', border: '1px solid var(--glass-border)', background: 'none', cursor: 'pointer' }}>Indietro</button>
+                      <button type="button" onClick={() => { alert('Richiesta inviata!'); onClose(); }} className="primary" style={{ flex: 2, padding: '15px' }}>Invia Preventivo</button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </form>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+const inputStyles = {
+  background: '#F8F9FA',
+  border: '1px solid var(--glass-border)',
+  padding: '12px 18px',
+  borderRadius: '12px',
+  color: '#000',
+  fontSize: '0.95rem',
+  outline: 'none',
+  width: '100%',
+  fontFamily: 'Inter, sans-serif'
+};
+
 const ContactModal = ({ isOpen, onClose }) => (
   <AnimatePresence>
     {isOpen && (
@@ -839,7 +1024,7 @@ const ContactModal = ({ isOpen, onClose }) => (
           style={{
             background: '#FFF',
             width: '100%',
-            maxWidth: '480px',
+            maxWidth: '500px',
             borderRadius: '24px',
             padding: '2rem 1.5rem',
             position: 'relative',
@@ -888,7 +1073,7 @@ const ContactModal = ({ isOpen, onClose }) => (
               <option value="logistica">Logistica & Magazzino</option>
               <option value="tecnologia">Asset Digitali / PIM</option>
             </select>
-            <textarea placeholder="Il tuo obiettivo / messaggio" style={{ ...inputStyles, minHeight: '80px', resize: 'none' }} />
+            <textarea placeholder="Il tuo obiettivo / messaggio" style={{ ...inputStyles, minHeight: '120px', resize: 'none' }} />
 
             <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
               <input type="checkbox" id="privacy" style={{ marginTop: '5px' }} />
@@ -907,19 +1092,7 @@ const ContactModal = ({ isOpen, onClose }) => (
   </AnimatePresence>
 );
 
-const inputStyles = {
-  background: '#F8F9FA',
-  border: '1px solid var(--glass-border)',
-  padding: '12px 18px',
-  borderRadius: '12px',
-  color: '#000',
-  fontSize: '0.95rem',
-  outline: 'none',
-  width: '100%',
-  fontFamily: 'Inter, sans-serif'
-};
-
-const FloatingContact = ({ onContactClick }) => {
+const FloatingContact = ({ onContactClick, onQuoteClick }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -951,7 +1124,7 @@ const FloatingContact = ({ onContactClick }) => {
             {/* List */}
             <div style={{ padding: '10px', display: 'grid', gap: '8px' }}>
               {[
-                { icon: Calculator, title: "Calcola Preventivo", sub: "Stima immediata online", badge: "NEW", action: () => { } },
+                { icon: Calculator, title: "Calcola Preventivo", sub: "Stima immediata online", badge: "NEW", action: onQuoteClick },
                 { icon: MessageSquare, title: "Contattaci", sub: "Modulo rapido", action: onContactClick },
                 { icon: MessageCircle, title: "WhatsApp", sub: "Risposta immediata", action: () => window.open('https://wa.me/390280016631', '_blank') },
                 { icon: Phone, title: "Chiamaci Ora", sub: "Lun-Ven 9:00-18:00", action: () => window.open('tel:+390280016631') },
@@ -1164,7 +1337,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-const HomePage = ({ onContactClick, onCookieClick }) => (
+const HomePage = ({ onContactClick, onQuoteClick, onCookieClick }) => (
   <div style={{ background: '#FFF' }}>
     <Navbar onContactClick={onContactClick} />
     <Hero />
@@ -1172,7 +1345,6 @@ const HomePage = ({ onContactClick, onCookieClick }) => (
       <div className="heartbeat-line"></div>
     </div>
     <FadeInUp><Stats /></FadeInUp>
-
     <FadeInUp><Complexity /></FadeInUp>
     <FadeInUp><DNA /></FadeInUp>
     <FadeInUp><Ecosystem /></FadeInUp>
@@ -1190,12 +1362,13 @@ const HomePage = ({ onContactClick, onCookieClick }) => (
 
     <Footer onCookieClick={onCookieClick} />
     <BackToTop />
-    <FloatingContact onContactClick={onContactClick} />
+    <FloatingContact onContactClick={onContactClick} onQuoteClick={onQuoteClick} />
   </div>
 );
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [showCookieBanner, setShowCookieBanner] = useState(false);
 
   useEffect(() => {
@@ -1209,12 +1382,19 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomePage onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />} />
+        <Route path="/" element={
+          <HomePage
+            onContactClick={() => setIsModalOpen(true)}
+            onQuoteClick={() => setIsQuoteOpen(true)}
+            onCookieClick={() => setShowCookieBanner(true)}
+          />
+        } />
         <Route path="/privacy-policy" element={<PrivacyPolicy onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />} />
         <Route path="/cookie-policy" element={<CookiePolicy onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />} />
         <Route path="/merchant-of-record-guida" element={<MerchantOfRecordGuide onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />} />
       </Routes>
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
       <CookieBanner
         isVisible={showCookieBanner}
         onAccept={() => setShowCookieBanner(false)}
