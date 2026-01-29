@@ -47,7 +47,9 @@ const Hero = () => (
     paddingTop: '150px'
   }}>
     <FadeInUp>
-      <B2VibeLogo height={55} style={{ marginBottom: '3rem' }} />
+      <div className="hero-logo-box">
+        <B2VibeLogo />
+      </div>
       <h1 className="heading-xl" style={{ marginBottom: '2rem', color: '#000' }}>
         Making sales effectively simple
       </h1>
@@ -640,19 +642,21 @@ const TechnologySection = () => (
         <p style={{ fontSize: '1.1rem', color: 'var(--muted)', marginBottom: '2rem', lineHeight: 1.6 }}>
           Sviluppata internamente, la nostra piattaforma permette di gestire l'intero ciclo di vita del prodotto e dell'ordine:
         </p>
-        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+        <div className="grid-12" style={{ gap: '1.5rem', marginTop: '2rem' }}>
           {[
             { t: "PIM Integrato", d: "Centralizzazione dati prodotto e arricchimento AI." },
             { t: "OMS Avanzato", d: "Gestione ordini multicanale e sincronizzazione stock." },
             { t: "Business Intelligence", d: "Reportistica real-time e analisi predittiva." },
             { t: "API Ready", d: "Integrazione nativa con ERP, E-shop e Marketplace." }
           ].map((item, i) => (
-            <li key={i}>
-              <strong style={{ display: 'block', color: '#000', marginBottom: '5px' }}>{item.t}</strong>
-              <span style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>{item.d}</span>
-            </li>
+            <div key={i} className="col-span-6">
+              <div style={{ padding: '1.5rem', background: 'var(--surface)', borderRadius: '15px', height: '100%', border: '1px solid var(--glass-border)' }}>
+                <strong style={{ display: 'block', color: '#000', marginBottom: '8px', fontSize: '1rem' }}>{item.t}</strong>
+                <span style={{ fontSize: '0.9rem', color: 'var(--muted)', lineHeight: 1.4 }}>{item.d}</span>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
       <div className="col-span-5" style={{ position: 'relative' }}>
         <div style={{ background: '#F8F9FA', borderRadius: '20px', padding: '3rem', border: '1px solid var(--glass-border)', boxShadow: 'var(--card-shadow)' }}>

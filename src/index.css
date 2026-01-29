@@ -352,3 +352,19 @@ p {
     margin: 10px 0;
   }
 }
+
+/* Hero Logo Responsive */
+.hero-logo-box {
+  margin-bottom: 3rem;
+}
+
+.hero-logo-box svg {
+  height: 55px;
+  width: auto;
+}
+
+@media (max-width: 768px) {
+  .hero-logo-box svg {
+    height: 40px;
+  }
+}
