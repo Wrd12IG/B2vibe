@@ -281,28 +281,32 @@ const Ecosystem = () => (
           title: "Merchant of Record",
           icon: ShieldCheck,
           desc: "Gestione fiscale e legale completa in Europa e principali mercati esteri.",
-          color: 'rgba(7, 235, 166, 0.05)'
+          color: 'rgba(7, 235, 166, 0.05)',
+          link: "/merchant-of-record-guida#mor-detail"
         },
         {
           title: "Logistica & Magazzino",
           icon: Box,
           desc: "Magazzino di proprietà certificato Prime per le spedizioni Amazon.",
-          color: 'rgba(0, 0, 0, 0.02)'
+          color: 'rgba(0, 0, 0, 0.02)',
+          link: "/merchant-of-record-guida#logistica-detail"
         },
         {
           title: "Tecnologia Avanzata",
           icon: Database,
           desc: "PIM e OMS proprietari e partnership tech strategiche per il controllo totale.",
-          color: 'rgba(0, 0, 0, 0.02)'
+          color: 'rgba(0, 0, 0, 0.02)',
+          link: "/merchant-of-record-guida#tecnologia-detail"
         },
         {
           title: "Marketplace Management",
           icon: Globe,
           desc: "Integrazione multicanale con i principali Marketplace globali.",
-          color: 'rgba(7, 235, 166, 0.05)'
+          color: 'rgba(7, 235, 166, 0.05)',
+          link: "/merchant-of-record-guida#marketplace-detail"
         }
       ].map((el, i) => (
-        <div key={i} className="glass-card col-span-6" style={{
+        <RouterLink key={i} to={el.link} className="glass-card col-span-6" style={{
           textAlign: 'left',
           display: 'flex',
           flexDirection: 'column',
@@ -310,7 +314,9 @@ const Ecosystem = () => (
           background: el.color,
           border: '1px solid var(--glass-border)',
           borderRadius: '30px',
-          padding: '3rem'
+          padding: '3rem',
+          textDecoration: 'none',
+          color: 'inherit'
         }}>
           <div style={{ background: 'var(--primary)', width: '60px', height: '60px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <el.icon size={30} color="#000" />
@@ -318,8 +324,11 @@ const Ecosystem = () => (
           <div>
             <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '1rem', color: '#000' }}>{el.title}</h3>
             <p style={{ color: 'var(--muted)', fontSize: '1.1rem', lineHeight: 1.5 }}>{el.desc}</p>
+            <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', fontWeight: 700, fontSize: '0.9rem' }}>
+              APPROFONDISCI <ArrowRight size={16} />
+            </div>
           </div>
-        </div>
+        </RouterLink>
       ))}
     </div>
   </section>
@@ -337,7 +346,7 @@ const MerchantOfRecordSection = () => (
         <p style={{ fontSize: '1.2rem', marginBottom: '2rem', lineHeight: 1.6 }}>
           Ci occupiamo di ogni aspetto burocratico e finanziario, permettendoti di vendere in <strong>+150 nazioni</strong> senza dover aprire società locali o gestire la complessità dell'IVA internazionale.
         </p>
-        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
           {[
             { t: "Compliance Globale", d: "Gestione IVA, tasse e regolamentazioni in oltre 150 paesi." },
             { t: "Rappresentanza Fiscale", d: "Supporto doganale e gestione della burocrazia import/export." },
@@ -351,6 +360,9 @@ const MerchantOfRecordSection = () => (
             </li>
           ))}
         </ul>
+        <RouterLink to="/merchant-of-record-guida#mor-detail" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', color: '#000', fontWeight: 700, textDecoration: 'none', borderBottom: '2px solid var(--primary)', paddingBottom: '4px' }}>
+          Scopri come funziona il MoR <ArrowRight size={18} />
+        </RouterLink>
       </div>
     </div>
   </section>
@@ -387,10 +399,15 @@ const MarketplaceSection = () => (
       <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
         <ChevronRight color="var(--primary)" /> Principali canali gestiti
       </h4>
-      <div className="channels-grid">
+      <div className="channels-grid" style={{ marginBottom: '3rem' }}>
         {["Shopify", "Amazon Prime", "eBay", "FNAC", "Stockly", "Leroy Merlin", "Kaufland", "Decathlon"].map((p, i) => (
           <span key={i} className="channel-item outfit">{p.toUpperCase()}</span>
         ))}
+      </div>
+      <div style={{ textAlign: 'center' }}>
+        <RouterLink to="/merchant-of-record-guida#marketplace-detail" className="primary" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+          Approfondisci la strategia Marketplace <ArrowRight size={18} />
+        </RouterLink>
       </div>
     </div>
   </section>
@@ -576,13 +593,10 @@ const LogisticsSection = () => (
             ))}
           </ul>
         </div>
-        <div>
-          <strong style={{ display: 'block', marginBottom: '10px' }}>Servizi accessori white-gloves</strong>
-          <ul style={{ listStyle: 'none', padding: '0 0 0 10px', borderLeft: '2px solid var(--primary)' }}>
-            {["Definizione linee guida imballaggio", "Imballaggi personalizzati con brand"].map((t, i) => (
-              <li key={i} style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '5px' }}>{t}</li>
-            ))}
-          </ul>
+        <div style={{ marginTop: '2.5rem' }}>
+          <RouterLink to="/merchant-of-record-guida#logistica-detail" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', color: '#000', fontWeight: 700, textDecoration: 'none', borderBottom: '2px solid var(--primary)', paddingBottom: '4px' }}>
+            Approfondisci la Logistica B2Vibe <ArrowRight size={18} />
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -674,6 +688,11 @@ const TechnologySection = () => (
               </div>
             </div>
           ))}
+        </div>
+        <div style={{ marginTop: '3rem' }}>
+          <RouterLink to="/merchant-of-record-guida#tecnologia-detail" className="primary" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '12px' }}>
+            Scopri il nostro stack tecnologico <ArrowRight size={20} />
+          </RouterLink>
         </div>
       </div>
       <div className="col-span-5" style={{ position: 'relative' }}>

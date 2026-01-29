@@ -1,103 +1,165 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, Footer, SectionTitle, BackToTop } from '../components/SharedLayout';
-import { ShieldCheck, Globe, Zap, Scale, ArrowRight, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ShieldCheck, Globe, Zap, Scale, ArrowRight, Users, Box, Database, TrendingUp, CheckCircle2, Layout, BarChart3 } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
 const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
+    const { hash } = useLocation();
+
+    useEffect(() => {
+        if (hash) {
+            const element = document.getElementById(hash.replace('#', ''));
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [hash]);
+
     return (
         <div style={{ background: '#FFF' }}>
             <Navbar onContactClick={onContactClick} />
 
             {/* Header Content */}
             <header style={{ padding: '150px 5% 60px 5%', textAlign: 'center', background: 'linear-gradient(180deg, rgba(7, 235, 166, 0.05) 0%, rgba(255,255,255,0) 100%)' }}>
-                <span className="badge">Guida Completa 2026</span>
+                <span className="badge">Pillar Page 2026</span>
                 <h1 className="heading-xl" style={{ marginTop: '1rem', marginBottom: '1.5rem', color: '#000' }}>
-                    Merchant of Record (MoR):<br />Tutto quello che devi sapere
+                    E-commerce Full Outsourcing:<br />La Guida Definitiva
                 </h1>
                 <p style={{ fontSize: '1.2rem', color: 'var(--muted)', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
-                    Scopri come scalare il tuo e-commerce a livello globale delegando la complessità fiscale, legale e amministrativa.
+                    Dalla gestione fiscale (MoR) alla logistica avanzata: tutto il supporto necessario per scalare il tuo brand sui mercati internazionali.
                 </p>
             </header>
 
             <main style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 5% 100px 5%' }}>
 
-                {/* Intro Section */}
-                <div className="glass-card" style={{ padding: '3rem', marginBottom: '4rem' }}>
-                    <h2 className="heading-lg" style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Cos'è un Merchant of Record?</h2>
-                    <p style={{ fontSize: '1.1rem', marginBottom: '1rem', color: 'var(--muted)' }}>
-                        Un <strong>Merchant of Record (MoR)</strong> è l'entità legale autorizzata a processare i pagamenti dei clienti per conto di un'azienda. A differenza di un semplice gateway di pagamento, il MoR si assume la <strong>responsabilità finanziaria e legale</strong> delle transazioni.
-                    </p>
-                    <p style={{ fontSize: '1.1rem', color: 'var(--muted)' }}>
-                        In pratica: quando un cliente acquista dal tuo sito, tecnicamente acquista dal MoR. Sull'estratto conto del cliente apparirà il nome del MoR, che si occuperà poi di trasferire i fondi alla tua azienda, al netto delle tasse e delle commissioni.
-                    </p>
-                </div>
+                {/* --- SEZIONE MERCHANT OF RECORD --- */}
+                <section id="mor-detail" style={{ padding: '4rem 0', borderBottom: '1px solid var(--glass-border)' }}>
+                    <div className="glass-card" style={{ padding: '3rem', marginBottom: '2rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                            <ShieldCheck size={40} color="var(--primary)" />
+                            <h2 className="heading-lg" style={{ fontSize: '2.2rem', margin: 0 }}>Merchant of Record (MoR)</h2>
+                        </div>
+                        <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', lineHeight: 1.8 }}>
+                            Un <strong>Merchant of Record</strong> non è un semplice intermediario di pagamento. È l'entità legale che si assume la piena responsabilità di ogni transazione effettuata sul tuo e-commerce o sui marketplace. Quando utilizzi B2Vibe come MoR, noi diventiamo i venditori legali agli occhi delle autorità fiscali locali.
+                        </p>
 
-                {/* Table of Contents-like Grid */}
-                <div className="grid-12" style={{ gap: '2rem', marginBottom: '5rem' }}>
-                    <div className="col-span-4" style={{ padding: '2rem', borderLeft: '4px solid var(--primary)', background: '#F8F9FA' }}>
-                        <ShieldCheck size={32} color="var(--primary)" style={{ marginBottom: '1rem' }} />
-                        <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 700 }}>Compliance Fiscale</h3>
-                        <p style={{ color: 'var(--muted)' }}>Gestione automatica dell'IVA, Sales Tax USA e altre imposte locali in oltre 100 paesi.</p>
+                        <div className="grid-12" style={{ gap: '2rem' }}>
+                            <div className="col-span-6">
+                                <h4 style={{ fontWeight: 800, marginBottom: '1rem' }}>Semplificazione Fiscale</h4>
+                                <p style={{ color: 'var(--muted)', fontSize: '1rem' }}>
+                                    Gestiamo l'apertura delle posizioni IVA nei paesi target, il calcolo delle imposte (Sales Tax, VAT) e il versamento periodico. Non dovrai più preoccuparti delle soglie di vendita intracomunitarie.
+                                </p>
+                            </div>
+                            <div className="col-span-6">
+                                <h4 style={{ fontWeight: 800, marginBottom: '1rem' }}>Compliance & Rischio</h4>
+                                <p style={{ color: 'var(--muted)', fontSize: '1rem' }}>
+                                    Ci occupiamo noi dei chargeback, delle dispute e del monitoraggio delle frodi. Il tuo brand è protetto da sanzioni legali derivanti da normative locali in continua evoluzione.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-span-4" style={{ padding: '2rem', borderLeft: '4px solid #000', background: '#F8F9FA' }}>
-                        <Scale size={32} color="#000" style={{ marginBottom: '1rem' }} />
-                        <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 700 }}>Responsabilità Legale</h3>
-                        <p style={{ color: 'var(--muted)' }}>Il MoR gestisce rimborsi, frodi e dispute (chargeback), proteggendo il tuo business.</p>
-                    </div>
-                    <div className="col-span-4" style={{ padding: '2rem', borderLeft: '4px solid var(--accent)', background: '#F8F9FA' }}>
-                        <Globe size={32} color="var(--accent)" style={{ marginBottom: '1rem' }} />
-                        <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 700 }}>Espansione Globale</h3>
-                        <p style={{ color: 'var(--muted)' }}>Vendi in nuovi mercati senza dover aprire entità legali locali o conti bancari esteri.</p>
-                    </div>
-                </div>
+                </section>
 
-                {/* Deep Dive Content */}
-                <article style={{ fontSize: '1.1rem', lineHeight: 1.8, color: '#333' }}>
-                    <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '3rem', marginBottom: '1.5rem' }}>MoR vs PSP: Qual è la differenza?</h2>
-                    <p>
-                        Spesso si confonde il Merchant of Record con i Payment Service Provider (PSP) come Stripe o PayPal. Ecco la differenza sostanziale:
-                    </p>
-                    <ul style={{ margin: '1.5rem 0', paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                        <li><strong>PSP (es. Stripe):</strong> Processa solo il pagamento. Tu resti responsabile del calcolo delle tasse, della fatturazione e della compliance legale in ogni paese in cui vendi.</li>
-                        <li><strong>MoR (es. B2Vibe):</strong> Processa il pagamento E gestisce tutta la parte burocratica. Calcola, raccoglie e versa le tasse alle autorità competenti. Tu ricevi un unico bonifico pulito.</li>
-                    </ul>
-
-                    <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginTop: '4rem', marginBottom: '1.5rem' }}>Perché scegliere B2Vibe come tuo MoR?</h2>
-                    <p style={{ marginBottom: '1.5rem' }}>
-                        B2Vibe non è solo un software, ma un partner strategico. Oltre alla gestione dei pagamenti, offriamo un ecosistema completo per l'e-commerce:
+                {/* --- SEZIONE LOGISTICA --- */}
+                <section id="logistica-detail" style={{ padding: '4rem 0', borderBottom: '1px solid var(--glass-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                        <Box size={40} color="var(--primary)" />
+                        <h2 className="heading-lg" style={{ fontSize: '2.2rem', margin: 0 }}>Logistica & Magazzino</h2>
+                    </div>
+                    <p style={{ fontSize: '1.15rem', lineHeight: 1.8, marginBottom: '2.5rem' }}>
+                        La logistica è il cuore pulsante dell'e-commerce. B2Vibe mette a disposizione un'infrastruttura proprietaria di oltre 3.300 mq certificata per l'eccellenza operativa. Non siamo un semplice centro di smistamento, ma un hub tecnologico che integra stoccaggio, packaging personalizzato e spedizioni last-mile.
                     </p>
 
                     <div className="grid-12" style={{ gap: '1.5rem' }}>
-                        <div className="glass-card col-span-6" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-                            <div style={{ background: 'var(--primary-glow)', padding: '10px', borderRadius: '10px' }}>
-                                <Zap size={24} color="var(--primary)" />
+                        {[
+                            { t: "Gestione Amazon Prime", d: "Certificati per il programma Seller Fulfilled Prime, per garantire la massima velocità e affidabilità." },
+                            { t: "Packaging Custom", d: "Personalizziamo l'esperienza di unboxing per rafforzare il tuo brand in ogni spedizione." },
+                            { t: "Resi Internazionali", d: "Gestione centralizzata della logistica inversa per rendere i resi un punto di forza, non un costo." }
+                        ].map((item, i) => (
+                            <div key={i} className="col-span-4" style={{ padding: '1.5rem', background: '#F8F9FA', borderRadius: '15px' }}>
+                                <CheckCircle2 size={24} color="var(--primary)" style={{ marginBottom: '1rem' }} />
+                                <h4 style={{ fontWeight: 700, marginBottom: '0.5rem' }}>{item.t}</h4>
+                                <p style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>{item.d}</p>
                             </div>
-                            <div>
-                                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Logistica Integrata</h4>
-                                <p style={{ fontSize: '0.95rem', color: 'var(--muted)' }}>Non gestiamo solo i soldi, spostiamo anche i prodotti. I nostri magazzini sono pronti a spedire in tutta Europa.</p>
+                        ))}
+                    </div>
+                </section>
+
+                {/* --- SEZIONE TECNOLOGIA --- */}
+                <section id="tecnologia-detail" style={{ padding: '4rem 0', borderBottom: '1px solid var(--glass-border)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                        <Database size={40} color="var(--primary)" />
+                        <h2 className="heading-lg" style={{ fontSize: '2.2rem', margin: 0 }}>Tecnologia & AI</h2>
+                    </div>
+                    <p style={{ fontSize: '1.15rem', lineHeight: 1.8, marginBottom: '2rem' }}>
+                        La nostra tecnologia proprietaria collega il tuo business a tutto il mondo. Utilizziamo sistemi di PIM (Product Information Management) e OMS (Order Management System) evoluti per garantire che ogni dato sia sincronizzato in tempo reale.
+                    </p>
+
+                    <div className="glass-card" style={{ background: '#121212', color: '#FFF', padding: '2.5rem' }}>
+                        <div className="grid-12" style={{ gap: '2rem' }}>
+                            <div className="col-span-6">
+                                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Automazione AI</h4>
+                                <p style={{ opacity: 0.8 }}>
+                                    Utilizziamo algoritmi di intelligenza artificiale per l'arricchimento dei cataloghi, la traduzione semantica delle schede prodotto e l'ottimizzazione del pricing dinamico sui marketplace.
+                                </p>
                             </div>
-                        </div>
-                        <div className="glass-card col-span-6" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
-                            <div style={{ background: 'rgba(0,0,0,0.05)', padding: '10px', borderRadius: '10px' }}>
-                                <Users size={24} color="#000" />
-                            </div>
-                            <div>
-                                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Customer Care Nativo</h4>
-                                <p style={{ fontSize: '0.95rem', color: 'var(--muted)' }}>Gestiamo le richieste dei clienti finali relative a ordini, spedizioni e resi, mantenendo alto il tuo rating sui marketplace.</p>
+                            <div className="col-span-6">
+                                <h4 style={{ color: 'var(--primary)', marginBottom: '1rem' }}>Integrazione Real-time</h4>
+                                <p style={{ opacity: 0.8 }}>
+                                    API dirette con i principali corrieri e marketplace per tracciabilità totale, dalle scorte in magazzino alla consegna finale nelle mani del cliente.
+                                </p>
                             </div>
                         </div>
                     </div>
+                </section>
 
-                    <div style={{ marginTop: '5rem', background: '#000', color: '#FFF', padding: '3rem', borderRadius: '20px', textAlign: 'center' }}>
-                        <h2 style={{ color: '#FFF', marginBottom: '1rem' }}>Pronto a vendere senza confini?</h2>
-                        <p style={{ opacity: 0.8, marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem auto' }}>
-                            Lascia a noi la burocrazia. Tu concentrati sul prodotto e sul marketing.
-                        </p>
-                        <button className="primary" onClick={onContactClick} style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
-                            Parla con un esperto <ArrowRight size={18} />
+                {/* --- SEZIONE MARKETPLACE --- */}
+                <section id="marketplace-detail" style={{ padding: '4rem 0' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                        <Globe size={40} color="var(--primary)" />
+                        <h2 className="heading-lg" style={{ fontSize: '2.2rem', margin: 0 }}>Marketplace Management</h2>
+                    </div>
+                    <div className="grid-12" style={{ gap: '3rem', alignItems: 'center' }}>
+                        <div className="col-span-7">
+                            <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
+                                Scalare su Amazon, eBay, ManoMano o Leroy Merlin richiede strategie dedicate per ogni canale. B2Vibe gestisce la creazione dei contenuti, l'ottimizzazione SEO organica e le campagne di advertising (PPC) per massimizzare il ROAS.
+                            </p>
+                            <ul style={{ listStyle: 'none', padding: 0 }}>
+                                {[
+                                    "Storefront Design su marketplace",
+                                    "Analisi competitiva dei prezzi",
+                                    "Gestione promozioni e deal stagionali",
+                                    "Monitoraggio performance e rating seller"
+                                ].map((li, i) => (
+                                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+                                        <TrendingUp size={18} color="var(--primary)" />
+                                        <span>{li}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="col-span-5">
+                            <div style={{ background: 'var(--primary-glow)', padding: '2rem', borderRadius: '30px', textAlign: 'center' }}>
+                                <BarChart3 size={60} color="var(--primary)" style={{ marginBottom: '1rem' }} />
+                                <h3 style={{ fontSize: '1.5rem', fontWeight: 800 }}>+45%</h3>
+                                <p style={{ fontSize: '0.9rem' }}>Incremento medio delle vendite nei primi 6 mesi di gestione.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Call to Action Final */}
+                <div style={{ marginTop: '5rem', background: '#000', color: '#FFF', padding: '4rem 5%', borderRadius: '40px', textAlign: 'center' }}>
+                    <h2 style={{ color: '#FFF', fontSize: '2.5rem', marginBottom: '1.5rem' }}>Pronto a trasformare il tuo E-commerce?</h2>
+                    <p style={{ opacity: 0.8, marginBottom: '2.5rem', maxWidth: '700px', margin: '0 auto 2.5rem auto', fontSize: '1.1rem' }}>
+                        Pianifica una consulenza gratuita con i nostri specialisti e scopri come il modello Full-Outsourcing di B2Vibe può accelerare la tua crescita internazionale.
+                    </p>
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <button className="primary" onClick={onContactClick} style={{ padding: '15px 40px', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            Richiedi una Demo <ArrowRight size={20} />
                         </button>
                     </div>
-                </article>
+                </div>
             </main>
 
             <BackToTop />
