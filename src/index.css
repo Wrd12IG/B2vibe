@@ -353,6 +353,10 @@ p {
   }
 }
 
+.hero-section {
+  padding-top: 150px;
+}
+
 /* Hero Logo Responsive */
 .hero-logo-box {
   margin-bottom: 3rem;
@@ -364,8 +368,13 @@ p {
 }
 
 @media (max-width: 768px) {
-  .hero-logo-box svg {
-    height: 25px;
+  .hero-section {
+    padding-top: 60px;
+  }
+
+  .hero-logo-box {
+    display: none;
+    /* Hide logo in hero on mobile as requested */
   }
 }
 

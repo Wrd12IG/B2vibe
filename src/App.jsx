@@ -37,14 +37,13 @@ import { B2VibeLogo } from './components/Logo';
 const FadeInUp = ({ children }) => <>{children}</>;
 
 const Hero = () => (
-  <section style={{
+  <section className="hero-section" style={{
     minHeight: '80vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     textAlign: 'center',
     alignItems: 'center',
-    paddingTop: '150px'
   }}>
     <FadeInUp>
       <div className="hero-logo-box">
@@ -659,18 +658,14 @@ const TechnologySection = () => (
         </div>
       </div>
       <div className="col-span-5" style={{ position: 'relative' }}>
-        <div className="partners-container">
-          <h4 style={{ marginBottom: '2.5rem', textAlign: 'center', fontSize: '1.2rem', fontWeight: 800 }}>Technology Partners</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
-            {[
-              "Amazon Ads", "CommerceClarity", "Poleepo",
-              "Qapla", "Zendesk", "Scalapay", "Heres"
-            ].map((name, i) => (
-              <div key={i} className="partner-tag">
-                {name}
-              </div>
-            ))}
-          </div>
+        <h4 style={{ marginBottom: '2.5rem', textAlign: 'center', fontSize: '1.2rem', fontWeight: 800 }}>Technology Partners</h4>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '25px', alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}>
+          {[
+            "Amazon Ads", "CommerceClarity", "Poleepo",
+            "Qapla", "Zendesk", "Scalapay", "Heres"
+          ].map((p, i) => (
+            <span key={i} className="outfit" style={{ fontSize: '1rem', fontWeight: 800 }}>{p.toUpperCase()}</span>
+          ))}
         </div>
       </div>
     </div>
