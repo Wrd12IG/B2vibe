@@ -70,17 +70,10 @@ const Stats = () => (
       title="Un mercato dinamico e in crescita..."
       subtitle="Analisi del posizionamento e delle opportunità nel panorama e-commerce europeo."
     />
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(12, 1fr)',
-      gridTemplateRows: 'repeat(2, 200px)',
-      gap: '1.5rem',
-      height: '420px'
-    }}>
+    <div className="grid-12">
       {/* Card 1: Main Stat */}
-      <div className="glass-card" style={{
-        gridColumn: '1 / 5',
-        gridRow: '1 / 3',
+      <div className="glass-card col-span-4" style={{
+        gridRow: 'span 2',
         background: 'linear-gradient(180deg, #FFF 0%, var(--surface-light) 100%)',
         display: 'flex',
         flexDirection: 'column',
@@ -98,9 +91,7 @@ const Stats = () => (
       </div>
 
       {/* Card 2: 70% */}
-      <div className="glass-card" style={{
-        gridColumn: '5 / 9',
-        gridRow: '1 / 2',
+      <div className="glass-card col-span-4" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '20px',
@@ -116,9 +107,7 @@ const Stats = () => (
       </div>
 
       {/* Card 3: 65% */}
-      <div className="glass-card" style={{
-        gridColumn: '9 / 13',
-        gridRow: '1 / 2',
+      <div className="glass-card col-span-4" style={{
         display: 'flex',
         alignItems: 'center',
         gap: '20px',
@@ -134,9 +123,7 @@ const Stats = () => (
       </div>
 
       {/* Card 4: Marketplace count */}
-      <div className="glass-card" style={{
-        gridColumn: '5 / 10',
-        gridRow: '2 / 3',
+      <div className="glass-card col-span-5" style={{
         background: '#121212',
         color: '#FFF',
         display: 'flex',
@@ -153,9 +140,7 @@ const Stats = () => (
       </div>
 
       {/* Card 5: Media marketplace */}
-      <div className="glass-card" style={{
-        gridColumn: '10 / 13',
-        gridRow: '2 / 3',
+      <div className="glass-card col-span-3" style={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -178,41 +163,34 @@ const Complexity = () => (
       subtitle="La crescita multicanale porta con sé sfide operative che possono drenare risorse preziose."
     />
 
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(12, 1fr)',
-      gap: '1.5rem',
-      maxWidth: '1200px',
-      margin: '0 auto'
-    }}>
+    <div className="grid-12" style={{ maxWidth: '1200px', margin: '0 auto' }}>
       {/* Stat 1 */}
-      <div className="glass-card" style={{ gridColumn: '1 / 5', padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <div className="glass-card col-span-4" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ color: 'var(--primary)', marginBottom: '1rem' }}><TrendingUp size={32} /></div>
         <h3 className="outfit" style={{ fontSize: '2.5rem', fontWeight: 800, color: '#000', marginBottom: '10px' }}>15-20%</h3>
         <p style={{ color: 'var(--muted)', fontSize: '0.95rem', fontWeight: 600 }}>Margini erosi dai resi</p>
       </div>
 
       {/* Stat 2 */}
-      <div className="glass-card" style={{ gridColumn: '5 / 9', padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <div className="glass-card col-span-4" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ color: 'var(--primary)', marginBottom: '1rem' }}><ShieldCheck size={32} /></div>
         <h3 className="outfit" style={{ fontSize: '2.5rem', fontWeight: 800, color: '#000', marginBottom: '10px' }}>82%</h3>
         <p style={{ color: 'var(--muted)', fontSize: '0.95rem', fontWeight: 600 }}>Frenate dalla compliance</p>
       </div>
 
       {/* Stat 3 */}
-      <div className="glass-card" style={{ gridColumn: '9 / 13', padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <div className="glass-card col-span-4" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ color: 'var(--primary)', marginBottom: '1rem' }}><Users size={32} /></div>
         <h3 className="outfit" style={{ fontSize: '2.5rem', fontWeight: 800, color: '#000', marginBottom: '10px' }}>+1-2 FTE</h3>
         <p style={{ color: 'var(--muted)', fontSize: '0.95rem', fontWeight: 600 }}>Necessari per la gestione</p>
       </div>
 
       {/* Main Analysis Card */}
-      <div className="glass-card" style={{
-        gridColumn: '1 / 13',
+      <div className="glass-card col-span-12" style={{
         padding: '3rem',
         background: '#F8F9FA',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
+        display: 'flex',
+        flexWrap: 'wrap',
         gap: '4rem',
         alignItems: 'center'
       }}>
@@ -599,8 +577,8 @@ const LogisticsSection = () => (
 const TimelineSection = () => (
   <section id="timeline" style={{ background: '#F8F9FA' }}>
     <h2 className="heading-lg" style={{ marginBottom: '4rem' }}>Partnership Roadmap & Economics</h2>
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem' }}>
-      <div>
+    <div className="grid-12" style={{ gap: '5rem' }}>
+      <div className="col-span-6">
         {[
           {
             step: "1",
@@ -632,7 +610,7 @@ const TimelineSection = () => (
           </div>
         ))}
       </div>
-      <div>
+      <div className="col-span-6">
         <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
           <ChevronRight color="var(--primary)" /> Economics
         </h4>
@@ -657,8 +635,8 @@ const TimelineSection = () => (
 
 const TechnologySection = () => (
   <section id="tecnologia" style={{ background: '#FFF' }}>
-    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'center' }}>
-      <div>
+    <div className="grid-12" style={{ alignItems: 'center', gap: '4rem' }}>
+      <div className="col-span-7">
         <SectionTitle
           badge="Asset Digitali"
           title={<>B2VIBE ADMIN | <span className="no-break">PIM & OMS & B.I.</span></>}
@@ -681,10 +659,10 @@ const TechnologySection = () => (
           ))}
         </ul>
       </div>
-      <div style={{ position: 'relative' }}>
+      <div className="col-span-5" style={{ position: 'relative' }}>
         <div style={{ background: '#F8F9FA', borderRadius: '20px', padding: '3rem', border: '1px solid var(--glass-border)', boxShadow: 'var(--card-shadow)' }}>
           <h4 style={{ marginBottom: '2.5rem', textAlign: 'center', fontSize: '1.2rem', fontWeight: 800 }}>Technology Partners</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '3rem 2rem', alignItems: 'center', justifyItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))', gap: '3rem 2rem', alignItems: 'center', justifyItems: 'center' }}>
             {[
               { name: "Amazon Ads", domain: "amazon.com" },
               { name: "CommerceClarity", domain: "commerceclarity.com" },
@@ -848,7 +826,7 @@ const NextSteps = ({ onContactClick }) => (
     <h2 className="heading-lg" style={{ marginBottom: '2rem' }}>Pronto a scalare il tuo business?</h2>
     <p style={{ color: 'var(--muted)', marginBottom: '3rem', fontSize: '1.1rem' }}>Il nostro percorso per il tuo successo internazionale</p>
 
-    <div style={{ display: 'inline-flex', gap: '2rem', padding: '2rem', background: '#FFF', borderRadius: '30px', border: '1px solid var(--glass-border)', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}>
+    <div className="steps-container">
       {[
         { n: "1", t: "Call Strategica", s: "30' di confronto" },
         { n: "2", t: "Analisi Catalogo", s: "GMV forecast" },
@@ -860,7 +838,7 @@ const NextSteps = ({ onContactClick }) => (
             <span style={{ color: '#000', fontWeight: 700, display: 'block' }}>{step.t}</span>
             <span style={{ fontSize: '0.8rem', color: 'var(--muted)' }}>{step.s}</span>
           </div>
-          {i < 2 && <div style={{ alignSelf: 'center' }}><ChevronRight color="var(--muted)" /></div>}
+          {i < 2 && <div className="steps-arrow" style={{ alignSelf: 'center' }}><ChevronRight color="var(--muted)" /></div>}
         </React.Fragment>
       ))}
     </div>

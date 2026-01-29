@@ -15,6 +15,7 @@ export const Navbar = ({ onContactClick }) => {
     const location = useLocation();
     const isHome = location.pathname === '/';
     const [activeSection, setActiveSection] = useState('');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         if (!isHome) return;
@@ -47,8 +48,10 @@ export const Navbar = ({ onContactClick }) => {
         transition: 'color 0.3s'
     });
 
+    const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
     return (
-        <nav style={{
+        <nav className="navbar-container" style={{
             position: 'fixed',
             top: 0, width: '100%',
             padding: '15px 5%',
@@ -61,27 +64,37 @@ export const Navbar = ({ onContactClick }) => {
             borderBottom: '1px solid var(--glass-border)'
         }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                <RouterLink to="/" style={{ display: 'flex', alignItems: 'center', gap: '20px', textDecoration: 'none' }}>
+                <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', gap: '20px', textDecoration: 'none' }}>
                     <B2VibeLogo height={25} style={{ color: '#000' }} />
                 </RouterLink>
-                <div style={{ width: '1px', height: '24px', background: 'var(--glass-border)', display: 'block' }}></div>
-                <span className="outfit" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+                <div className="hide-mobile" style={{ width: '1px', height: '24px', background: 'var(--glass-border)', display: 'block' }}></div>
+                <span className="outfit hide-mobile" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
                     Making sales effectively simple
                 </span>
             </div>
-            <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+
+            {/* Mobile Menu Toggle */}
+            <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                ) : (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                )}
+            </button>
+
+            <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
                 {isHome ? (
                     <>
-                        <a href="#soluzione" style={linkStyle('soluzione')}>DNA</a>
-                        <a href="#mor" style={linkStyle('mor')}>MoR</a>
-                        <a href="#servizi" style={linkStyle('servizi')}>Marketplace</a>
-                        <a href="#tecnologia" style={linkStyle('tecnologia')}>Tech</a>
-                        <a href="#timeline" style={linkStyle('timeline')}>Timeline</a>
+                        <a href="#soluzione" onClick={closeMobileMenu} style={linkStyle('soluzione')}>DNA</a>
+                        <a href="#mor" onClick={closeMobileMenu} style={linkStyle('mor')}>MoR</a>
+                        <a href="#servizi" onClick={closeMobileMenu} style={linkStyle('servizi')}>Marketplace</a>
+                        <a href="#tecnologia" onClick={closeMobileMenu} style={linkStyle('tecnologia')}>Tech</a>
+                        <a href="#timeline" onClick={closeMobileMenu} style={linkStyle('timeline')}>Timeline</a>
                     </>
                 ) : (
-                    <RouterLink to="/" style={{ color: '#000', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600 }}>Home</RouterLink>
+                    <RouterLink to="/" onClick={closeMobileMenu} style={{ color: '#000', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600 }}>Home</RouterLink>
                 )}
-                <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none' }}>Contattaci</button>
+                <button className="primary" onClick={() => { onContactClick(); closeMobileMenu(); }} style={{ boxShadow: 'none' }}>Contattaci</button>
             </div>
         </nav>
     );
@@ -89,7 +102,7 @@ export const Navbar = ({ onContactClick }) => {
 
 export const Footer = ({ onCookieClick }) => (
     <footer style={{ padding: '80px 5% 20px 5%', borderTop: '1px solid var(--glass-border)', background: '#F8F9FA' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr', gap: '4rem', marginBottom: '60px', maxWidth: '1200px', margin: '0 auto 60px auto' }}>
+        <div className="footer-grid">
             <div>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
                     <B2VibeLogo height={25} style={{ color: '#000' }} />
