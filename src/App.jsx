@@ -48,14 +48,14 @@ const Hero = () => (
   }}>
     <FadeInUp>
       <B2VibeLogo height={55} style={{ marginBottom: '3rem' }} />
-      <h1 className="heading-xl" style={{ fontSize: '4.5rem', marginBottom: '2rem', color: '#000' }}>
+      <h1 className="heading-xl" style={{ marginBottom: '2rem', color: '#000' }}>
         Making sales effectively simple
       </h1>
     </FadeInUp>
 
     <FadeInUp delay={0.2}>
-      <div style={{ marginTop: '5rem', maxWidth: '900px' }}>
-        <p style={{ fontSize: '1.4rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+      <div style={{ marginTop: '2rem', maxWidth: '900px' }}>
+        <p style={{ fontSize: 'clamp(1rem, 4vw, 1.4rem)', color: 'var(--muted)', lineHeight: 1.6 }}>
           Siamo un <strong>e-commerce service provider</strong> ed offriamo servizi di <strong>full-outsourcing multicanale</strong> per aziende che vogliono commercializzare i propri prodotti online a livello nazionale ed internazionale.
         </p>
       </div>
@@ -230,13 +230,13 @@ const DNA = () => (
       subtitle="B2Vibe nasce dall'esperienza decennale di Yeppon.it, trasformando la gestione operativa di un leader di mercato in un modello di servizio full-outsourcing ad alte prestazioni."
     />
 
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+    <div className="grid-12" style={{ marginBottom: '4rem' }}>
       {[
         { val: "57 Mln €", label: "Fatturato generato nel 2024 a livello globale", icon: TrendingUp },
         { val: "+1.200", label: "Ordini gestiti giornalmente tra eshop e marketplaces", icon: Users },
         { val: "3.300", label: "Metri quadri di magazzino di proprietà a Paderno Dugnano (MI)", icon: Box }
       ].map((item, i) => (
-        <div key={i} className="glass-card" style={{ background: i === 0 ? 'var(--primary)' : '#FFF', color: i === 0 ? '#000' : 'inherit' }}>
+        <div key={i} className="glass-card col-span-4" style={{ background: i === 0 ? 'var(--primary)' : '#FFF', color: i === 0 ? '#000' : 'inherit' }}>
           <item.icon size={32} style={{ marginBottom: '1.5rem', opacity: 0.8 }} />
           <h3 style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '0.5rem' }}>{item.val}</h3>
           <p style={{ opacity: 0.8, fontSize: '1rem', lineHeight: 1.4 }}>{item.label}</p>
@@ -255,13 +255,7 @@ const Ecosystem = () => (
       subtitle="Un'architettura completa per la gestione e l'automazione dei processi operativi complessi, progettata per massimizzare la scalabilità dei brand partner."
     />
 
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)',
-      gap: '2rem',
-      maxWidth: '1000px',
-      margin: '4rem auto',
-    }}>
+    <div className="grid-12" style={{ maxWidth: '1000px', margin: '4rem auto' }}>
       {[
         {
           title: "Merchant of Record",
@@ -288,7 +282,7 @@ const Ecosystem = () => (
           color: 'rgba(7, 235, 166, 0.05)'
         }
       ].map((el, i) => (
-        <div key={i} className="glass-card" style={{
+        <div key={i} className="glass-card col-span-6" style={{
           textAlign: 'left',
           display: 'flex',
           flexDirection: 'column',
@@ -313,17 +307,17 @@ const Ecosystem = () => (
 
 const MerchantOfRecordSection = () => (
   <section id="mor" style={{ background: '#F8F9FA' }}>
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '4rem', alignItems: 'center' }}>
-      <div style={{ background: 'var(--primary)', padding: '3rem', borderRadius: '30px', color: '#000' }}>
+    <div className="grid-12" style={{ alignItems: 'center', gap: '4rem' }}>
+      <div className="glass-card col-span-5" style={{ background: 'var(--primary)', padding: '3rem', borderRadius: '30px', color: '#000' }}>
         <ShieldCheck size={60} style={{ marginBottom: '2rem' }} />
         <h2 className="heading-lg" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>Financial & Compliance</h2>
         <p style={{ fontSize: '1.1rem', fontWeight: 600 }}>Merchant of Record: gestione fiscale e legale centralizzata per l'espansione globale.</p>
       </div>
-      <div>
+      <div className="col-span-7">
         <p style={{ fontSize: '1.2rem', marginBottom: '2rem', lineHeight: 1.6 }}>
           Ci occupiamo di ogni aspetto burocratico e finanziario, permettendoti di vendere in <strong>+150 nazioni</strong> senza dover aprire società locali o gestire la complessità dell'IVA internazionale.
         </p>
-        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
           {[
             { t: "Compliance Globale", d: "Gestione IVA, tasse e regolamentazioni in oltre 150 paesi." },
             { t: "Rappresentanza Fiscale", d: "Supporto doganale e gestione della burocrazia import/export." },
@@ -350,13 +344,13 @@ const MarketplaceSection = () => (
       subtitle="Definiamo assetti strategici per il posizionamento del brand nei principali marketplace europei e globali, gestendo integralmente il catalogo e le performance di vendita."
     />
 
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '4rem' }}>
+    <div className="grid-12" style={{ marginBottom: '4rem' }}>
       {[
         { title: "All-in-one", items: ["Pricing dinamico competitivo", "A+ Content e ottimizzazione catalogo", "Gestione varianti e stock", "Advertising su marketplace"] },
         { title: "Centralizzazione e sincronizzazione", items: ["Sincronizzazione real-time stock e prezzi", "Visione unificata vendite multicanale", "Aggiornamenti automatici su ogni marketplace, riducendo errori manuali"] },
         { title: "Gestione catalogo semplificata", items: ["Creazione e gestione del catalogo prodotti da un'unica piattaforma", "Integrazione con PIM aziendale (se richiesta)", "Automazione flussi di arricchimento dati prodotto tramite tool AI partner"] }
       ].map((card, i) => (
-        <div key={i} style={{ padding: '2rem', border: '2px solid var(--primary)', borderRadius: '15px' }}>
+        <div key={i} className="col-span-4" style={{ padding: '2rem', border: '2px solid var(--primary)', borderRadius: '15px' }}>
           <h4 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>{card.title}</h4>
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {card.items.map((item, j) => (
@@ -373,7 +367,7 @@ const MarketplaceSection = () => (
       <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
         <ChevronRight color="var(--primary)" /> Principali canali gestiti
       </h4>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'center', opacity: 0.6 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}>
         {["Shopify", "Amazon Prime", "eBay", "FNAC", "Stockly", "Leroy Merlin", "Kaufland", "Decathlon"].map((p, i) => (
           <span key={i} className="outfit" style={{ fontSize: '1.1rem', fontWeight: 800 }}>{p.toUpperCase()}</span>
         ))}
@@ -384,8 +378,8 @@ const MarketplaceSection = () => (
 
 const CustomerCareSection = () => (
   <section style={{ background: '#F8F9FA' }}>
-    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '4rem', alignItems: 'start' }}>
-      <div>
+    <div className="grid-12" style={{ alignItems: 'start' }}>
+      <div className="col-span-7">
         <h2 className="heading-lg" style={{ marginBottom: '2rem' }}>Customer Care</h2>
         <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
           Disponiamo di un <strong>team interno multicanale</strong> con una profonda conoscenza delle tematiche e-commerce, sia sul sito proprietario che su marketplace.
@@ -394,7 +388,7 @@ const CustomerCareSection = () => (
           L'utilizzo dell'<strong>intelligenza artificiale</strong> addestrata ed integrata negli strumenti che utilizziamo regolarmente, ci permette di assistere il cliente in <strong>tutte le lingue</strong>.
         </p>
       </div>
-      <div>
+      <div className="col-span-5">
         <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
           <ChevronRight color="var(--primary)" /> Attività principali
         </h4>
@@ -414,9 +408,9 @@ const CustomerCareSection = () => (
         </ul>
       </div>
     </div>
-    <div style={{ marginTop: '4rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+    <div className="grid-12" style={{ marginTop: '4rem' }}>
       {/* Dashboard 1: Sales Performance */}
-      <div className="glass-card" style={{ background: '#FFF', padding: '2rem', borderRadius: '24px', border: '1px solid var(--glass-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+      <div className="glass-card col-span-6" style={{ background: '#FFF', padding: '2rem', borderRadius: '24px', border: '1px solid var(--glass-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
           <h5 style={{ fontWeight: 800, fontSize: '0.9rem', color: '#000', textTransform: 'uppercase', letterSpacing: '1px' }}>Sales Performance</h5>
           <span style={{ fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 800, background: 'rgba(7, 235, 166, 0.1)', padding: '4px 10px', borderRadius: '50px' }}>LIVE</span>
@@ -460,7 +454,7 @@ const CustomerCareSection = () => (
       </div>
 
       {/* Dashboard 2: Support Hub */}
-      <div className="glass-card" style={{ background: '#FFF', padding: '2rem', borderRadius: '24px', border: '1px solid var(--glass-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+      <div className="glass-card col-span-6" style={{ background: '#FFF', padding: '2rem', borderRadius: '24px', border: '1px solid var(--glass-border)', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
           <h5 style={{ fontWeight: 800, fontSize: '0.9rem', color: '#000', textTransform: 'uppercase', letterSpacing: '1px' }}>Support Center Hub</h5>
           <div style={{ display: 'flex', gap: '8px' }}>
@@ -518,8 +512,8 @@ const LogisticsSection = () => (
       title={<>Soluzioni <span className="no-break">tailor-made</span> per la tua merce</>}
       subtitle="Oltre 3.300 mq di magazzino di proprietà certificato per spedizioni Amazon Prime."
     />
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem' }}>
-      <div>
+    <div className="grid-12" style={{ gap: '5rem' }}>
+      <div className="col-span-6">
         <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
           <ChevronRight color="var(--primary)" /> Attività principali
         </h4>
@@ -542,8 +536,8 @@ const LogisticsSection = () => (
           Per i marketplace di <strong>Amazon Europa</strong>, garantiamo il servizio <strong>Prime</strong> nella <strong>spedizione</strong> dal magazzino Italia.
         </p>
       </div>
-      <div>
-        <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem', marginTop: '4rem' }}>
+      <div className="col-span-6">
+        <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
           <ChevronRight color="var(--primary)" /> Servizi taylor-made
         </h4>
         <div style={{ marginBottom: '2rem' }}>
@@ -646,7 +640,7 @@ const TechnologySection = () => (
         <p style={{ fontSize: '1.1rem', color: 'var(--muted)', marginBottom: '2rem', lineHeight: 1.6 }}>
           Sviluppata internamente, la nostra piattaforma permette di gestire l'intero ciclo di vita del prodotto e dell'ordine:
         </p>
-        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+        <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
           {[
             { t: "PIM Integrato", d: "Centralizzazione dati prodotto e arricchimento AI." },
             { t: "OMS Avanzato", d: "Gestione ordini multicanale e sincronizzazione stock." },
@@ -765,7 +759,7 @@ const TeamSection = () => (
       title="Leadership & Strategic Hub"
       subtitle="Un team di esperti con visione strategica e competenze operative decennali nel settore e-commerce."
     />
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', marginTop: '4rem' }}>
+    <div className="grid-12" style={{ gap: '3rem', marginTop: '4rem' }}>
       {[
         {
           name: "Danilo Longo",
@@ -782,7 +776,7 @@ const TeamSection = () => (
       ].map((member, i) => (
         <div
           key={i}
-          className="glass-card"
+          className="glass-card col-span-6"
           style={{ background: '#F8F9FA' }}
         >
           <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--primary)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 800 }}>
@@ -888,9 +882,9 @@ const ContactModal = ({ isOpen, onClose }) => (
           <p style={{ color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2.5rem' }}>Raccontaci il tuo progetto e scopriamo come possiamo aiutarti a scalare.</p>
 
           <form style={{ display: 'grid', gap: '1.5rem' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <input type="text" placeholder="Nome" style={inputStyles} />
-              <input type="text" placeholder="Cognome" style={inputStyles} />
+            <div className="grid-12" style={{ gap: '1rem' }}>
+              <input type="text" placeholder="Nome" className="col-span-6" style={inputStyles} />
+              <input type="text" placeholder="Cognome" className="col-span-6" style={inputStyles} />
             </div>
             <input type="email" placeholder="Email aziendale" style={inputStyles} />
             <input type="text" placeholder="Sito Web (URL)" style={inputStyles} />

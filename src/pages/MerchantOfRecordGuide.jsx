@@ -9,12 +9,12 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
             <Navbar onContactClick={onContactClick} />
 
             {/* Header Content */}
-            <header style={{ padding: '180px 5% 80px 5%', textAlign: 'center', background: 'linear-gradient(180deg, rgba(7, 235, 166, 0.05) 0%, rgba(255,255,255,0) 100%)' }}>
+            <header style={{ padding: '150px 5% 60px 5%', textAlign: 'center', background: 'linear-gradient(180deg, rgba(7, 235, 166, 0.05) 0%, rgba(255,255,255,0) 100%)' }}>
                 <span className="badge">Guida Completa 2026</span>
-                <h1 className="heading-xl" style={{ fontSize: '3.5rem', marginTop: '1rem', marginBottom: '1.5rem', color: '#000' }}>
+                <h1 className="heading-xl" style={{ marginTop: '1rem', marginBottom: '1.5rem', color: '#000' }}>
                     Merchant of Record (MoR):<br />Tutto quello che devi sapere
                 </h1>
-                <p style={{ fontSize: '1.3rem', color: 'var(--muted)', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '1.2rem', color: 'var(--muted)', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
                     Scopri come scalare il tuo e-commerce a livello globale delegando la complessità fiscale, legale e amministrativa.
                 </p>
             </header>
@@ -33,18 +33,18 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                 </div>
 
                 {/* Table of Contents-like Grid */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '5rem' }}>
-                    <div style={{ padding: '2rem', borderLeft: '4px solid var(--primary)', background: '#F8F9FA' }}>
+                <div className="grid-12" style={{ gap: '2rem', marginBottom: '5rem' }}>
+                    <div className="col-span-4" style={{ padding: '2rem', borderLeft: '4px solid var(--primary)', background: '#F8F9FA' }}>
                         <ShieldCheck size={32} color="var(--primary)" style={{ marginBottom: '1rem' }} />
                         <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 700 }}>Compliance Fiscale</h3>
                         <p style={{ color: 'var(--muted)' }}>Gestione automatica dell'IVA, Sales Tax USA e altre imposte locali in oltre 100 paesi.</p>
                     </div>
-                    <div style={{ padding: '2rem', borderLeft: '4px solid #000', background: '#F8F9FA' }}>
+                    <div className="col-span-4" style={{ padding: '2rem', borderLeft: '4px solid #000', background: '#F8F9FA' }}>
                         <Scale size={32} color="#000" style={{ marginBottom: '1rem' }} />
                         <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 700 }}>Responsabilità Legale</h3>
                         <p style={{ color: 'var(--muted)' }}>Il MoR gestisce rimborsi, frodi e dispute (chargeback), proteggendo il tuo business.</p>
                     </div>
-                    <div style={{ padding: '2rem', borderLeft: '4px solid var(--accent)', background: '#F8F9FA' }}>
+                    <div className="col-span-4" style={{ padding: '2rem', borderLeft: '4px solid var(--accent)', background: '#F8F9FA' }}>
                         <Globe size={32} color="var(--accent)" style={{ marginBottom: '1rem' }} />
                         <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 700 }}>Espansione Globale</h3>
                         <p style={{ color: 'var(--muted)' }}>Vendi in nuovi mercati senza dover aprire entità legali locali o conti bancari esteri.</p>
@@ -67,8 +67,8 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                         B2Vibe non è solo un software, ma un partner strategico. Oltre alla gestione dei pagamenti, offriamo un ecosistema completo per l'e-commerce:
                     </p>
 
-                    <div style={{ display: 'grid', gap: '1.5rem' }}>
-                        <div className="glass-card" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                    <div className="grid-12" style={{ gap: '1.5rem' }}>
+                        <div className="glass-card col-span-6" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
                             <div style={{ background: 'var(--primary-glow)', padding: '10px', borderRadius: '10px' }}>
                                 <Zap size={24} color="var(--primary)" />
                             </div>
@@ -77,7 +77,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                 <p style={{ fontSize: '0.95rem', color: 'var(--muted)' }}>Non gestiamo solo i soldi, spostiamo anche i prodotti. I nostri magazzini sono pronti a spedire in tutta Europa.</p>
                             </div>
                         </div>
-                        <div className="glass-card" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                        <div className="glass-card col-span-6" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
                             <div style={{ background: 'rgba(0,0,0,0.05)', padding: '10px', borderRadius: '10px' }}>
                                 <Users size={24} color="#000" />
                             </div>
