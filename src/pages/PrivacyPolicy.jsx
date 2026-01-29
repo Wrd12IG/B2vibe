@@ -1,12 +1,12 @@
 import React from 'react';
 import { ChevronLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Navbar, Footer, SectionTitle } from '../components/SharedLayout';
+import { Navbar, Footer, SectionTitle, BackToTop } from '../components/SharedLayout';
 
-const PrivacyPolicy = ({ onCookieClick }) => {
+const PrivacyPolicy = ({ onContactClick, onCookieClick }) => {
     return (
         <div style={{ background: '#FFF', minHeight: '100vh' }}>
-            <Navbar onContactClick={() => { }} />
+            <Navbar onContactClick={onContactClick} />
 
             <main style={{ padding: '160px 5% 80px 5%', maxWidth: '1200px', margin: '0 auto' }}>
                 <SectionTitle
@@ -78,6 +78,7 @@ const PrivacyPolicy = ({ onCookieClick }) => {
                 </div>
             </main>
 
+            <BackToTop />
             <Footer onCookieClick={onCookieClick} />
         </div>
     );

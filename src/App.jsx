@@ -1207,8 +1207,8 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy onCookieClick={() => setShowCookieBanner(true)} />} />
-        <Route path="/cookie-policy" element={<CookiePolicy onCookieClick={() => setShowCookieBanner(true)} />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />} />
+        <Route path="/cookie-policy" element={<CookiePolicy onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />} />
         <Route path="/merchant-of-record-guida" element={<MerchantOfRecordGuide onContactClick={() => setIsModalOpen(true)} onCookieClick={() => setShowCookieBanner(true)} />} />
       </Routes>
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
