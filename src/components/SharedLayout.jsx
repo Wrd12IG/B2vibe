@@ -78,7 +78,7 @@ export const Navbar = ({ onContactClick }) => {
             </div>
 
             {/* Mobile Menu Toggle */}
-            <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Menu di navigazione">
                 {isMobileMenuOpen ? (
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 ) : (
@@ -195,6 +195,7 @@ export const BackToTop = () => {
     return (
         <button
             onClick={scrollToTop}
+            aria-label="Torna su"
             style={{
                 position: 'fixed',
                 bottom: '100px',

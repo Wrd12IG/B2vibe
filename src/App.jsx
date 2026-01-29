@@ -1207,6 +1207,7 @@ const FloatingContact = ({ onContactClick, onQuoteClick }) => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Apri supporto"
         style={{
           width: '60px',
           height: '60px',
@@ -1370,22 +1371,25 @@ const HomePage = ({ onContactClick, onQuoteClick, onCookieClick }) => (
       canonical="https://www.b2vibe.com/"
     />
     <Navbar onContactClick={onContactClick} />
-    <Hero />
-    <FadeInUp><Stats /></FadeInUp>
-    <FadeInUp><Complexity /></FadeInUp>
-    <FadeInUp><DNA /></FadeInUp>
-    <FadeInUp><Ecosystem /></FadeInUp>
 
-    <FadeInUp><MerchantOfRecordSection /></FadeInUp>
-    <FadeInUp><MarketplaceSection /></FadeInUp>
-    <FadeInUp><TechnologySection /></FadeInUp>
-    <FadeInUp><LogisticsSection /></FadeInUp>
-    <FadeInUp><CustomerCareSection /></FadeInUp>
+    <main role="main">
+      <Hero />
+      <FadeInUp><Stats /></FadeInUp>
+      <FadeInUp><Complexity /></FadeInUp>
+      <FadeInUp><DNA /></FadeInUp>
+      <FadeInUp><Ecosystem /></FadeInUp>
 
-    <FadeInUp><Comparison /></FadeInUp>
-    <FadeInUp><TimelineSection /></FadeInUp>
-    <FadeInUp><TeamSection /></FadeInUp>
-    <FadeInUp><NextSteps onContactClick={onContactClick} /></FadeInUp>
+      <FadeInUp><MerchantOfRecordSection /></FadeInUp>
+      <FadeInUp><MarketplaceSection /></FadeInUp>
+      <FadeInUp><TechnologySection /></FadeInUp>
+      <FadeInUp><LogisticsSection /></FadeInUp>
+      <FadeInUp><CustomerCareSection /></FadeInUp>
+
+      <FadeInUp><Comparison /></FadeInUp>
+      <FadeInUp><TimelineSection /></FadeInUp>
+      <FadeInUp><TeamSection /></FadeInUp>
+      <FadeInUp><NextSteps onContactClick={onContactClick} /></FadeInUp>
+    </main>
 
     <Footer onCookieClick={onCookieClick} />
     <BackToTop />
