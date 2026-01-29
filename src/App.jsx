@@ -108,7 +108,13 @@ const Stats = () => (
           <Globe size={180} />
         </div>
         <Globe size={40} color="var(--primary)" style={{ marginBottom: '2rem' }} />
-        <h3 className="heading-xl mint-gradient" style={{ fontSize: 'clamp(3rem, 10vw, 4rem)', marginBottom: '1rem', letterSpacing: '-0.02em', overflow: 'visible', whiteSpace: 'nowrap' }}>+86.000</h3>
+        <h3 className="heading-xl mint-gradient" style={{
+          fontSize: 'clamp(2.4rem, 12vw, 4rem)',
+          marginBottom: '1rem',
+          letterSpacing: '-0.03em',
+          width: '100%',
+          textAlign: 'left'
+        }}>+86.000</h3>
         <p style={{ fontWeight: 800, color: 'var(--foreground)', fontSize: '1.2rem', lineHeight: 1.2 }}>Seller attivi <br /> Amazon in Europa</p>
         <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginTop: '10px' }}>Volume di competitività e opportunità cross-border.</p>
       </div>
