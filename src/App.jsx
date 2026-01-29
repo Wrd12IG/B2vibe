@@ -658,7 +658,7 @@ const TechnologySection = () => (
         </div>
       </div>
       <div className="col-span-5" style={{ position: 'relative' }}>
-        <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem', justifyContent: window.innerWidth < 1024 ? 'center' : 'flex-start' }}>
+        <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
           <ChevronRight color="var(--primary)" /> Technology Partners
         </h4>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}>

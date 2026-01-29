@@ -158,7 +158,7 @@ export const Footer = ({ onCookieClick }) => (
                 <RouterLink to="/cookie-policy" style={{ color: 'var(--muted)', textDecoration: 'none' }}>Cookie Policy</RouterLink>
                 <button onClick={onCookieClick} style={{ background: 'none', border: 'none', padding: 0, color: 'var(--muted)', cursor: 'pointer', fontSize: '0.75rem' }}>Personalizza Cookie</button>
             </p>
-            <p style={{ marginTop: '15px', opacity: 0.6 }}>© 2024 B2Vibe S.r.l. All rights reserved. (Build: 29/01/2026 13:16)</p>
+            <p style={{ marginTop: '15px', opacity: 0.6 }}>© 2024 B2Vibe S.r.l. All rights reserved. (Build: 29/01/2026 13:17)</p>
         </div>
     </footer>
 );
