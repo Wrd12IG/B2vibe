@@ -659,25 +659,14 @@ const TechnologySection = () => (
         </div>
       </div>
       <div className="col-span-5" style={{ position: 'relative' }}>
-        <div style={{ background: '#F8F9FA', borderRadius: '20px', padding: '3rem', border: '1px solid var(--glass-border)', boxShadow: 'var(--card-shadow)' }}>
+        <div className="partners-container">
           <h4 style={{ marginBottom: '2.5rem', textAlign: 'center', fontSize: '1.2rem', fontWeight: 800 }}>Technology Partners</h4>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))', gap: '3rem 2rem', alignItems: 'center', justifyItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
             {[
               "Amazon Ads", "CommerceClarity", "Poleepo",
               "Qapla", "Zendesk", "Scalapay", "Heres"
             ].map((name, i) => (
-              <div key={i} style={{
-                background: '#FFF',
-                padding: '10px 15px',
-                borderRadius: '8px',
-                border: '1px solid var(--glass-border)',
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                color: 'var(--muted)',
-                textAlign: 'center',
-                boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
-                whiteSpace: 'nowrap'
-              }}>
+              <div key={i} className="partner-tag">
                 {name}
               </div>
             ))}
