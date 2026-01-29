@@ -664,46 +664,22 @@ const TechnologySection = () => (
           <h4 style={{ marginBottom: '2.5rem', textAlign: 'center', fontSize: '1.2rem', fontWeight: 800 }}>Technology Partners</h4>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))', gap: '3rem 2rem', alignItems: 'center', justifyItems: 'center' }}>
             {[
-              { name: "Amazon Ads", domain: "amazon.com" },
-              { name: "CommerceClarity", domain: "commerceclarity.com" },
-              { name: "Poleepo", domain: "poleepo.com" },
-              { name: "Qapla", domain: "qapla.it" },
-              { name: "Zendesk", domain: "zendesk.com" },
-              { name: "Scalapay", domain: "scalapay.com" },
-              { name: "Heres", domain: "heres.it" },
-              { name: "Poleepo", domain: "poleepo.com" }
-            ].map((p, i) => (
-              <div key={i} style={{ textAlign: 'center', width: '100%' }}>
-                <div style={{
-                  height: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '10px',
-                  filter: 'grayscale(100%) brightness(0.5)',
-                  opacity: 0.7,
-                  transition: 'all 0.3s'
-                }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.filter = 'grayscale(0%)';
-                    e.currentTarget.style.opacity = '1';
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.filter = 'grayscale(100%) brightness(0.5)';
-                    e.currentTarget.style.opacity = '0.7';
-                  }}
-                >
-                  <img
-                    src={`https://logo.clearbit.com/${p.domain}`}
-                    alt={p.name}
-                    style={{ maxHeight: '100%', maxWidth: '80%' }}
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'block';
-                    }}
-                  />
-                  <span className="outfit" style={{ display: 'none', fontSize: '0.75rem', fontWeight: 800 }}>{p.name.toUpperCase()}</span>
-                </div>
+              "Amazon Ads", "CommerceClarity", "Poleepo",
+              "Qapla", "Zendesk", "Scalapay", "Heres"
+            ].map((name, i) => (
+              <div key={i} style={{
+                background: '#FFF',
+                padding: '10px 15px',
+                borderRadius: '8px',
+                border: '1px solid var(--glass-border)',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: 'var(--muted)',
+                textAlign: 'center',
+                boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
+                whiteSpace: 'nowrap'
+              }}>
+                {name}
               </div>
             ))}
           </div>
