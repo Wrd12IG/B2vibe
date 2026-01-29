@@ -17,15 +17,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  max-width: 100%;
 }
 
 html,
-body {
+body,
+#root {
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  width: 100%;
+  position: relative;
 }
 
 h1,
@@ -166,15 +170,16 @@ p {
 
 @media (max-width: 768px) {
   section {
-    padding: 60px 20px;
+    padding: 40px 15px;
+    text-align: center;
   }
 
   .heading-xl {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
   .heading-lg {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -227,6 +232,10 @@ p {
 
   .glass-card {
     width: 100% !important;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 

@@ -211,8 +211,8 @@ const Complexity = () => (
         padding: '3rem',
         background: '#F8F9FA',
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '4rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: window.innerWidth < 768 ? '2rem' : '4rem',
         alignItems: 'center'
       }}>
         <div>
@@ -387,9 +387,9 @@ const MarketplaceSection = () => (
       <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '2rem' }}>
         <ChevronRight color="var(--primary)" /> Principali canali gestiti
       </h4>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: window.innerWidth < 768 ? '15px' : '30px', alignItems: 'center', justifyContent: 'center', opacity: 0.6 }}>
         {["Shopify", "Amazon Prime", "eBay", "FNAC", "Stockly", "Leroy Merlin", "Kaufland", "Decathlon"].map((p, i) => (
-          <span key={i} className="outfit" style={{ fontSize: '1.1rem', fontWeight: 800 }}>{p.toUpperCase()}</span>
+          <span key={i} className="outfit" style={{ fontSize: window.innerWidth < 768 ? '0.9rem' : '1.1rem', fontWeight: 800 }}>{p.toUpperCase()}</span>
         ))}
       </div>
     </div>
@@ -436,7 +436,7 @@ const CustomerCareSection = () => (
           <span style={{ fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 800, background: 'rgba(7, 235, 166, 0.1)', padding: '4px 10px', borderRadius: '50px' }}>LIVE</span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth < 480 ? '1fr' : '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
           <div>
             <span style={{ fontSize: '0.75rem', color: 'var(--muted)', display: 'block', marginBottom: '5px' }}>Total Revenue</span>
             <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>€ 142,580.00</span>
