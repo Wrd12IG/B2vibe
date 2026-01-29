@@ -356,18 +356,22 @@ p {
 /* Heartbeat Line */
 .heartbeat-wrapper {
   width: 100%;
-  height: 2px;
+  height: 80px;
+  /* Taller to allow spike visibility */
   position: relative;
   overflow: hidden;
-  margin: 4rem 0;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  z-index: 10;
 }
 
 .heartbeat-line {
   position: absolute;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: var(--primary);
-  box-shadow: 0 0 15px var(--primary);
+  box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
   left: -100%;
   opacity: 0;
   animation: heartbeatScan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
