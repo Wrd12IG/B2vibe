@@ -61,6 +61,25 @@ const Hero = () => (
         </p>
       </div>
     </FadeInUp>
+    <div className="heartbeat-wrapper" style={{ margin: '2rem 0', width: '100%', maxWidth: '800px' }}>
+      <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style={{ width: '100%', height: '60px' }}>
+        <path
+          d="M0,50 L440,50 Q450,40 460,50 L475,50 L480,55 L490,10 L500,90 L510,50 L525,50 Q540,35 555,50 L1000,50"
+          fill="none"
+          stroke="rgba(7, 235, 166, 0.1)"
+          strokeWidth="2"
+        />
+        <path
+          className="heartbeat-path"
+          d="M0,50 L440,50 Q450,40 460,50 L475,50 L480,55 L490,10 L500,90 L510,50 L525,50 Q540,35 555,50 L1000,50"
+          fill="none"
+          stroke="var(--primary)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
   </section>
 );
 
@@ -1341,9 +1360,6 @@ const HomePage = ({ onContactClick, onQuoteClick, onCookieClick }) => (
   <div style={{ background: '#FFF' }}>
     <Navbar onContactClick={onContactClick} />
     <Hero />
-    <div className="heartbeat-wrapper">
-      <div className="heartbeat-line"></div>
-    </div>
     <FadeInUp><Stats /></FadeInUp>
     <FadeInUp><Complexity /></FadeInUp>
     <FadeInUp><DNA /></FadeInUp>
@@ -1363,7 +1379,7 @@ const HomePage = ({ onContactClick, onQuoteClick, onCookieClick }) => (
     <Footer onCookieClick={onCookieClick} />
     <BackToTop />
     <FloatingContact onContactClick={onContactClick} onQuoteClick={onQuoteClick} />
-  </div>
+  </div >
 );
 
 export default function App() {

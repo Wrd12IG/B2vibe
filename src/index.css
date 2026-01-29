@@ -353,63 +353,46 @@ p {
   }
 }
 
-/* Heartbeat Line */
+/* Heartbeat Line ECG Style */
 .heartbeat-wrapper {
   width: 100%;
-  height: 80px;
-  /* Taller to allow spike visibility */
   position: relative;
   overflow: hidden;
-  margin: 2rem 0;
   display: flex;
   align-items: center;
   z-index: 10;
+  margin: 1.5rem 0;
 }
 
-.heartbeat-line {
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  background: var(--primary);
-  box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
-  left: -100%;
-  opacity: 0;
-  animation: heartbeatScan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+.heartbeat-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawHeartbeat 6s linear infinite;
+  filter: drop-shadow(0 0 12px var(--primary));
 }
 
-@keyframes heartbeatScan {
+@keyframes drawHeartbeat {
   0% {
-    left: -100%;
+    stroke-dashoffset: 1000;
     opacity: 0;
-    transform: scaleY(1);
   }
 
-  10% {
-    opacity: 1;
-    left: -50%;
-  }
-
-  18% {
-    left: 0%;
-    transform: scaleY(1);
-  }
-
-  22% {
-    transform: scaleY(15);
+  5% {
     opacity: 1;
   }
 
-  26% {
-    transform: scaleY(1);
+  35% {
+    stroke-dashoffset: 0;
+    opacity: 1;
   }
 
-  45% {
-    left: 100%;
+  42% {
+    stroke-dashoffset: 0;
     opacity: 0;
   }
 
   100% {
-    left: 100%;
+    stroke-dashoffset: 0;
     opacity: 0;
   }
 }
