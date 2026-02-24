@@ -668,6 +668,33 @@ const TimelineSection = () => (
   </section>
 );
 
+const DigitalMarketingSection = () => (
+  <section id="digital-marketing" style={{ background: '#F8F9FA' }}>
+    <SectionTitle
+      badge="Digital Marketing"
+      title={<>Strategia e <span className="no-break">Crescita Online</span></>}
+      subtitle="La tua guida completa per il successo online. I pilastri del nostro servizio di Digital Marketing Strategico in collaborazione con WR Digital."
+    />
+    <div className="grid-12" style={{ gap: '2rem', marginTop: '4rem' }}>
+      {[
+        { t: "1. Search Engine Optimization (SEO)", d: "Fatti trovare su Google con ottimizzazione on-page, tecnica e off-page per generare traffico organico." },
+        { t: "2. SEM & Google Ads", d: "Visibilità immediata tramite campagne PPC mirate, ottimizzando il budget per massimizzare il ROI e incrementare le vendite." },
+        { t: "3. Social Media Marketing (SMM)", d: "Connetti con la tua audience scegliendo i canali perfetti e gestendo campagne di Social Media Advertising mirate." },
+        { t: "4. Content Marketing", d: "Creazione e distribuzione di contenuti di valore (articoli, video, infografiche) per attrarre, coinvolgere e fidelizzare il pubblico." },
+        { t: "5. Email Marketing", d: "Costruisci relazioni durature tramite campagne email personalizzate e automatizzate per massimizzare i tassi di apertura e conversione." },
+        { t: "6. Web Analytics e Reportistica", d: "Misurare per migliorare. Analisi costante delle performance con Google Analytics per identificare opportunità di ottimizzazione." }
+      ].map((item, i) => (
+        <div key={i} className="col-span-4" style={{ display: 'flex' }}>
+          <div className="glass-card" style={{ padding: '2rem', background: '#FFF', borderRadius: '20px', width: '100%', border: '1px solid var(--glass-border)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <strong style={{ display: 'block', color: 'var(--primary)', fontSize: '1.1rem' }}>{item.t}</strong>
+            <span style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.5 }}>{item.d}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
 const TechnologySection = () => (
   <section id="tecnologia" style={{ background: '#FFF' }}>
     <div className="grid-12" style={{ alignItems: 'center', gap: '4rem' }}>
@@ -1406,6 +1433,7 @@ const HomePage = ({ onContactClick, onQuoteClick, onCookieClick }) => (
 
       <FadeInUp><MerchantOfRecordSection /></FadeInUp>
       <FadeInUp><MarketplaceSection /></FadeInUp>
+      <FadeInUp><DigitalMarketingSection /></FadeInUp>
       <FadeInUp><TechnologySection /></FadeInUp>
       <FadeInUp><LogisticsSection /></FadeInUp>
       <FadeInUp><CustomerCareSection /></FadeInUp>
