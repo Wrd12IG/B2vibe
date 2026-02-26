@@ -108,17 +108,141 @@ const ContactModal = ({ isOpen, onClose }) => {
 };
 
 const SavingsCalculator = ({ isOpen, onClose }) => {
+  const [step, setStep] = useState(1);
+  const [data, setData] = useState({
+    ecoOrders: '', ecoAov: '',
+    mktCount: '', mktSelected: [], mktOrders: '', mktAov: '',
+    logistics: '', interest3PL: '',
+    sector: '', email: ''
+  });
+
   if (!isOpen) return null;
+
+  const next = () => setStep(step + 1);
+  const back = () => setStep(step - 1);
+  const inputS = { width: '100%', background: '#f8f9fa', border: '1px solid #e9ecef', borderRadius: '12px', padding: '12px 16px', fontSize: '15px' };
+  const labelS = { fontSize: '13px', fontWeight: 600, color: 'var(--dark)', marginBottom: '8px', display: 'block' };
+
+  const mktOptions = ['Amazon', 'eBay', 'Zalando', 'ManoMano', 'Leroy Merlin', 'Altro'];
+
   return (
     <ModalWrap onClose={onClose}>
-      <div style={{ textAlign: 'center', padding: '20px' }}>
-        <Calculator size={48} color="var(--primary)" style={{ margin: '0 auto 20px auto' }} />
-        <h3>Calcolatore di Risparmio</h3>
-        <p style={{ margin: '10px 0 30px 0' }}>Sblocca l'analisi completa dei tuoi costi operativi.</p>
-        <div style={{ padding: '20px', border: '1px dashed var(--border)', borderRadius: '12px' }}>
-          Modulo in fase di aggiornamento grafico.
+      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '16px' }}>
+          {[1, 2, 3, 4, 5].map(s => (
+            <div key={s} style={{ width: '40px', height: '4px', background: step >= s ? 'var(--primary)' : '#eee', borderRadius: '2px' }} />
+          ))}
         </div>
+        <h3 style={{ fontSize: '24px', fontWeight: 800 }}>Analisi di Risparmio</h3>
       </div>
+
+      {step === 1 && (
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Partiamo dal tuo attuale E-commerce di proprietà.</p>
+          <div style={{ display: 'grid', gap: '20px' }}>
+            <div><label style={labelS}>Ordini medi al giorno</label><input type="number" style={inputS} placeholder="es. 20" value={data.ecoOrders} onChange={e => setData({ ...data, ecoOrders: e.target.value })} /></div>
+            <div><label style={labelS}>AOV (Valore medio carrello)</label><input type="number" style={inputS} placeholder="es. 85 €" value={data.ecoAov} onChange={e => setData({ ...data, ecoAov: e.target.value })} /></div>
+            <button className="primary" onClick={next} style={{ width: '100%', justifyContent: 'center' }}>Prosegui <ArrowRight size={18} /></button>
+          </div>
+        </motion.div>
+      )}
+
+      {step === 2 && (
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Presenza sui Marketplace.</p>
+          <div style={{ display: 'grid', gap: '20px' }}>
+            <div><label style={labelS}>Su quanti marketplace vendi?</label><input type="number" style={inputS} value={data.mktCount} onChange={e => setData({ ...data, mktCount: e.target.value })} /></div>
+            <div>
+              <label style={labelS}>Quali canali?</label>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {mktOptions.map(m => (
+                  <button key={m} onClick={() => {
+                    const next = data.mktSelected.includes(m) ? data.mktSelected.filter(x => x !== m) : [...data.mktSelected, m];
+                    setData({ ...data, mktSelected: next });
+                  }} style={{ padding: '8px 12px', borderRadius: '20px', border: '1px solid', borderColor: data.mktSelected.includes(m) ? 'var(--primary)' : '#eee', background: data.mktSelected.includes(m) ? 'var(--primary-glow)' : '#fff', fontSize: '13px', cursor: 'pointer' }}>{m}</button>
+                ))}
+              </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div><label style={labelS}>Ordini/giorno (mkt)</label><input type="number" style={inputS} value={data.mktOrders} onChange={e => setData({ ...data, mktOrders: e.target.value })} /></div>
+              <div><label style={labelS}>AOV mkt (€)</label><input type="number" style={inputS} value={data.mktAov} onChange={e => setData({ ...data, mktAov: e.target.value })} /></div>
+            </div>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button className="btn-ghost" onClick={back} style={{ flex: 1, justifyContent: 'center' }}>Indietro</button>
+              <button className="primary" onClick={next} style={{ flex: 2, justifyContent: 'center' }}>Avanti</button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {step === 3 && (
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Gestione Logistica.</p>
+          <div style={{ display: 'grid', gap: '20px' }}>
+            <div>
+              <label style={labelS}>Attuale tipo di logistica</label>
+              <select style={inputS} value={data.logistics} onChange={e => setData({ ...data, logistics: e.target.value })}>
+                <option value="">Seleziona...</option>
+                <option>Propria (magazzino interno)</option>
+                <option>3PL (partner esterno)</option>
+                <option>Amazon FBA / MCF</option>
+              </select>
+            </div>
+            <div>
+              <label style={labelS}>Interesse a passare ad una logistica 3PL specializzata?</label>
+              <select style={inputS} value={data.interest3PL} onChange={e => setData({ ...data, interest3PL: e.target.value })}>
+                <option value="">Seleziona...</option>
+                <option>Sì, assolutamente</option>
+                <option>Valutabile</option>
+                <option>No, sono soddisfatto</option>
+              </select>
+            </div>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button className="btn-ghost" onClick={back} style={{ flex: 1, justifyContent: 'center' }}>Indietro</button>
+              <button className="primary" onClick={next} style={{ flex: 2, justifyContent: 'center' }}>Ultimo Passo</button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {step === 4 && (
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Dati Statistici.</p>
+          <div style={{ display: 'grid', gap: '20px' }}>
+            <div>
+              <label style={labelS}>Settore merceologico</label>
+              <select style={inputS} value={data.sector} onChange={e => setData({ ...data, sector: e.target.value })}>
+                <option value="">Seleziona...</option>
+                <option>Elettronica</option>
+                <option>Casa e Cucina</option>
+                <option>Abbigliamento/Fashion</option>
+                <option>Beauty/Pharma</option>
+                <option>Alimentare/Wine</option>
+                <option>Altro</option>
+              </select>
+            </div>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button className="btn-ghost" onClick={back} style={{ flex: 1, justifyContent: 'center' }}>Indietro</button>
+              <button className="primary" onClick={next} style={{ flex: 2, justifyContent: 'center' }}>Vedi Risultato</button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {step === 5 && (
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Abbiamo elaborato il tuo profilo di risparmio.</p>
+          <div style={{ background: 'var(--primary-glow)', padding: '24px', borderRadius: '16px', marginBottom: '24px', border: '1px dashed var(--primary)' }}>
+            <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--primary)', textAlign: 'center' }}>
+              ✅ Analisi Pronta! Inserisci la tua email per sbloccarla.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gap: '20px' }}>
+            <div><label style={labelS}>La tua Email aziendale</label><input type="email" style={inputS} placeholder="mario.rossi@azienda.com" value={data.email} onChange={e => setData({ ...data, email: e.target.value })} /></div>
+            <button className="primary" onClick={() => { alert('Grazie! Ti abbiamo inviato il report completo a ' + data.email); onClose(); setStep(1); }} style={{ width: '100%', justifyContent: 'center' }}>Ricevi Report Analisi</button>
+          </div>
+        </motion.div>
+      )}
     </ModalWrap>
   );
 };
