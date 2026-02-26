@@ -5,10 +5,11 @@ import { BrowserRouter, Routes, Route, Link as RouterLink } from 'react-router-d
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import SEO from './components/SEO';
 import {
-  Navbar, Hero, Ticker, DNASection,
+  Hero, Ticker, DNASection,
   ServicesSection, CompareSection, FinalCTA,
-  Footer, ScrollToTop
+  ScrollToTop
 } from './components/PageSections';
+import { Navbar, Footer } from './components/SharedLayout';
 
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CookiePolicy from './pages/CookiePolicy';

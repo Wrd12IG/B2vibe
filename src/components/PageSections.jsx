@@ -13,41 +13,7 @@ export const SectionTitle = ({ badge, title, subtitle, align = 'left' }) => (
     </div>
 );
 
-/* ── NAVBAR ─────────────────────────────────────────────── */
-export const Navbar = ({ onContactClick }) => {
-    const [open, setOpen] = useState(false);
-    const links = [
-        { label: 'Chi siamo', href: '#chi-siamo' },
-        { label: 'A chi ci rivolgiamo', href: '#target' },
-        { label: 'Servizi', href: '#servizi' },
-        { label: 'Vantaggi', href: '#vantaggi' },
-    ];
-    return (
-        <nav className="navbar-fixed">
-            <RouterLink to="/" style={{ textDecoration: 'none' }}>
-                <B2VibeLogo />
-            </RouterLink>
-            <ul className="nav-links">
-                {links.map(l => <li key={l.label}><a href={l.href}>{l.label}</a></li>)}
-            </ul>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <button className="primary" onClick={onContactClick} style={{ padding: '10px 20px', borderRadius: '6px', fontSize: '13px' }}>
-                    Consulenza dedicata
-                </button>
-                <button className="mobile-menu-btn" onClick={() => setOpen(!open)} style={{ color: 'var(--text)' }}>
-                    {open ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
-            {open && (
-                <div style={{ position: 'fixed', top: '64px', left: 0, right: 0, background: '#fff', padding: '2rem', borderBottom: '1px solid var(--border)', zIndex: 99 }}>
-                    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'center' }}>
-                        {links.map(l => <li key={l.label}><a href={l.href} onClick={() => setOpen(false)} style={{ textDecoration: 'none', color: 'var(--text)', fontWeight: 600 }}>{l.label}</a></li>)}
-                    </ul>
-                </div>
-            )}
-        </nav>
-    );
-};
+
 
 /* ── HERO ────────────────────────────────────────────────── */
 export const Hero = ({ onContactClick }) => (
@@ -245,7 +211,7 @@ export const ServicesSection = ({ onContactClick, onCalcClick }) => (
 
 /* ── DNA / STATS ─────────────────────────────────────────── */
 export const DNASection = () => (
-    <section style={{ background: 'var(--surface)' }}>
+    <section id="chi-siamo" style={{ background: 'var(--surface)' }}>
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

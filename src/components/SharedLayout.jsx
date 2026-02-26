@@ -54,6 +54,12 @@ export const Navbar = ({ onContactClick }) => {
 
     const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+    const links = [
+        { name: 'DNA', id: 'chi-siamo' },
+        { name: 'Servizi', id: 'servizi' },
+        { name: 'Perché noi', id: 'vantaggi' },
+    ];
+
     return (
         <nav className="navbar-container" style={{
             position: 'fixed',
@@ -63,7 +69,7 @@ export const Navbar = ({ onContactClick }) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            background: 'rgba(255, 255, 255, 0.9)',
+            background: 'rgba(255, 255, 255, 0.95)',
             backdropFilter: 'blur(15px)',
             borderBottom: '1px solid var(--glass-border)'
         }}>
@@ -87,17 +93,14 @@ export const Navbar = ({ onContactClick }) => {
             </button>
 
             <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
-                {isHome ? (
-                    <>
-                        <a href="#soluzione" onClick={closeMobileMenu} style={linkStyle('soluzione')}>DNA</a>
-                        <a href="#mor" onClick={closeMobileMenu} style={linkStyle('mor')}>MoR</a>
-                        <a href="#servizi" onClick={closeMobileMenu} style={linkStyle('servizi')}>Marketplace</a>
-                        <a href="#tecnologia" onClick={closeMobileMenu} style={linkStyle('tecnologia')}>Tech</a>
-                        <a href="#timeline" onClick={closeMobileMenu} style={linkStyle('timeline')}>Timeline</a>
-                    </>
-                ) : (
-                    <RouterLink to="/" onClick={closeMobileMenu} style={{ color: '#000', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600 }}>Home</RouterLink>
-                )}
+                {links.map(link => (
+                    isHome ? (
+                        <a key={link.id} href={`#${link.id}`} onClick={closeMobileMenu} style={linkStyle(link.id)}>{link.name}</a>
+                    ) : (
+                        <RouterLink key={link.id} to={`/#${link.id}`} onClick={closeMobileMenu} style={{ ...linkStyle(link.id), color: '#000' }}>{link.name}</RouterLink>
+                    )
+                ))}
+                {!isHome && <RouterLink to="/" onClick={closeMobileMenu} style={{ color: '#000', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600 }}>Home</RouterLink>}
                 <button className="primary" onClick={() => { onContactClick(); closeMobileMenu(); }} style={{ boxShadow: 'none' }}>Contattaci</button>
             </div>
         </nav>
