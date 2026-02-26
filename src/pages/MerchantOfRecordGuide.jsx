@@ -88,6 +88,11 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             </div>
                         ))}
                     </div>
+                    <div style={{ marginTop: '3rem' }}>
+                        <button className="btn-ghost" onClick={onContactClick} style={{ fontSize: '1rem', padding: '14px 28px' }}>
+                            Scopri di più sul Merchant of Record <ArrowRight size={18} />
+                        </button>
+                    </div>
                 </section>
 
                 {/* --- SEZIONE LOGISTICA --- */}
@@ -134,6 +139,11 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             </p>
                         </div>
                     </div>
+                    <div style={{ marginTop: '3rem' }}>
+                        <button className="btn-ghost" onClick={onContactClick} style={{ fontSize: '1rem', padding: '14px 28px' }}>
+                            Scopri di più sulla Logistica <ArrowRight size={18} />
+                        </button>
+                    </div>
                 </section>
 
                 {/* --- SEZIONE TECNOLOGIA --- */}
@@ -169,6 +179,11 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                 Dashboard personalizzate che mostrano il ROAS reale, i costi di spedizione e la profittabilità netta per ogni singolo SKU e mercato.
                             </p>
                         </div>
+                    </div>
+                    <div style={{ marginTop: '3rem' }}>
+                        <button className="btn-ghost" onClick={onContactClick} style={{ fontSize: '1rem', padding: '14px 28px' }}>
+                            Scopri di più sulla Tecnologia B2Vibe <ArrowRight size={18} />
+                        </button>
                     </div>
                 </section>
 
@@ -220,6 +235,11 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             <div style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--primary)' }}>92%</div>
                             <div style={{ fontSize: '0.9rem', opacity: 0.6, textTransform: 'uppercase', letterSpacing: '1px' }}>First Call Resolution</div>
                         </div>
+                    </div>
+                    <div style={{ marginTop: '3rem' }}>
+                        <button className="btn-ghost" onClick={onContactClick} style={{ fontSize: '1rem', padding: '14px 28px' }}>
+                            Scopri di più sul Marketplace Management <ArrowRight size={18} />
+                        </button>
                     </div>
                 </section>
 
