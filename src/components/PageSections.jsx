@@ -52,19 +52,53 @@ export const Navbar = ({ onContactClick }) => {
 /* ── HERO ────────────────────────────────────────────────── */
 export const Hero = ({ onContactClick }) => (
     <section className="hero-section">
-        <span className="section-label" style={{ marginBottom: '20px' }}>E-commerce Full Outsourcing</span>
-        <h1 style={{ fontSize: 'clamp(32px, 8vw, 72px)', fontWeight: 900, maxWidth: '900px', lineHeight: 1.1, color: 'var(--dark)' }}>
-            Making sales<br /><span style={{ color: 'var(--primary)' }}>effectively simple.</span>
-        </h1>
-        <p className="section-sub" style={{ margin: '24px auto 40px auto', textAlign: 'center' }}>
-            Gestiamo la complessità dell'ecommerce multicanale — amministrazione, fiscalità, logistica e customer care — generando entrate costanti così la tua azienda può scalare focalizzandosi sul proprio brand.
-        </p>
-        <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button className="primary" onClick={onContactClick}>
-                Prenota una call di 30'
-            </button>
-            <a href="#servizi" className="btn-ghost">Scopri i servizi</a>
-        </div>
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            style={{ textAlign: 'center' }}
+        >
+            <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="section-label"
+                style={{ marginBottom: '20px', display: 'inline-block' }}
+            >
+                E-commerce Full Outsourcing
+            </motion.span>
+
+            <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                style={{ fontSize: 'clamp(32px, 8vw, 72px)', fontWeight: 900, maxWidth: '900px', lineHeight: 1.1, color: 'var(--dark)', margin: '0 auto' }}
+            >
+                Making sales<br /><span style={{ color: 'var(--primary)' }}>effectively simple.</span>
+            </motion.h1>
+
+            <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="section-sub"
+                style={{ margin: '24px auto 40px auto', textAlign: 'center', maxWidth: '700px' }}
+            >
+                Gestiamo la complessità dell'ecommerce multicanale — amministrazione, fiscalità, logistica e customer care — generando entrate costanti così la tua azienda può scalare focalizzandosi sul proprio brand.
+            </motion.p>
+
+            <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}
+            >
+                <button className="primary" onClick={onContactClick}>
+                    Prenota una call di 30'
+                </button>
+                <a href="#servizi" className="btn-ghost">Scopri i servizi</a>
+            </motion.div>
+        </motion.div>
     </section>
 );
 
@@ -143,8 +177,15 @@ export const ServicesSection = ({ onContactClick, onCalcClick }) => (
         <h2 className="section-title">Ecosistema integrato per la vendita globale.</h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginTop: '48px' }} className="services-grid">
-            {SERVICES.map(({ num, Icon, title, desc, items, badge }) => (
-                <div key={num} className="service-card">
+            {SERVICES.map(({ num, Icon, title, desc, items, badge }, idx) => (
+                <motion.div
+                    key={num}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1, duration: 0.6 }}
+                    className="service-card"
+                >
                     {/* Top row: icona + numero */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
                         <div style={{
@@ -189,7 +230,7 @@ export const ServicesSection = ({ onContactClick, onCalcClick }) => (
                             Scopri di più <ArrowRight size={13} />
                         </button>
                     </div>
-                </div>
+                </motion.div>
             ))}
         </div>
 
@@ -205,27 +246,38 @@ export const ServicesSection = ({ onContactClick, onCalcClick }) => (
 /* ── DNA / STATS ─────────────────────────────────────────── */
 export const DNASection = () => (
     <section style={{ background: 'var(--surface)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{ maxWidth: '1200px', margin: '0 auto' }}
+        >
             <span className="section-label">Il nostro DNA</span>
             <h2 className="section-title">Nati ecommerce, non consulenti.</h2>
             <p className="section-sub">
                 Siamo partiti come azienda ecommerce, Yeppon.it, prima di diventare anche un ecommerce service provider. Portiamo ai nostri clienti una decennale esperienza diretta sul campo.
             </p>
             <div className="stats-grid">
-                <div className="stat-item">
-                    <div className="stat-num">57M€</div>
-                    <div className="stat-lbl">Fatturato generato nel 2024</div>
-                </div>
-                <div className="stat-item">
-                    <div className="stat-num">+1.200</div>
-                    <div className="stat-lbl">Ordini gestiti giornalmente</div>
-                </div>
-                <div className="stat-item">
-                    <div className="stat-num">3.300</div>
-                    <div className="stat-lbl">Mq di magazzino certificato Prime</div>
-                </div>
+                {[
+                    { n: '57M€', l: 'Fatturato generato nel 2024' },
+                    { n: '+1.200', l: 'Ordini gestiti giornalmente' },
+                    { n: '3.300', l: 'Mq di magazzino certificato Prime' }
+                ].map((s, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
+                        className="stat-item"
+                    >
+                        <div className="stat-num">{s.n}</div>
+                        <div className="stat-lbl">{s.l}</div>
+                    </motion.div>
+                ))}
             </div>
-        </div>
+        </motion.div>
     </section>
 );
 
@@ -306,8 +358,8 @@ export const Footer = ({ onCookieClick }) => (
                         Gestiamo la complessità dell'ecommerce multicanale — amministrazione, fiscalità, logistica e customer care — per far scalare il tuo brand.
                     </p>
                     <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
-                        <a href="https://linkedin.com/company/b2vibe" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', display: 'flex' }}><Linkedin size={18} /></a>
-                        <a href="https://instagram.com/b2vibe" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', display: 'flex' }}><Instagram size={18} /></a>
+                        <a href="https://linkedin.com/company/b2vibe" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', display: 'flex', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}><Linkedin size={18} /></a>
+                        <a href="https://instagram.com/b2vibe" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', display: 'flex', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}><Instagram size={18} /></a>
                     </div>
                 </div>
 
