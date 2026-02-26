@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { B2VibeLogo } from './Logo';
-import { Linkedin, Instagram, Menu, X, ArrowRight, CheckCircle2, Globe, ShieldCheck, Box, Headset } from 'lucide-react';
+import { Linkedin, Instagram, Menu, X, ArrowRight, CheckCircle2, Globe, ShieldCheck, Box, Headset, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 /* ── UTILS ──────────────────────────────────────────────── */
 export const SectionTitle = ({ badge, title, subtitle, align = 'left' }) => (
@@ -230,31 +231,47 @@ export const DNASection = () => (
 
 /* ── COMPARE ─────────────────────────────────────────────── */
 export const CompareSection = () => (
-    <section id="vantaggi">
-        <span className="section-label">Perché B2Vibe</span>
-        <h2 className="section-title">In-house vs. B2Vibe.</h2>
-        <p className="section-sub">Riduzione del carico operativo ed eliminazione della burocrazia internazionale.</p>
-        {/* ... tabella invariata o semplificata per brevità ... */}
-        <div style={{ marginTop: '40px', overflowX: 'auto', border: '1px solid var(--border)', borderRadius: '16px' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '14px' }}>
+    <section id="vantaggi" style={{ padding: '100px 0' }}>
+        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <span className="section-label">Perché B2Vibe</span>
+            <h2 className="section-title">In-house vs. B2Vibe.</h2>
+            <p className="section-sub" style={{ margin: '0 auto' }}>Riduzione del carico operativo ed eliminazione della burocrazia internazionale.</p>
+        </div>
+
+        <div style={{ marginTop: '48px', overflowX: 'auto', border: '1px solid var(--border)', borderRadius: '24px', background: '#fff', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '600px' }}>
                 <thead>
                     <tr style={{ background: 'var(--surface)' }}>
-                        <th style={{ padding: '20px' }}>Caratteristica</th>
-                        <th style={{ padding: '20px' }}>In-house</th>
-                        <th style={{ padding: '20px', color: 'var(--primary)' }}>B2Vibe ✦</th>
+                        <th style={{ padding: '24px 32px', fontSize: '14px', fontWeight: 600, color: 'var(--muted)' }}>Caratteristica</th>
+                        <th style={{ padding: '24px 32px', fontSize: '15px', fontWeight: 800 }}>Gestione In-house</th>
+                        <th style={{ padding: '24px 32px', fontSize: '15px', fontWeight: 800, color: 'var(--primary)', background: 'var(--primary-glow)' }}>B2Vibe ✦</th>
                     </tr>
                 </thead>
                 <tbody>
                     {[
-                        ['IVA estera e Dogane', 'Gestione complessa', 'Inclusa (Zero burocrazia)'],
-                        ['Costi operativi', 'Fissi ed elevati', 'Variabili e scalabili'],
-                        ['Logistica Prime', 'Costi struttura 3PL', 'Magazzino B2Vibe incluso'],
-                        ['Compliance Fiscale', 'Rischio elevato', '100% Garantita'],
+                        ['Fiscale: IVA & Dogane', 'Complessità Elevata', 'Zero Burocrazia', true],
+                        ['Logistica: Amazon Prime', 'Gestione 3PL esterna', 'Certificazione Prime nativa', true],
+                        ['Costi Operativi', 'Fissi ed Elevati', 'Modello variabile a successo', true],
+                        ['Rischio Compliance', 'Carico del Brand', 'Assunto da B2Vibe (MoR)', true],
+                        ['Customer Care (5 lingue)', 'Esterno o rincaro interno', 'Incluso nel workflow', true],
+                        ['Tecnologia PIM/OMS', 'Costi licenza & IT', 'Piattaforma proprietaria incl.', true],
                     ].map((r, i) => (
                         <tr key={i} style={{ borderTop: '1px solid var(--border)' }}>
-                            <td style={{ padding: '16px 20px', fontWeight: 600 }}>{r[0]}</td>
-                            <td style={{ padding: '16px 20px', color: 'var(--muted)' }}>{r[1]}</td>
-                            <td style={{ padding: '16px 20px', fontWeight: 700 }}>{r[2]}</td>
+                            <td style={{ padding: '20px 32px', fontSize: '14px', fontWeight: 600, color: 'var(--dark)' }}>{r[0]}</td>
+                            <td style={{ padding: '20px 32px', color: 'var(--muted)', fontSize: '14px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#ccc' }} />
+                                    {r[1]}
+                                </div>
+                            </td>
+                            <td style={{ padding: '20px 32px', fontWeight: 700, fontSize: '14px', color: 'var(--dark)', background: 'var(--primary-glow)' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <Check size={12} color="#000" />
+                                    </div>
+                                    {r[2]}
+                                </div>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
