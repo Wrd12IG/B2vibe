@@ -169,7 +169,7 @@ export const ServicesSection = ({ onContactClick, onCalcClick }) => (
         </div>
 
         {/* Bottone Calcolatore sotto i pilastri */}
-        <div style={{ marginTop: '64px', textAlign: 'center' }}>
+        <div id="risparmio" style={{ marginTop: '64px', textAlign: 'center' }}>
             <button className="primary" onClick={onCalcClick} style={{ background: '#f0f0f0', border: '1px solid var(--border)', color: 'var(--text)' }}>
                 🧮 Calcola il tuo risparmio stimato
             </button>
