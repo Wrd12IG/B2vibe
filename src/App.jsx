@@ -6,12 +6,12 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import SEO from './components/SEO';
 import {
   Navbar, Hero, Ticker, DNASection,
-  ServicesSection, CompareSection,
+  ServicesSection, CompareSection, FinalCTA,
   Footer, ScrollToTop
 } from './components/PageSections';
 
-const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
-const CookiePolicy = React.lazy(() => import('./pages/CookiePolicy'));
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import CookiePolicy from './pages/CookiePolicy';
 
 const ModalWrap = ({ onClose, children, maxW = '600px' }) => (
   <AnimatePresence>
@@ -175,7 +175,8 @@ export default function App() {
               </div>
             </>
           } />
-          <Route path="/privacy-policy" element={<React.Suspense fallback="..."> <PrivacyPolicy /> </React.Suspense>} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
         </Routes>
         <ContactModal isOpen={modal} onClose={() => setModal(false)} />
         <SavingsCalculator isOpen={calc} onClose={() => setCalc(false)} />
