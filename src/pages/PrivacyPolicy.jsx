@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Footer, SectionTitle, BackToTop } from '../components/PageSections';
+import { Navbar, Footer, SectionTitle, BackToTop } from '../components/SharedLayout';
 
 const PrivacyPolicy = ({ onContactClick, onCookieClick }) => {
     return (

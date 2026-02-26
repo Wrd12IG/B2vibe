@@ -4,14 +4,6 @@ import { B2VibeLogo } from './Logo';
 import { Linkedin, Instagram, Menu, X, ArrowRight, CheckCircle2, Globe, ShieldCheck, Box, Headset, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-/* ── UTILS ──────────────────────────────────────────────── */
-export const SectionTitle = ({ badge, title, subtitle, align = 'left' }) => (
-    <div style={{ textAlign: align, marginBottom: '48px' }}>
-        <span className="section-label">{badge}</span>
-        <h2 className="section-title">{title}</h2>
-        {subtitle && <p className="section-sub" style={{ margin: align === 'center' ? '0 auto' : '0' }}>{subtitle}</p>}
-    </div>
-);
 
 
 
@@ -311,65 +303,10 @@ export const FinalCTA = ({ onContactClick }) => (
     </section>
 );
 
-/* ── FOOTER ──────────────────────────────────────────────── */
-export const Footer = ({ onCookieClick }) => (
-    <footer style={{ background: '#f8f9fa', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '72px clamp(20px,5vw,48px) 0' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px', paddingBottom: '56px' }} className="footer-main">
-
-                {/* Col 1 — Brand */}
-                <div>
-                    <B2VibeLogo />
-                    <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.7, maxWidth: '340px', marginTop: '16px' }}>
-                        Gestiamo la complessità dell'ecommerce multicanale — amministrazione, fiscalità, logistica e customer care — per far scalare il tuo brand.
-                    </p>
-                    <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
-                        <a href="https://linkedin.com/company/b2vibe" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', display: 'flex', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}><Linkedin size={18} /></a>
-                        <a href="https://instagram.com/b2vibe" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', display: 'flex', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}><Instagram size={18} /></a>
-                    </div>
-                </div>
-
-                {/* Col 2 — Servizi */}
-                <div>
-                    <h5 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dark)', marginBottom: '20px' }}>Servizi</h5>
-                    <ul style={{ listStyle: 'none', padding: 0, fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                        <li><RouterLink to="/merchant-of-record-guida" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600 }}>Guida MoR 2026 ↗</RouterLink></li>
-                        <li style={{ color: 'var(--muted)' }}>Merchant of Record</li>
-                        <li style={{ color: 'var(--muted)' }}>Logistica & Magazzino</li>
-                        <li style={{ color: 'var(--muted)' }}>Customer Care Multilingua</li>
-                        <li style={{ color: 'var(--muted)' }}>Marketplace Management</li>
-                        <li style={{ color: 'var(--muted)' }}>Ecommerce & Marketing</li>
-                    </ul>
-                </div>
-
-                {/* Col 3 — Contatti */}
-                <div>
-                    <h5 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dark)', marginBottom: '20px' }}>Contatti</h5>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px', color: 'var(--muted)' }}>
-                        <p>sales@b2vibe.com</p>
-                        <p>+39 02 80016631</p>
-                        <p style={{ lineHeight: 1.5 }}>Via Ferdinando Santi 11/13,<br />20037 Paderno Dugnano (MI)</p>
-                        <p>P.IVA 14234560960</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div style={{ borderTop: '1px solid var(--border)', padding: '20px clamp(20px,5vw,48px)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px', fontSize: '11px', color: 'var(--muted)' }}>
-            <span>© {new Date().getFullYear()} B2Vibe S.r.l. — Capitale sociale € 1.000.000</span>
-            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                <RouterLink to="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</RouterLink>
-                <RouterLink to="/cookie-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Cookie Policy</RouterLink>
-                <button onClick={onCookieClick} style={{ background: 'none', border: 'none', fontSize: 'inherit', color: 'inherit', cursor: 'pointer', padding: 0 }}>Cookie Settings</button>
-            </div>
-        </div>
-    </footer>
-);
 
 export const ScrollToTop = () => {
     const { pathname } = useLocation();
     useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
     return null;
 };
-export const BackToTop = () => null; // Semplificato
+
