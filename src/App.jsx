@@ -147,8 +147,13 @@ export default function App() {
   const [cookie, setCookie] = useState(false);
 
   useEffect(() => {
+    console.log("B2Vibe App Mounted");
     if (!localStorage.getItem('cookie-consent')) setCookie(true);
   }, []);
+
+  const handleOpenContact = () => setModal(true);
+  const handleOpenCalc = () => setCalc(true);
+  const handleOpenCookie = () => setCookie(true);
 
   return (
     <HelmetProvider>
@@ -158,25 +163,23 @@ export default function App() {
           <title>B2Vibe | Making Sales Effectively Simple</title>
         </Helmet>
         <ScrollToTop />
-        <Navbar onContactClick={() => setModal(true)} />
+        <Navbar onContactClick={handleOpenContact} />
         <Routes>
           <Route path="/" element={
-            <>
+            <div style={{ background: '#fff' }}>
               <SEO title="E-commerce Full Outsourcing & Merchant of Record" />
-              <div style={{ background: '#fff' }}>
-                <Hero onContactClick={() => setModal(true)} />
-                <Ticker />
-                <DNASection />
-                <ServicesSection onContactClick={() => setModal(true)} onCalcClick={() => setCalc(true)} />
-                <CompareSection />
-                <FinalCTA onContactClick={() => setModal(true)} />
-                <Footer onCookieClick={() => setCookie(true)} />
-                <FloatingSupport onContactClick={() => setModal(true)} />
-              </div>
-            </>
+              <Hero onContactClick={handleOpenContact} />
+              <Ticker />
+              <DNASection />
+              <ServicesSection onContactClick={handleOpenContact} onCalcClick={handleOpenCalc} />
+              <CompareSection />
+              <FinalCTA onContactClick={handleOpenContact} />
+              <Footer onCookieClick={handleOpenCookie} />
+              <FloatingSupport onContactClick={handleOpenContact} />
+            </div>
           } />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy onContactClick={handleOpenContact} onCookieClick={handleOpenCookie} />} />
+          <Route path="/cookie-policy" element={<CookiePolicy onContactClick={handleOpenContact} onCookieClick={handleOpenCookie} />} />
         </Routes>
         <ContactModal isOpen={modal} onClose={() => setModal(false)} />
         <SavingsCalculator isOpen={calc} onClose={() => setCalc(false)} />

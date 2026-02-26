@@ -3,6 +3,15 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { B2VibeLogo } from './Logo';
 import { Linkedin, Instagram, Menu, X, ArrowRight, CheckCircle2, Globe, ShieldCheck, Box, Headset } from 'lucide-react';
 
+/* ── UTILS ──────────────────────────────────────────────── */
+export const SectionTitle = ({ badge, title, subtitle, align = 'left' }) => (
+    <div style={{ textAlign: align, marginBottom: '48px' }}>
+        <span className="section-label">{badge}</span>
+        <h2 className="section-title">{title}</h2>
+        {subtitle && <p className="section-sub" style={{ margin: align === 'center' ? '0 auto' : '0' }}>{subtitle}</p>}
+    </div>
+);
+
 /* ── NAVBAR ─────────────────────────────────────────────── */
 export const Navbar = ({ onContactClick }) => {
     const [open, setOpen] = useState(false);
