@@ -146,6 +146,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             </ul>
                         </div>
                         <div className="col-span-4" style={{ background: 'var(--primary-glow)', padding: '2.5rem', borderRadius: '30px', border: '1px solid var(--primary)' }}>
+                            <img src="/amazon-prime-logo.png" alt="Amazon Prime" style={{ height: '24px', marginBottom: '1.5rem', display: 'block' }} />
                             <h4 style={{ fontWeight: 800, marginBottom: '1rem' }}>Target: Amazon Prime</h4>
                             <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>
                                 Ottimizziamo le scorte per evitare stock-out e garantiamo i tempi di consegna richiesti dai marketplace più severi, migliorando il tuo Buy Box win-rate.

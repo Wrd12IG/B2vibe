@@ -154,7 +154,7 @@ const SERVICES = [
             'Gestione resi e inventario ciclico',
             'Tariffe corrieri premium ottimizzate',
         ],
-        badge: { text: 'Prime Fulfillment', img: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_icon.svg', imgStyle: { height: '18px' }, textColor: '#00A8E1' },
+        badge: { text: 'Prime Fulfillment', img: '/amazon-prime-logo.png', imgStyle: { height: '14px' }, textColor: '#00A8E1' },
     },
     {
         num: '04',
