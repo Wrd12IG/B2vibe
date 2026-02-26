@@ -12,6 +12,7 @@ import {
 
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CookiePolicy from './pages/CookiePolicy';
+import MerchantOfRecordGuide from './pages/MerchantOfRecordGuide';
 
 const ModalWrap = ({ onClose, children, maxW = '600px' }) => (
   <AnimatePresence>
@@ -304,6 +305,7 @@ export default function App() {
           } />
           <Route path="/privacy-policy" element={<PrivacyPolicy onContactClick={handleOpenContact} onCookieClick={handleOpenCookie} />} />
           <Route path="/cookie-policy" element={<CookiePolicy onContactClick={handleOpenContact} onCookieClick={handleOpenCookie} />} />
+          <Route path="/merchant-of-record-guida" element={<MerchantOfRecordGuide onContactClick={handleOpenContact} onCookieClick={handleOpenCookie} />} />
         </Routes>
         <ContactModal isOpen={modal} onClose={() => setModal(false)} />
         <SavingsCalculator isOpen={calc} onClose={() => setCalc(false)} />

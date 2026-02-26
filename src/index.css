@@ -345,4 +345,9 @@ button.primary:hover,
   .services-grid {
     grid-template-columns: 1fr !important;
   }
+
+  .footer-main {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
 }
