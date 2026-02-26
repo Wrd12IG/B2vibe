@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Navbar, Footer, SectionTitle, BackToTop } from '../components/SharedLayout';
 import { ShieldCheck, Globe, Zap, Scale, ArrowRight, Users, Box, Database, TrendingUp, CheckCircle2, Layout, BarChart3, Lock, Cpu, Rocket, Headphones } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
     const { hash } = useLocation();
@@ -11,9 +12,8 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
             const id = hash.replace('#', '');
             const element = document.getElementById(id);
             if (element) {
-                // Delay per permettere al browser di renderizzare il layout post-navigazione
                 setTimeout(() => {
-                    const offset = 80; // Offset per la navbar fissa
+                    const offset = 80;
                     const bodyRect = document.body.getBoundingClientRect().top;
                     const elementRect = element.getBoundingClientRect().top;
                     const elementPosition = elementRect - bodyRect;
@@ -28,25 +28,38 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
         }
     }, [hash]);
 
+    const fadeInUp = {
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-10%" },
+        transition: { duration: 0.6, ease: "easeOut" }
+    };
+
     return (
         <div style={{ background: '#FFF' }}>
             <Navbar onContactClick={onContactClick} />
 
             {/* Header Content */}
             <header style={{ padding: '160px 5% 100px 5%', textAlign: 'center', background: 'linear-gradient(180deg, rgba(7, 235, 166, 0.08) 0%, rgba(255,255,255,0) 100%)' }}>
-                <span className="badge" style={{ marginBottom: '1.5rem' }}>Pillar Page - Analisi Professionale 2026</span>
-                <h1 className="heading-xl" style={{ marginTop: '0', marginBottom: '2rem', color: '#000', fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
-                    E-commerce Full Outsourcing:<br />Guida Strategica alla Crescita
-                </h1>
-                <p style={{ fontSize: '1.3rem', color: 'var(--muted)', maxWidth: '900px', margin: '0 auto', lineHeight: 1.8, fontWeight: 400 }}>
-                    In un mercato saturo e complesso, l'efficienza operativa è l'unico vero vantaggio competitivo. Scopri come B2Vibe gestisce ogni aspetto del tuo business online, trasformando la burocrazia in opportunità di vendita.
-                </p>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <span className="badge" style={{ marginBottom: '1.5rem' }}>Pillar Page - Analisi Professionale 2026</span>
+                    <h1 className="heading-xl" style={{ marginTop: '0', marginBottom: '2rem', color: '#000', fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+                        E-commerce Full Outsourcing:<br />Guida Strategica alla Crescita
+                    </h1>
+                    <p style={{ fontSize: '1.3rem', color: 'var(--muted)', maxWidth: '900px', margin: '0 auto', lineHeight: 1.8, fontWeight: 400 }}>
+                        In un mercato saturo e complesso, l'efficienza operativa è l'unico vero vantaggio competitivo. Scopri come B2Vibe gestisce ogni aspetto del tuo business online, trasformando la burocrazia in opportunità di vendita.
+                    </p>
+                </motion.div>
             </header>
 
             <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 5% 150px 5%' }}>
 
                 {/* --- SEZIONE MERCHANT OF RECORD --- */}
-                <section id="mor-detail" style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
+                <motion.section id="mor-detail" {...fadeInUp} style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
                         <div style={{ background: 'var(--primary)', padding: '15px', borderRadius: '18px' }}>
                             <ShieldCheck size={40} color="#000" />
@@ -93,10 +106,10 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             Scopri di più sul Merchant of Record <ArrowRight size={18} />
                         </button>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* --- SEZIONE LOGISTICA --- */}
-                <section id="logistica-detail" style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
+                <motion.section id="logistica-detail" {...fadeInUp} style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
                         <div style={{ background: '#000', padding: '15px', borderRadius: '18px' }}>
                             <Box size={40} color="var(--primary)" />
@@ -144,10 +157,10 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             Scopri di più sulla Logistica <ArrowRight size={18} />
                         </button>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* --- SEZIONE TECNOLOGIA --- */}
-                <section id="tecnologia-detail" style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
+                <motion.section id="tecnologia-detail" {...fadeInUp} style={{ padding: '6rem 0', borderBottom: '1px solid #EEE' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
                         <div style={{ background: 'var(--primary)', padding: '15px', borderRadius: '18px' }}>
                             <Cpu size={40} color="#000" />
@@ -185,10 +198,10 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             Scopri di più sulla Tecnologia B2Vibe <ArrowRight size={18} />
                         </button>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* --- SEZIONE MARKETPLACE --- */}
-                <section id="marketplace-detail" style={{ padding: '6rem 0' }}>
+                <motion.section id="marketplace-detail" {...fadeInUp} style={{ padding: '6rem 0' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}>
                         <div style={{ background: '#000', padding: '15px', borderRadius: '18px' }}>
                             <Rocket size={40} color="var(--primary)" />
@@ -241,10 +254,10 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             Scopri di più sul Marketplace Management <ArrowRight size={18} />
                         </button>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Call to Action Final */}
-                <div style={{ marginTop: '8rem', textAlign: 'center', borderTop: '2px solid var(--primary)', paddingTop: '6rem' }}>
+                <motion.div {...fadeInUp} style={{ marginTop: '8rem', textAlign: 'center', borderTop: '2px solid var(--primary)', paddingTop: '6rem' }}>
                     <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', fontWeight: 900 }}>Iniziamo il tuo percorso di crescita?</h2>
                     <p style={{ color: 'var(--muted)', fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 3rem auto' }}>
                         Parla con uno dei nostri esperti di internazionalizzazione. Analizzeremo il tuo catalogo e ti proporremo una roadmap personalizzata.
@@ -252,7 +265,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                     <button className="primary" onClick={onContactClick} style={{ padding: '20px 50px', fontSize: '1.2rem', display: 'inline-flex', alignItems: 'center', gap: '15px' }}>
                         Pianifica una consulenza gratuita <ArrowRight size={22} />
                     </button>
-                </div>
+                </motion.div>
             </main>
 
             <BackToTop />
