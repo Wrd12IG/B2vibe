@@ -288,10 +288,10 @@ export default function App() {
           <title>B2Vibe | Making Sales Effectively Simple</title>
         </Helmet>
         <ScrollToTop />
-        <Navbar onContactClick={handleOpenContact} />
         <Routes>
           <Route path="/" element={
             <div style={{ background: '#fff' }}>
+              <Navbar onContactClick={handleOpenContact} />
               <SEO title="E-commerce Full Outsourcing & Merchant of Record" />
               <Hero onContactClick={handleOpenContact} />
               <Ticker />
