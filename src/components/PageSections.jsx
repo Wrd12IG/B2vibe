@@ -79,98 +79,122 @@ export const Ticker = () => (
 );
 
 /* ── SERVICES ────────────────────────────────────────────── */
+const SERVICES = [
+    {
+        num: '01',
+        Icon: Box,
+        title: 'Ecommerce & Marketing Management',
+        desc: 'Gestiamo le vendite dei tuoi prodotti su tutti i canali online, definiamo strategie di prodotto, attività promozionali e miglioramento dei contenuti.',
+        items: [
+            'Analisi e strategia presidio canali',
+            'Sviluppo marketing multicanale (Amazon, eBay, etc.)',
+            'Pricing dinamico e sync real-time magazzino',
+            'Definizione promozioni e advertising',
+            'SEO e ottimizzazione contenuti prodotto',
+        ],
+        badge: { text: 'Amazon Ads Partner', img: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg', imgStyle: { height: '16px' } },
+    },
+    {
+        num: '02',
+        Icon: Globe,
+        title: 'Merchant of Record & Cross Border',
+        desc: 'Assumiamo la responsabilità finanziaria e fiscale delle vendite globali. Gestiamo compliance, IVA estera e burocrazia doganale.',
+        items: [
+            'Registrazione e gestione IVA in tutta Europa',
+            'Gestione pagamenti, dispute e rimborsi',
+            'Compliance legale e fiscale internazionale',
+            'Logistica doganale e import/export',
+            'Prevenzione frodi e risk management',
+        ],
+        badge: null,
+    },
+    {
+        num: '03',
+        Icon: ShieldCheck,
+        title: 'Logistica & Magazzino',
+        desc: 'Magazzino certificato Prime in Italia. Gestiamo ricezione, stoccaggio, picking e spedizioni veloci in tutto il mondo.',
+        items: [
+            'Spedizioni Amazon Prime certificate',
+            'Picking, imballaggio e controllo qualità',
+            'Gestione resi e inventario ciclico',
+            'Tariffe corrieri premium ottimizzate',
+        ],
+        badge: { text: 'Prime Fulfillment', img: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_icon.svg', imgStyle: { height: '18px' }, textColor: '#00A8E1' },
+    },
+    {
+        num: '04',
+        Icon: Headset,
+        title: 'Customer Care Multilingua',
+        desc: "Team dedicato interno con supporto in 5 lingue (IT, EN, DE, FR, ES) per garantire un'esperienza cliente d'eccellenza.",
+        items: [
+            'Assistenza pre e post vendita via Mail/Chat',
+            'Gestione ticket Zendesk Enterprise',
+            'Monitoraggio SLA e First Contact Resolution',
+            'Team madrelingua specializzato ecommerce',
+        ],
+        badge: null,
+    },
+];
+
 export const ServicesSection = ({ onContactClick, onCalcClick }) => (
     <section id="servizi">
         <span className="section-label">I Pilastri del Servizio</span>
         <h2 className="section-title">Ecosistema integrato per la vendita globale.</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginTop: '48px' }}>
 
-            {/* 01 - Ecommerce & Marketing Management */}
-            <div className="service-card">
-                <Box size={32} color="var(--primary)" style={{ marginBottom: '20px' }} />
-                <h3 style={{ marginBottom: '12px' }}>Ecommerce & Marketing Management</h3>
-                <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '20px' }}>
-                    Gestiamo le vendite dei tuoi prodotti su tutti i canali online, definiamo strategie di prodotto, attività promozionali e miglioramento dei contenuti.
-                </p>
-                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: 'var(--muted)', flex: 1 }}>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Analisi e strategia presidio canali</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Sviluppo marketing multicanale (Amazon, eBay, etc.)</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Pricing dinamico e sync real-time magazzino</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Definizione promozioni e advertising</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• SEO e ottimizzazione contenuti prodotto</li>
-                </ul>
-                <div className="partner-logos" style={{ marginTop: '20px', marginBottom: '20px' }}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Ads Partner" title="Amazon Ads Partner" style={{ height: '18px' }} />
-                    <span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--muted)' }}>ADS PARTNER</span>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginTop: '48px' }} className="services-grid">
+            {SERVICES.map(({ num, Icon, title, desc, items, badge }) => (
+                <div key={num} className="service-card">
+                    {/* Top row: icona + numero */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+                        <div style={{
+                            width: '48px', height: '48px', borderRadius: '12px',
+                            background: 'var(--primary-glow)', border: '1px solid rgba(7,235,166,0.3)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center'
+                        }}>
+                            <Icon size={22} color="var(--primary)" />
+                        </div>
+                        <span style={{
+                            fontSize: '28px', fontWeight: 900, color: 'rgba(0,0,0,0.06)',
+                            fontFamily: 'Raleway, sans-serif', letterSpacing: '-1px', lineHeight: 1
+                        }}>{num}</span>
+                    </div>
+
+                    {/* Titolo e descrizione */}
+                    <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--dark)', marginBottom: '10px', lineHeight: 1.3 }}>{title}</h3>
+                    <p style={{ fontSize: '14px', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '20px' }}>{desc}</p>
+
+                    {/* Separatore */}
+                    <div style={{ height: '1px', background: 'var(--border)', marginBottom: '16px' }} />
+
+                    {/* Lista punti */}
+                    <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '9px', flex: 1 }}>
+                        {items.map(item => (
+                            <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '9px', fontSize: '13px', color: 'var(--muted)' }}>
+                                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--primary)', flexShrink: 0 }} />
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* Badge & CTA */}
+                    <div style={{ marginTop: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+                        {badge ? (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'var(--surface)', padding: '5px 11px', borderRadius: '20px', border: '1px solid var(--border)' }}>
+                                <img src={badge.img} alt={badge.text} style={badge.imgStyle} />
+                                <span style={{ fontSize: '10px', fontWeight: 700, color: badge.textColor || 'var(--muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{badge.text}</span>
+                            </div>
+                        ) : <div />}
+                        <button className="btn-ghost" onClick={onContactClick} style={{ padding: '8px 16px', fontSize: '13px' }}>
+                            Scopri di più <ArrowRight size={13} />
+                        </button>
+                    </div>
                 </div>
-                <button className="btn-ghost" onClick={onContactClick} style={{ marginTop: 'auto' }}>
-                    Scopri di più <ArrowRight size={14} />
-                </button>
-            </div>
-
-            {/* 02 - MoR & Cross Border */}
-            <div className="service-card">
-                <Globe size={32} color="var(--primary)" style={{ marginBottom: '20px' }} />
-                <h3 style={{ marginBottom: '12px' }}>Merchant of Record & Cross Border</h3>
-                <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '20px' }}>
-                    Assumiamo la responsabilità finanziaria e fiscale delle vendite globali. Gestiamo compliance, IVA estera e burocrazia doganale.
-                </p>
-                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: 'var(--muted)', flex: 1 }}>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Registrazione e gestione IVA in tutta Europa</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Gestione pagamenti, dispute e rimborsi</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Compliance legale e fiscale internazionale</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Logistica doganale e import/export</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Prevenzione frodi e risk management</li>
-                </ul>
-                <button className="btn-ghost" onClick={onContactClick} style={{ marginTop: '20px' }}>
-                    Scopri di più <ArrowRight size={14} />
-                </button>
-            </div>
-
-            {/* 03 - Logistica */}
-            <div className="service-card">
-                <ShieldCheck size={32} color="var(--primary)" style={{ marginBottom: '20px' }} />
-                <h3 style={{ marginBottom: '12px' }}>Logistica & Magazzino</h3>
-                <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '20px' }}>
-                    Magazzino certificato Prime in Italia. Gestiamo ricezione, stoccaggio, picking e spedizioni veloci in tutto il mondo.
-                </p>
-                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: 'var(--muted)', flex: 1 }}>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Spedizioni Amazon Prime certificate</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Picking, imballaggio e controllo qualità</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Gestione resi e inventario ciclico</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Tariffe corrieri premium ottimizzate</li>
-                </ul>
-                <div style={{ marginTop: '20px', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_icon.svg" alt="Prime" style={{ height: '20px' }} />
-                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#00A8E1' }}>Prime Fulfillment</span>
-                </div>
-                <button className="btn-ghost" onClick={onContactClick} style={{ marginTop: 'auto' }}>
-                    Scopri di più <ArrowRight size={14} />
-                </button>
-            </div>
-
-            {/* 04 - Customer Care */}
-            <div className="service-card">
-                <Headset size={32} color="var(--primary)" style={{ marginBottom: '20px' }} />
-                <h3 style={{ marginBottom: '12px' }}>Customer Care Multilingua</h3>
-                <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '20px' }}>
-                    Team dedicato interno con supporto in 5 lingue (IT, EN, DE, FR, ES) per garantire un'esperienza cliente d'eccellenza.
-                </p>
-                <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: 'var(--muted)', flex: 1 }}>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Assistenza pre e post vendita via Mail/Chat</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Gestione ticket Zendesk Enterprise</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Monitoraggio SLA e First Contact Resolution</li>
-                    <li style={{ display: 'flex', gap: '8px' }}>• Team madrelingua specializzato ecommerce</li>
-                </ul>
-                <button className="btn-ghost" onClick={onContactClick} style={{ marginTop: '20px' }}>
-                    Scopri di più <ArrowRight size={14} />
-                </button>
-            </div>
+            ))}
         </div>
 
-        {/* Bottone Calcolatore sotto i pilastri */}
-        <div id="risparmio" style={{ marginTop: '64px', textAlign: 'center' }}>
-            <button className="primary" onClick={onCalcClick} style={{ background: '#f0f0f0', border: '1px solid var(--border)', color: 'var(--text)' }}>
+        {/* CTA calcolatore */}
+        <div id="risparmio" style={{ marginTop: '56px', textAlign: 'center' }}>
+            <button className="primary" onClick={onCalcClick} style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text)' }}>
                 🧮 Calcola il tuo risparmio stimato
             </button>
         </div>

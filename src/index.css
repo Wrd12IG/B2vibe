@@ -341,4 +341,8 @@ button.primary:hover,
     align-items: center;
     justify-content: center;
   }
+
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
