@@ -129,7 +129,7 @@ export const GrowthPartnerSection = () => (
                 <h2 className="section-title">Il partner ideale per chi vuole crescere online, senza complicazioni.</h2>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+            <div className="growth-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
                 {[
                     {
                         num: '01',

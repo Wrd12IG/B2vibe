@@ -151,6 +151,13 @@ button.primary:hover,
   background: rgba(7, 235, 166, 0.05)
 }
 
+@media (max-width: 1024px) {
+  .growth-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
 /* ── Specific grid/cards ── */
 .service-card {
   background: var(--white);
