@@ -73,52 +73,31 @@ export const Navbar = ({ onContactClick }) => {
             backdropFilter: 'blur(15px)',
             borderBottom: '1px solid var(--glass-border)'
         }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', padding: 0 }}>
                 <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', gap: '20px', textDecoration: 'none' }}>
                     <B2VibeLogo height={25} style={{ color: '#000' }} />
                 </RouterLink>
-                <div className="hide-mobile" style={{ width: '1px', height: '24px', background: 'var(--glass-border)', display: 'block' }}></div>
-                <span className="outfit hide-mobile" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--muted)', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
-                    Making sales effectively simple
-                </span>
-            </div>
 
-            {/* Mobile Menu Toggle */}
-            <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Menu di navigazione">
-                {isMobileMenuOpen ? (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                ) : (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                )}
-            </button>
-
-            <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
-                {links.map(link => (
-                    isHome ? (
-                        <a key={link.id} href={`#${link.id}`} onClick={closeMobileMenu} style={linkStyle(link.id)}>{link.name}</a>
-                    ) : (
-                        <RouterLink key={link.id} to={`/#${link.id}`} onClick={closeMobileMenu} style={{ ...linkStyle(link.id), color: '#000' }}>{link.name}</RouterLink>
-                    )
-                ))}
-                {!isHome && <RouterLink to="/" onClick={closeMobileMenu} style={{ color: '#000', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600 }}>Home</RouterLink>}
-                <button className="primary" onClick={() => { onContactClick(); closeMobileMenu(); }} style={{ boxShadow: 'none' }}>Contattaci</button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none' }}>Parla con un esperto</button>
+                </div>
             </div>
         </nav>
     );
 };
 
-export const Footer = ({ onCookieClick }) => (
+export const Footer = ({ onCookieClick, onContactClick }) => (
     <footer style={{ background: '#f8f9fa', borderTop: '1px solid var(--border)', marginTop: 'auto' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '80px 5% 0' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '48px', paddingBottom: '56px' }} className="footer-main">
+        <div className="container">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '48px', padding: '80px 0 56px' }} className="footer-main">
 
                 {/* Col 1 — Brand */}
                 <div>
                     <B2VibeLogo height={25} />
-                    <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.7, maxWidth: '340px', marginTop: '16px' }}>
-                        Gestiamo la complessità dell'ecommerce multicanale — amministrazione, fiscalità, logistica e customer care — per far scalare il tuo brand.
+                    <p style={{ color: 'var(--muted)', fontSize: '13px', fontWeight: 600, marginTop: '12px', letterSpacing: '0.05em' }}>
+                        Making sales effectively simple
                     </p>
-                    <div style={{ display: 'flex', gap: '15px', marginTop: '24px' }}>
+                    <div style={{ display: 'flex', gap: '15px', marginTop: '32px' }}>
                         <a href="https://linkedin.com/company/b2vibe" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', transition: 'color 0.3s', display: 'flex' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}><Linkedin size={20} /></a>
                         <a href="https://instagram.com/b2vibe" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', transition: 'color 0.3s', display: 'flex' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'} onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}><Instagram size={20} /></a>
                     </div>
@@ -128,41 +107,40 @@ export const Footer = ({ onCookieClick }) => (
                 <div>
                     <h5 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dark)', marginBottom: '24px' }}>Servizi</h5>
                     <ul style={{ listStyle: 'none', padding: 0, fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                        <li><RouterLink to="/merchant-of-record-guida" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600 }}>Guida MoR 2026 ↗</RouterLink></li>
-                        <li style={{ color: 'var(--muted)' }}>Merchant of Record</li>
-                        <li style={{ color: 'var(--muted)' }}>Logistica & Magazzino</li>
-                        <li style={{ color: 'var(--muted)' }}>Customer Care Multilingua</li>
-                        <li style={{ color: 'var(--muted)' }}>Marketplace Management</li>
-                        <li style={{ color: 'var(--muted)' }}>Ecommerce & Marketing</li>
+                        <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Ecommerce Management</a></li>
+                        <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Merchant of Record</a></li>
+                        <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Logistica e Magazzino</a></li>
+                        <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Customer Care Multilingua</a></li>
+                        <li><button onClick={onContactClick} style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: 0, textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '13px' }}>Parla con un esperto ↗</button></li>
                     </ul>
                 </div>
 
                 {/* Col 3 — Contatti */}
                 <div>
-                    <h5 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dark)', marginBottom: '24px' }}>Contatti</h5>
+                    <h5 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dark)', marginBottom: '24px' }}>Contatti & Sede</h5>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', fontSize: '13px', color: 'var(--muted)' }}>
-                        <a
-                            href="https://www.google.com/maps/search/?api=1&query=Via+Ferdinando+Santi+11/13+Paderno+Dugnano"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: 'none', color: 'inherit', transition: 'color 0.3s' }}
-                            onMouseEnter={e => e.currentTarget.style.color = 'var(--primary)'}
-                            onMouseLeave={e => e.currentTarget.style.color = 'inherit'}
-                        >
-                            <p style={{ lineHeight: 1.5 }}>Via Ferdinando Santi 11/13,<br /> 20037 Paderno Dugnano (MI)</p>
-                        </a>
-                        <p><strong>T.</strong> +39 02 80016631</p>
-                        <p><strong>E.</strong> info@b2vibe.com</p>
-                        <p>P.IVA 14234560960</p>
+                        <div>
+                            <p style={{ fontWeight: 600, color: 'var(--dark)', marginBottom: '4px' }}>Sede Legale & Info Societarie</p>
+                            <p style={{ lineHeight: 1.5 }}>Via Ferdinando Santi 11/13, 20037 Paderno Dugnano (MI)</p>
+                            <p>P.IVA 14234560960 | Cap. Soc. € 1.000.000</p>
+                        </div>
+                        <div>
+                            <p style={{ fontWeight: 600, color: 'var(--dark)', marginBottom: '4px' }}>Contatti</p>
+                            <p><strong>E.</strong> info@b2vibe.com</p>
+                            <a href="https://wa.me/390280016631" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '13px', display: 'block', marginTop: '8px' }}>Chatta su WhatsApp ↗</a>
+                        </div>
+                        <div>
+                            <button onClick={onContactClick} className="btn-ghost" style={{ padding: '8px 16px', fontSize: '12px' }}>Parla con un esperto</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         {/* Bottom bar */}
-        <div style={{ borderTop: '1px solid var(--glass-border)', padding: '24px 5%', fontSize: '11px', color: 'var(--muted)' }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '15px' }}>
-                <span>© {new Date().getFullYear()} B2Vibe S.r.l. — Capitale sociale € 1.000.000</span>
+        <div style={{ borderTop: '1px solid var(--glass-border)', padding: '24px 0', fontSize: '11px', color: 'var(--muted)' }}>
+            <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '15px' }}>
+                <span>© {new Date().getFullYear()} B2Vibe S.r.l.</span>
                 <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                     <RouterLink to="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</RouterLink>
                     <RouterLink to="/cookie-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Cookie Policy</RouterLink>
