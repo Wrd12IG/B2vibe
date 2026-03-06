@@ -202,7 +202,7 @@ const SERVICES = [
             'Definizione promozioni e advertising',
             'SEO e ottimizzazione contenuti prodotto',
         ],
-        badge: { text: '', img: 'https://m.media-amazon.com/images/G/01/AdProductsWebsite/images/logos/AmazonAds_Partner_Logo_RGB._CB1198675309_.png', imgStyle: { height: '18px' } },
+        badge: { text: 'Premium Partner', img: '/amazon-ads-logo.png', imgStyle: { height: '18px' } },
     },
     {
         num: '02',
@@ -229,7 +229,7 @@ const SERVICES = [
             'Gestione resi e inventario ciclico',
             'Tariffe corrieri premium ottimizzate',
         ],
-        badge: { text: 'Amazon Prime', img: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_Prime_logo.svg', imgStyle: { height: '14px' }, textColor: '#00A8E1' },
+        badge: { text: 'Certified', img: '/amazon-prime-logo.png', imgStyle: { height: '14px' }, textColor: '#00A8E1' },
     },
     {
         num: '04',
