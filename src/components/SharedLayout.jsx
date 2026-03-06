@@ -61,28 +61,42 @@ export const Navbar = ({ onContactClick }) => {
     ];
 
     return (
-        <nav className="navbar-container" style={{
+        <div style={{
             position: 'fixed',
-            top: 0, width: '100%',
-            padding: '15px 5%',
+            top: '20px',
+            left: 0,
+            width: '100%',
             zIndex: 1000,
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            background: 'rgba(255, 255, 255, 0.95)',
-            backdropFilter: 'blur(15px)',
-            borderBottom: '1px solid var(--glass-border)'
+            padding: '0 clamp(20px, 5vw, 48px)'
         }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', padding: 0 }}>
+            <nav className="navbar-container" style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                padding: '12px 32px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                background: 'rgba(255, 255, 255, 0.9)',
+                backdropFilter: 'blur(15px)',
+                border: '1px solid var(--border)',
+                borderRadius: '24px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                width: '100%'
+            }}>
                 <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', gap: '20px', textDecoration: 'none' }}>
-                    <B2VibeLogo height={25} style={{ color: '#000' }} />
+                    <B2VibeLogo height={22} style={{ color: '#000' }} />
                 </RouterLink>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none' }}>Parla con un esperto</button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+                    <div style={{ display: 'flex', gap: '24px' }} className="nav-desktop-links">
+                        {links.map(link => (
+                            <a key={link.id} href={`/#${link.id}`} style={{ textDecoration: 'none', color: 'var(--muted)', fontSize: '13px', fontWeight: 600 }}>{link.name}</a>
+                        ))}
+                    </div>
+                    <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none', padding: '10px 24px', fontSize: '12px' }}>Parla con un esperto</button>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     );
 };
 
