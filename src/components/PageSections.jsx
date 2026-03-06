@@ -68,11 +68,11 @@ export const Hero = ({ onContactClick }) => (
 /* ── TICKER ──────────────────────────────────────────────── */
 const MKT = ['Amazon', 'eBay', 'FNAC', 'Kaufland', 'ManoMano', 'Leroy Merlin', 'Stockly', 'Digitec', 'MediaMarkt', 'BricoBravo', 'Zalando', 'Veepee', 'Otto', 'Allegro', 'Bol.com', 'Privalia', 'Worten', 'El Corte Inglés', 'Douglas'];
 export const Ticker = () => (
-    <div className="logos-strip">
-        <div className="container" style={{ overflow: 'hidden' }}>
+    <div className="container" style={{ marginTop: '20px' }}>
+        <div className="logos-strip" style={{ borderRadius: '16px', border: '1px solid var(--border)' }}>
             <p className="logos-label">Marketplace & Canali Gestiti</p>
             <div className="logos-track">
-                {[...MKT, ...MKT].map((m, i) => <span key={i}>{m}</span>)}
+                {[...MKT, ...MKT, ...MKT].map((m, i) => <span key={i}>{m}</span>)}
             </div>
         </div>
     </div>
