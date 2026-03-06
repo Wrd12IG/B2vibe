@@ -129,7 +129,7 @@ export const GrowthPartnerSection = () => (
                 <h2 className="section-title">Il partner ideale per chi vuole crescere online, senza complicazioni.</h2>
             </div>
 
-            <div className="growth-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
+            <div className="growth-cards-grid">
                 {[
                     {
                         num: '01',
@@ -154,6 +154,7 @@ export const GrowthPartnerSection = () => (
                 ].map((card, i) => (
                     <motion.div
                         key={i}
+                        className="growth-card"
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}

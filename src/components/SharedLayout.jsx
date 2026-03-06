@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { B2VibeLogo } from './Logo';
-import { Linkedin, Instagram } from 'lucide-react';
+import { Linkedin, Instagram, Menu, X, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const SectionTitle = ({ badge, title, subtitle, align = 'left' }) => (
     <div className={`section-title align-${align}`}>
@@ -16,15 +17,29 @@ export const Navbar = ({ onContactClick }) => {
     const isHome = location.pathname === '/';
     const [activeSection, setActiveSection] = useState('');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
 
     useEffect(() => {
-        if (!isHome) return;
+        const handleScroll = () => {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            setScrollProgress(progress);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        if (!isHome) {
+            setActiveSection('');
+            return;
+        }
 
         const sections = ['problema', 'chi-siamo', 'partner', 'presidio', 'vantaggi', 'calcolatore', 'servizi'];
         const observerOptions = {
             root: null,
-            rootMargin: '-30% 0px -30% 0px',
-            threshold: 0.1
+            rootMargin: '-40% 0px -40% 0px',
+            threshold: 0
         };
 
         const observerCallback = (entries) => {
@@ -47,13 +62,13 @@ export const Navbar = ({ onContactClick }) => {
     const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
     const links = [
-        { name: 'Sfida del Mercato', id: 'problema' },
-        { name: 'Il nostro DNA', id: 'chi-siamo' },
-        { name: 'A chi ci rivolgiamo', id: 'partner' },
-        { name: 'Presidio Globale', id: 'presidio' },
-        { name: 'Perché B2Vibe', id: 'vantaggi' },
-        { name: 'Calcolatore', id: 'calcolatore' },
-        { name: 'I Pilastri', id: 'servizi' },
+        { name: 'Sfida', id: 'problema' },
+        { name: 'DNA', id: 'chi-siamo' },
+        { name: 'Target', id: 'partner' },
+        { name: 'Global', id: 'presidio' },
+        { name: 'Vantaggi', id: 'vantaggi' },
+        { name: 'Savings', id: 'calcolatore' },
+        { name: 'Pilastri', id: 'servizi' },
         { name: 'Guida MoR', path: '/merchant-of-record-guida' },
     ];
 
@@ -64,23 +79,38 @@ export const Navbar = ({ onContactClick }) => {
             left: 0,
             width: '100%',
             zIndex: 1000,
-            padding: '0 24px'
+            padding: '0 clamp(16px, 4vw, 24px)'
         }}>
             <nav className="navbar-container" style={{
                 maxWidth: '1300px',
                 margin: '0 auto',
-                padding: '10px 24px',
+                padding: '10px clamp(16px, 3vw, 28px)',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                background: 'rgba(255, 255, 255, 0.9)',
-                backdropFilter: 'blur(15px)',
+                background: 'rgba(255, 255, 255, 0.85)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
                 border: '1px solid var(--border)',
                 borderRadius: '24px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
-                width: '100%'
+                boxShadow: '0 8px 32px rgba(0,0,0,0.06)',
+                width: '100%',
+                position: 'relative',
+                overflow: 'hidden'
             }}>
-                <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', flexShrink: 0, textDecoration: 'none' }}>
+                {/* Scroll Progress Bar */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    height: '2px',
+                    background: 'linear-gradient(90deg, transparent, var(--primary), transparent)',
+                    width: `${scrollProgress}%`,
+                    transition: 'width 0.1s linear',
+                    opacity: 0.8
+                }} />
+
+                <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', flexShrink: 0, textDecoration: 'none', zIndex: 10 }}>
                     <B2VibeLogo height={20} style={{ color: '#000' }} />
                 </RouterLink>
 
@@ -91,13 +121,15 @@ export const Navbar = ({ onContactClick }) => {
                                 <RouterLink
                                     key={link.path}
                                     to={link.path}
+                                    className="nav-link"
                                     style={{
                                         textDecoration: 'none',
                                         color: location.pathname === link.path ? 'var(--primary)' : 'var(--dark)',
-                                        fontSize: '10px',
+                                        fontSize: '10.5px',
                                         fontWeight: 700,
                                         textTransform: 'uppercase',
-                                        transition: 'all 0.3s'
+                                        transition: 'all 0.3s',
+                                        letterSpacing: '0.05em'
                                     }}
                                 >
                                     {link.name}
@@ -106,13 +138,15 @@ export const Navbar = ({ onContactClick }) => {
                                 <a
                                     key={link.id}
                                     href={`/#${link.id}`}
+                                    className="nav-link"
                                     style={{
                                         textDecoration: 'none',
                                         color: activeSection === link.id ? 'var(--primary)' : 'var(--dark)',
-                                        fontSize: '10px',
+                                        fontSize: '10.5px',
                                         fontWeight: 700,
                                         textTransform: 'uppercase',
-                                        transition: 'all 0.3s'
+                                        transition: 'all 0.3s',
+                                        letterSpacing: '0.05em'
                                     }}
                                 >
                                     {link.name}
@@ -120,9 +154,116 @@ export const Navbar = ({ onContactClick }) => {
                             )
                         ))}
                     </div>
-                    <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none', padding: '8px 16px', fontSize: '10px', fontWeight: 800, whiteSpace: 'nowrap' }}>Parla con un esperto</button>
+
+                    <button
+                        className="primary"
+                        onClick={onContactClick}
+                        style={{
+                            boxShadow: 'none',
+                            padding: '10px 18px',
+                            fontSize: '10px',
+                            fontWeight: 800,
+                            whiteSpace: 'nowrap',
+                            borderRadius: '14px'
+                        }}
+                        id="nav-cta-desktop"
+                    >
+                        Parla con un esperto
+                    </button>
+
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        style={{
+                            background: 'var(--primary-glow)',
+                            border: '1px solid rgba(7,235,166,0.2)',
+                            borderRadius: '12px',
+                            width: '40px',
+                            height: '40px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer',
+                            color: 'var(--dark)',
+                            zIndex: 11
+                        }}
+                        className="nav-mobile-toggle"
+                    >
+                        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
                 </div>
             </nav>
+
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                        style={{
+                            position: 'absolute',
+                            top: '80px',
+                            left: '24px',
+                            right: '24px',
+                            background: '#fff',
+                            borderRadius: '24px',
+                            padding: '32px',
+                            boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
+                            border: '1px solid var(--border)',
+                            zIndex: 999
+                        }}
+                    >
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                            {links.map((link, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.05 }}
+                                >
+                                    {link.path ? (
+                                        <RouterLink
+                                            to={link.path}
+                                            onClick={closeMobileMenu}
+                                            style={{
+                                                textDecoration: 'none',
+                                                fontSize: '16px',
+                                                fontWeight: 700,
+                                                color: location.pathname === link.path ? 'var(--primary)' : 'var(--dark)',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'space-between'
+                                            }}
+                                        >
+                                            {link.name} <ArrowRight size={16} opacity={0.5} />
+                                        </RouterLink>
+                                    ) : (
+                                        <a
+                                            href={`/#${link.id}`}
+                                            onClick={closeMobileMenu}
+                                            style={{
+                                                textDecoration: 'none',
+                                                fontSize: '16px',
+                                                fontWeight: 700,
+                                                color: activeSection === link.id ? 'var(--primary)' : 'var(--dark)',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'space-between'
+                                            }}
+                                        >
+                                            {link.name} <ArrowRight size={16} opacity={0.5} />
+                                        </a>
+                                    )}
+                                </motion.div>
+                            ))}
+                            <div style={{ height: '1px', background: 'var(--border)', margin: '10px 0' }} />
+                            <button className="primary" onClick={() => { onContactClick(); closeMobileMenu(); }} style={{ width: '100%', justifyContent: 'center', padding: '16px' }}>
+                                Parla con un esperto
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
