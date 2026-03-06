@@ -20,11 +20,11 @@ export const Navbar = ({ onContactClick }) => {
     useEffect(() => {
         if (!isHome) return;
 
-        const sections = ['soluzione', 'mor', 'servizi', 'tecnologia', 'timeline'];
+        const sections = ['problema', 'chi-siamo', 'partner', 'presidio', 'vantaggi', 'calcolatore', 'servizi'];
         const observerOptions = {
             root: null,
-            rootMargin: '-20% 0px -70% 0px',
-            threshold: 0
+            rootMargin: '-30% 0px -30% 0px',
+            threshold: 0.1
         };
 
         const observerCallback = (entries) => {
@@ -36,28 +36,24 @@ export const Navbar = ({ onContactClick }) => {
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        sections.forEach((section) => {
-            const element = document.getElementById(section);
+        sections.forEach((id) => {
+            const element = document.getElementById(id);
             if (element) observer.observe(element);
         });
 
         return () => observer.disconnect();
     }, [isHome]);
 
-    const linkStyle = (section) => ({
-        color: activeSection === section ? 'var(--primary)' : '#000',
-        textDecoration: 'none',
-        fontSize: '0.85rem',
-        fontWeight: 600,
-        transition: 'color 0.3s'
-    });
-
     const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
     const links = [
-        { name: 'DNA', id: 'chi-siamo' },
-        { name: 'Servizi', id: 'servizi' },
-        { name: 'Perché noi', id: 'vantaggi' },
+        { name: 'Sfida del Mercato', id: 'problema' },
+        { name: 'Il nostro DNA', id: 'chi-siamo' },
+        { name: 'A chi ci rivolgiamo', id: 'partner' },
+        { name: 'Presidio Globale', id: 'presidio' },
+        { name: 'Perché B2Vibe', id: 'vantaggi' },
+        { name: 'Calcolatore', id: 'calcolatore' },
+        { name: 'I Pilastri', id: 'servizi' },
     ];
 
     return (
@@ -67,12 +63,12 @@ export const Navbar = ({ onContactClick }) => {
             left: 0,
             width: '100%',
             zIndex: 1000,
-            padding: '0 clamp(20px, 5vw, 48px)'
+            padding: '0 24px'
         }}>
             <nav className="navbar-container" style={{
-                maxWidth: '1200px',
+                maxWidth: '1300px',
                 margin: '0 auto',
-                padding: '12px 32px',
+                padding: '10px 24px',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -83,17 +79,30 @@ export const Navbar = ({ onContactClick }) => {
                 boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
                 width: '100%'
             }}>
-                <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', gap: '20px', textDecoration: 'none' }}>
-                    <B2VibeLogo height={22} style={{ color: '#000' }} />
+                <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                    <B2VibeLogo height={20} style={{ color: '#000' }} />
                 </RouterLink>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-                    <div style={{ display: 'flex', gap: '24px' }} className="nav-desktop-links">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <div style={{ display: 'flex', gap: '16px' }} className="nav-desktop-links">
                         {links.map(link => (
-                            <a key={link.id} href={`/#${link.id}`} style={{ textDecoration: 'none', color: 'var(--muted)', fontSize: '13px', fontWeight: 600 }}>{link.name}</a>
+                            <a
+                                key={link.id}
+                                href={`/#${link.id}`}
+                                style={{
+                                    textDecoration: 'none',
+                                    color: activeSection === link.id ? 'var(--primary)' : 'var(--dark)',
+                                    fontSize: '11px',
+                                    fontWeight: 700,
+                                    textTransform: 'uppercase',
+                                    transition: 'all 0.3s'
+                                }}
+                            >
+                                {link.name}
+                            </a>
                         ))}
                     </div>
-                    <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none', padding: '10px 24px', fontSize: '12px' }}>Parla con un esperto</button>
+                    <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none', padding: '8px 20px', fontSize: '11px', fontWeight: 800, whiteSpace: 'nowrap' }}>Parla con un esperto</button>
                 </div>
             </nav>
         </div>

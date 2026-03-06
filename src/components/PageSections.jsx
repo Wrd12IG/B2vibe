@@ -172,7 +172,7 @@ export const GrowthPartnerSection = () => (
 
 /* ── MANAGED CHANNELS ────────────────────────────────────── */
 export const ManagedChannelsSection = () => (
-    <section>
+    <section id="presidio">
         <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
                 <span className="section-label">Presidio Globale</span>
