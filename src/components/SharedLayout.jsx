@@ -150,7 +150,6 @@ export const Footer = ({ onCookieClick, onContactClick }) => (
                         <div>
                             <p style={{ fontWeight: 600, color: 'var(--dark)', marginBottom: '4px' }}>Contatti</p>
                             <p><strong>E.</strong> info@b2vibe.com</p>
-                            <a href="https://wa.me/390280016631" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '13px', display: 'block', marginTop: '8px' }}>Chatta su WhatsApp ↗</a>
                         </div>
                         <div>
                             <button onClick={onContactClick} className="btn-ghost" style={{ padding: '8px 16px', fontSize: '12px' }}>Parla con un esperto</button>
