@@ -57,6 +57,11 @@ p {
   line-height: 1.7
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* ── Section layout ── */
 section {
   padding: clamp(64px, 10vw, 100px) 0;

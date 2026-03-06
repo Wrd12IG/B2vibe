@@ -79,7 +79,7 @@ export const Navbar = ({ onContactClick }) => {
                 boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
                 width: '100%'
             }}>
-                <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', flexShrink: 0, textDecoration: 'none' }}>
                     <B2VibeLogo height={20} style={{ color: '#000' }} />
                 </RouterLink>
 
