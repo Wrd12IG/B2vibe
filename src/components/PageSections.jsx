@@ -308,13 +308,23 @@ export const ServicesSection = ({ onContactClick, onCalcClick }) => (
                                     <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--primary)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Fiscale & Compliance</span>
                                 </div>
                             ) : <div />}
-                            <button
-                                onClick={onContactClick}
-                                className="btn-ghost"
-                                style={{ padding: '8px 16px', fontSize: '13px', textDecoration: 'none' }}
-                            >
-                                Parla con un esperto <ArrowRight size={13} />
-                            </button>
+                            {idx === 1 ? (
+                                <RouterLink
+                                    to="/merchant-of-record-guida"
+                                    className="btn-ghost"
+                                    style={{ padding: '8px 16px', fontSize: '13px', textDecoration: 'none' }}
+                                >
+                                    Approfondisci la Guida <ArrowRight size={13} />
+                                </RouterLink>
+                            ) : (
+                                <button
+                                    onClick={onContactClick}
+                                    className="btn-ghost"
+                                    style={{ padding: '8px 16px', fontSize: '13px', textDecoration: 'none' }}
+                                >
+                                    Parla con un esperto <ArrowRight size={13} />
+                                </button>
+                            )}
                         </div>
                     </motion.div>
                 ))}

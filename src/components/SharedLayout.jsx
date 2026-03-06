@@ -54,6 +54,7 @@ export const Navbar = ({ onContactClick }) => {
         { name: 'Perché B2Vibe', id: 'vantaggi' },
         { name: 'Calcolatore', id: 'calcolatore' },
         { name: 'I Pilastri', id: 'servizi' },
+        { name: 'Guida MoR', path: '/merchant-of-record-guida' },
     ];
 
     return (
@@ -83,26 +84,43 @@ export const Navbar = ({ onContactClick }) => {
                     <B2VibeLogo height={20} style={{ color: '#000' }} />
                 </RouterLink>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <div style={{ display: 'flex', gap: '16px' }} className="nav-desktop-links">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <div style={{ display: 'flex', gap: '12px' }} className="nav-desktop-links">
                         {links.map(link => (
-                            <a
-                                key={link.id}
-                                href={`/#${link.id}`}
-                                style={{
-                                    textDecoration: 'none',
-                                    color: activeSection === link.id ? 'var(--primary)' : 'var(--dark)',
-                                    fontSize: '11px',
-                                    fontWeight: 700,
-                                    textTransform: 'uppercase',
-                                    transition: 'all 0.3s'
-                                }}
-                            >
-                                {link.name}
-                            </a>
+                            link.path ? (
+                                <RouterLink
+                                    key={link.path}
+                                    to={link.path}
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: location.pathname === link.path ? 'var(--primary)' : 'var(--dark)',
+                                        fontSize: '10px',
+                                        fontWeight: 700,
+                                        textTransform: 'uppercase',
+                                        transition: 'all 0.3s'
+                                    }}
+                                >
+                                    {link.name}
+                                </RouterLink>
+                            ) : (
+                                <a
+                                    key={link.id}
+                                    href={`/#${link.id}`}
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: activeSection === link.id ? 'var(--primary)' : 'var(--dark)',
+                                        fontSize: '10px',
+                                        fontWeight: 700,
+                                        textTransform: 'uppercase',
+                                        transition: 'all 0.3s'
+                                    }}
+                                >
+                                    {link.name}
+                                </a>
+                            )
                         ))}
                     </div>
-                    <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none', padding: '8px 20px', fontSize: '11px', fontWeight: 800, whiteSpace: 'nowrap' }}>Parla con un esperto</button>
+                    <button className="primary" onClick={onContactClick} style={{ boxShadow: 'none', padding: '8px 16px', fontSize: '10px', fontWeight: 800, whiteSpace: 'nowrap' }}>Parla con un esperto</button>
                 </div>
             </nav>
         </div>
