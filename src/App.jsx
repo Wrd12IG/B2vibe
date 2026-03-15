@@ -43,14 +43,13 @@ const ContactModal = ({ isOpen, onClose }) => {
       <h3 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '8px' }}>Consulenza dedicata</h3>
       <p style={{ color: 'var(--muted)', fontSize: '15px', marginBottom: '32px' }}>Analizziamo i tuoi canali per definire una strategia di crescita globale.</p>
 
-      <form style={{ display: 'grid', gap: '20px' }} onSubmit={(e) => { e.preventDefault(); alert('Grazie! La tua richiesta è stata inviata a sales@b2vibe.com'); onClose(); }}>
+      <form style={{ display: 'grid', gap: '20px' }} onSubmit={(e) => { e.preventDefault(); alert('Grazie! La tua richiesta è stata inviata.'); onClose(); }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
           <div><label style={labelS}>Nome</label><input type="text" required style={inputS} placeholder="es. Mario" /></div>
           <div><label style={labelS}>Cognome</label><input type="text" required style={inputS} placeholder="es. Rossi" /></div>
         </div>
 
         <div><label style={labelS}>Email aziendale</label><input type="email" required style={inputS} placeholder="mario.rossi@azienda.com" /></div>
-        <div><label style={labelS}>Sito web (URL)</label><input type="url" required style={inputS} placeholder="www.azienda.com" /></div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
           <div>
@@ -98,7 +97,7 @@ const ContactModal = ({ isOpen, onClose }) => {
         <div>
           <label style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', cursor: 'pointer', fontSize: '13px', color: 'var(--muted)' }}>
             <input type="checkbox" required style={{ marginTop: '4px' }} />
-            <span>Ho letto e accetto la <RouterLink to="/privacy-policy" style={{ color: 'var(--primary)' }}>Privacy Policy</RouterLink>. Acconsento al trattamento dei dati a sales@b2vibe.com.</span>
+            <span>Ho letto e accetto la <RouterLink to="/privacy-policy" style={{ color: 'var(--primary)' }}>Privacy Policy</RouterLink>. Acconsento al trattamento dei dati personali.</span>
           </label>
         </div>
 
@@ -126,7 +125,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
   const inputS = { width: '100%', background: '#f8f9fa', border: '1px solid #e9ecef', borderRadius: '12px', padding: '12px 16px', fontSize: '15px' };
   const labelS = { fontSize: '13px', fontWeight: 600, color: 'var(--dark)', marginBottom: '8px', display: 'block' };
 
-  const mktOptions = ['Amazon', 'eBay', 'Zalando', 'ManoMano', 'Leroy Merlin', 'Altro'];
+  const mktOptions = ['Amazon', 'eBay', 'Decathlon', 'ManoMano', 'Leroy Merlin', 'Altro'];
 
   return (
     <ModalWrap onClose={onClose}>
@@ -308,13 +307,13 @@ export default function App() {
                 {/* 3. Il partner ideale per chi vuole crescere */}
                 <GrowthPartnerSection />
 
-                {/* 4. Managed Channels */}
-                <ManagedChannelsSection />
-
                 {/* 5. Compare Section */}
                 <CompareSection />
 
-                {/* 6. Calculator Contextual Section */}
+                {/* 6. Services Section */}
+                <ServicesSection onContactClick={handleOpenContact} onCalcClick={handleOpenCalc} />
+
+                {/* 7. Calculator Contextual Section */}
                 <section id="calcolatore" style={{ background: 'var(--surface)', padding: '80px 0' }}>
                   <div className="container" style={{ textAlign: 'center' }}>
                     <span className="section-label">Calcolatore di Risparmio</span>
@@ -326,8 +325,8 @@ export default function App() {
                   </div>
                 </section>
 
-                {/* 7. Services Section */}
-                <ServicesSection onContactClick={handleOpenContact} onCalcClick={handleOpenCalc} />
+                {/* 8. Managed Channels */}
+                <ManagedChannelsSection />
 
                 <FinalCTA onContactClick={handleOpenContact} />
               </main>

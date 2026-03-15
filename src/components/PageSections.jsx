@@ -66,7 +66,7 @@ export const Hero = ({ onContactClick }) => (
 
 
 /* ── TICKER ──────────────────────────────────────────────── */
-const MKT = ['Amazon', 'eBay', 'FNAC', 'Kaufland', 'ManoMano', 'Leroy Merlin', 'Stockly', 'Digitec', 'MediaMarkt', 'BricoBravo', 'Zalando', 'Veepee', 'Otto', 'Allegro', 'Bol.com', 'Privalia', 'Worten', 'El Corte Inglés', 'Douglas'];
+const MKT = ['Amazon', 'eBay', 'FNAC', 'Kaufland', 'ManoMano', 'Leroy Merlin', 'Stockly', 'Digitec', 'MediaMarkt', 'BricoBravo', 'Decathlon'];
 export const Ticker = () => (
     <div className="container" style={{ marginTop: '20px' }}>
         <div className="logos-strip" style={{ borderRadius: '16px', border: '1px solid var(--border)' }}>
@@ -86,14 +86,15 @@ export const ProblemSolutionSection = () => (
             <div style={{ textAlign: 'center', marginBottom: '64px' }}>
                 <span className="section-label">La Sfida del Mercato</span>
                 <h2 className="section-title">Vendere online è complesso.<br />Gestire la complessità è il nostro lavoro.</h2>
+                <p className="section-sub" style={{ margin: '16px auto 0 auto' }}>Le aziende che vogliono crescere sui marketplace europei si scontrano ogni giorno con ostacoli operativi che rallentano e consumano risorse.</p>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
                 {[
-                    { title: 'IVA e compliance internazionale', desc: 'Gestione fiscale globale e adempimenti burocratici semplificati.' },
-                    { title: 'Logistica frammentata', desc: 'Magazzino unico e spedizioni veloci in tutto il mondo con tracciamento real-time.' },
-                    { title: 'Marketplace da gestire in parallelo', desc: 'Presidio costante di Amazon, eBay e altri canali con strategie dedicate.' },
-                    { title: 'Customer care multilingua', desc: 'Supporto madrelingua professionale per un\'esperienza cliente eccellente.' }
+                    { title: 'IVA e compliance internazionale', desc: 'Gestione fiscale globale e adempimenti burocratici semplificati. Ogni canale ha le sue regole, IVA estera, gestire operazioni doganali e rispettare la normativa fiscale di ogni paese è un labirinto burocratico costoso e macchinoso.' },
+                    { title: 'Logistica frammentata', desc: 'Gestire magazzino, picking, resi e spedizioni Prime su Amazon dall\'interno richiede infrastruttura, personale e costi fissi elevati.' },
+                    { title: 'Marketplace da gestire in parallelo', desc: 'Ogni canale ha le sue regole, algoritmi e rischi di blocco account. Scalare Amazon, eBay e FNAC in parallelo è operativamente proibitivo senza una struttura dedicata.' },
+                    { title: 'Customer care multilingua', desc: 'Gestire assistenza pre e post vendita in 5 lingue, con SLA stringenti e strumenti enterprise, richiede dal core business e team dedicati.' }
                 ].map((card, i) => (
                     <motion.div
                         key={i}
@@ -105,14 +106,7 @@ export const ProblemSolutionSection = () => (
                         style={{ height: '100%' }}
                     >
                         <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '16px', color: 'var(--dark)' }}>{card.title}</h3>
-                        <p style={{ fontSize: '14px', color: 'var(--muted)', flex: 1, marginBottom: '24px' }}>{card.desc}</p>
-                        <RouterLink
-                            to={`/merchant-of-record-guida#${card.title.toLowerCase().includes('iva') ? 'mor-detail' : card.title.toLowerCase().includes('logistica') ? 'logistica-detail' : card.title.toLowerCase().includes('marketplace') ? 'marketplace-detail' : 'tecnologia-detail'}`}
-                            className="btn-ghost"
-                            style={{ alignSelf: 'flex-start', fontSize: '13px', padding: '8px 16px' }}
-                        >
-                            Scopri di più <ArrowRight size={14} />
-                        </RouterLink>
+                        <p style={{ fontSize: '14px', color: 'var(--muted)', flex: 1 }}>{card.desc}</p>
                     </motion.div>
                 ))}
             </div>
@@ -178,7 +172,7 @@ export const ManagedChannelsSection = () => (
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
                 <span className="section-label">Presidio Globale</span>
                 <h2 className="section-title">Un unico brand, ovunque siano i tuoi clienti.</h2>
-                <p className="section-sub" style={{ margin: '0 auto' }}>Gestiamo la tua presenza sui principali marketplace mondiali con integrazione tecnologica e logistica.</p>
+                <p className="section-sub" style={{ margin: '0 auto' }}>Valutiamo insieme se esiste un'opportunità reale per il tuo brand. Senza impegno, solo numeri chiari.</p>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '24px', opacity: 0.6, padding: '40px 0' }}>
                 {MKT.map((m, i) => (
@@ -251,8 +245,9 @@ export const ServicesSection = ({ onContactClick, onCalcClick }) => (
     <section id="servizi">
         <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-                <span className="section-label">I Pilastri del Servizio</span>
+                <span className="section-label">I Nostri Servizi</span>
                 <h2 className="section-title">Ecosistema integrato per la vendita globale.</h2>
+                <p className="section-sub" style={{ margin: '16px auto 0 auto' }}>Quattro pilastri integrati che coprono ogni aspetto della vendita online, dal catalogo alla consegna finale.</p>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', marginTop: '48px' }} className="services-grid">
@@ -309,23 +304,13 @@ export const ServicesSection = ({ onContactClick, onCalcClick }) => (
                                     <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--primary)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Fiscale & Compliance</span>
                                 </div>
                             ) : <div />}
-                            {idx === 1 ? (
-                                <RouterLink
-                                    to="/merchant-of-record-guida"
-                                    className="btn-ghost"
-                                    style={{ padding: '8px 16px', fontSize: '13px', textDecoration: 'none' }}
-                                >
-                                    Approfondisci la Guida <ArrowRight size={13} />
-                                </RouterLink>
-                            ) : (
-                                <button
-                                    onClick={onContactClick}
-                                    className="btn-ghost"
-                                    style={{ padding: '8px 16px', fontSize: '13px', textDecoration: 'none' }}
-                                >
-                                    Parla con un esperto <ArrowRight size={13} />
-                                </button>
-                            )}
+                            <button
+                                onClick={onContactClick}
+                                className="btn-ghost"
+                                style={{ padding: '8px 16px', fontSize: '13px', textDecoration: 'none' }}
+                            >
+                                Scopri di più <ArrowRight size={13} />
+                            </button>
                         </div>
                     </motion.div>
                 ))}
@@ -347,16 +332,16 @@ export const DNASection = () => (
                 transition={{ duration: 0.8 }}
                 style={{ textAlign: 'center' }}
             >
-                <span className="section-label">Il nostro DNA</span>
+                <span className="section-label">Chi siamo</span>
                 <h2 className="section-title">Nati ecommerce, non consulenti.</h2>
                 <p className="section-sub" style={{ margin: '0 auto' }}>
-                    Siamo partiti come azienda ecommerce, Yeppon.it, prima di diventare anche un ecommerce service provider. Portiamo ai nostri clienti una decennale esperienza diretta sul campo.
+                    Lavoriamo con brand e aziende che vogliono scalare sui marketplace europei delegando la complessità operativa.
                 </p>
                 <div className="stats-grid">
                     {[
-                        { n: '57M€', l: 'Fatturato generato nel 2024' },
-                        { n: '+1.200', l: 'Ordini gestiti giornalmente' },
-                        { n: '3.300', l: 'Mq di magazzino certificato Prime' }
+                        { n: '57M€', l: 'Fatturato generato nel 2024 a livello globale' },
+                        { n: '+1.200', l: 'Ordini gestiti giornalmente tra eshop e marketplace' },
+                        { n: '3.300', l: 'Metri quadri di magazzino certificato Prime a Paderno Dugnano (MI)' }
                     ].map((s, i) => (
                         <motion.div
                             key={i}
@@ -382,27 +367,27 @@ export const CompareSection = () => (
         <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
                 <span className="section-label">Perché B2Vibe</span>
-                <h2 className="section-title">Riduzione del carico operativo.<br />In-house vs. B2Vibe.</h2>
-                <p className="section-sub" style={{ margin: '0 auto' }}>Eliminazione della burocrazia internazionale e focus sulla crescita del brand.</p>
+                <h2 className="section-title">Gestione in-house vs.<br />Gestione B2Vibe.</h2>
+                <p className="section-sub" style={{ margin: '0 auto' }}>Riduzione fino all'80% del carico operativo interno e un forecast più misurabile dei costi da sostenere, delegando in toto aspetti scomodi come la burocrazia, la fiscalità, le regolamentazioni europee, etc.</p>
             </div>
 
             <div style={{ marginTop: '48px', overflowX: 'auto', border: '1px solid var(--border)', borderRadius: '24px', background: '#fff', boxShadow: '0 20px 40px rgba(0,0,0,0.03)' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '600px' }}>
                     <thead>
                         <tr style={{ background: 'var(--surface)' }}>
-                            <th style={{ padding: '24px 32px', fontSize: '14px', fontWeight: 600, color: 'var(--muted)' }}>Caratteristica</th>
-                            <th style={{ padding: '24px 32px', fontSize: '15px', fontWeight: 800 }}>Gestione In-house</th>
+                            <th style={{ padding: '24px 32px', fontSize: '14px', fontWeight: 600, color: 'var(--muted)' }}></th>
+                            <th style={{ padding: '24px 32px', fontSize: '15px', fontWeight: 800 }}>In-house</th>
                             <th style={{ padding: '24px 32px', fontSize: '15px', fontWeight: 800, color: 'var(--primary)', background: 'var(--primary-glow)' }}>B2Vibe ✦</th>
                         </tr>
                     </thead>
                     <tbody>
                         {[
-                            ['Fiscale: IVA & Dogane', 'Complessità Elevata', 'Zero Burocrazia', true],
-                            ['Logistica: Amazon Prime', 'Gestione 3PL esterna', 'Certificazione Prime nativa', true],
-                            ['Costi Operativi', 'Fissi ed Elevati', 'Modello variabile a successo', true],
-                            ['Rischio Compliance', 'Carico del Brand', 'Assunto da B2Vibe (MoR)', true],
-                            ['Customer Care (5 lingue)', 'Esterno o rincaro interno', 'Incluso nel workflow', true],
-                            ['Tecnologia PIM/OMS', 'Costi licenza & IT', 'Piattaforma proprietaria incl.', true],
+                            ['Apertura e gestione IVA estere', 'A vostro carico', 'Inclusa'],
+                            ['Gestione burocratica e compliance', 'Alta complessità', 'Zero burocrazia'],
+                            ['Personale amministrativo/logistica', '2+ FTE interni', 'Costi semi-variabili'],
+                            ['IT e tech stack multicanale', 'Investimento importante', 'Incluso e aggiornato'],
+                            ['Spedizioni Amazon Prime', 'Fulfilled by Amazon', 'Spedizione Prime da magazzino B2Vibe'],
+                            ['Rischio blocco account / compliance', 'Rischio elevato', '100% compliant'],
                         ].map((r, i) => (
                             <tr key={i} style={{ borderTop: '1px solid var(--border)' }}>
                                 <td style={{ padding: '20px 32px', fontSize: '14px', fontWeight: 600, color: 'var(--dark)' }}>{r[0]}</td>

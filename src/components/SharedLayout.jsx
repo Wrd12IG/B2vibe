@@ -35,7 +35,7 @@ export const Navbar = ({ onContactClick }) => {
             return;
         }
 
-        const sections = ['problema', 'chi-siamo', 'partner', 'presidio', 'vantaggi', 'calcolatore', 'servizi'];
+        const sections = ['chi-siamo', 'partner', 'presidio', 'vantaggi', 'calcolatore', 'servizi'];
         const observerOptions = {
             root: null,
             rootMargin: '-40% 0px -40% 0px',
@@ -62,14 +62,11 @@ export const Navbar = ({ onContactClick }) => {
     const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
     const links = [
-        { name: 'Sfida', id: 'problema' },
-        { name: 'DNA', id: 'chi-siamo' },
-        { name: 'Target', id: 'partner' },
-        { name: 'Global', id: 'presidio' },
+        { name: 'Chi siamo', id: 'chi-siamo' },
+        { name: 'Canali gestiti', id: 'presidio' },
         { name: 'Vantaggi', id: 'vantaggi' },
         { name: 'Savings', id: 'calcolatore' },
-        { name: 'Pilastri', id: 'servizi' },
-        { name: 'Guida MoR', path: '/merchant-of-record-guida' },
+        { name: 'Servizi', id: 'servizi' }
     ];
 
     return (
@@ -168,9 +165,8 @@ export const Navbar = ({ onContactClick }) => {
                         }}
                         id="nav-cta-desktop"
                     >
-                        Parla con un esperto
+                        Prenota una call
                     </button>
-
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         style={{
@@ -324,8 +320,6 @@ export const Footer = ({ onCookieClick, onContactClick }) => (
                 <span>© {new Date().getFullYear()} B2Vibe S.r.l.</span>
                 <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                     <RouterLink to="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</RouterLink>
-                    <RouterLink to="/cookie-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Cookie Policy</RouterLink>
-                    <button onClick={onCookieClick} style={{ background: 'none', border: 'none', fontSize: 'inherit', color: 'inherit', cursor: 'pointer', padding: 0 }}>Cookie Settings</button>
                 </div>
             </div>
         </div>

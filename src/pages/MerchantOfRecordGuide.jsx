@@ -82,7 +82,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="badge" style={{ marginBottom: '1.5rem', background: 'var(--primary-glow)', border: '1px solid var(--primary)', color: 'var(--dark)' }}>Pillar Page - Analisi Professionale 2026</span>
+                        <span className="badge" style={{ marginBottom: '1.5rem', background: 'var(--primary-glow)', border: '1px solid var(--primary)', color: 'var(--dark)' }}>E-commerce Full Outsourcing</span>
                         <h1 className="heading-xl" style={{ marginTop: '0', marginBottom: '2rem', color: '#000', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: 1.1 }}>
                             E-commerce Full Outsourcing:<br />Guida Strategica alla Crescita
                         </h1>
@@ -108,7 +108,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                     Il <strong>Merchant of Record</strong> (MoR) è l'entità legale autorizzata a ricevere pagamenti e a versare le tasse per conto di un brand commerciale. Agisce come il venditore ufficiale per ogni transazione ecommerce, assumendosi la responsabilità finanziaria, amministrativa e della compliance.
                                 </p>
                                 <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--muted)' }}>
-                                    Affidandoti a B2Vibe come MoR, mantieni il pieno controllo sulle tue strategie di marketing e sulla proprietà dei dati, mentre noi ci occupiamo del labirinto fiscale di oltre 200 paesi.
+                                    Affidandoti a B2Vibe come MoR, mantieni il pieno controllo sulle tue strategie di marketing e sulla proprietà dei dati, mentre noi ci occupiamo del labirinto fiscale dei paesi in cui operiamo.
                                 </p>
                             </div>
                             <div style={{ background: 'var(--surface)', padding: '40px', borderRadius: '32px', border: '1px solid var(--border)' }}>
@@ -165,12 +165,12 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                 {
                                     icon: Globe,
                                     title: "Espansione Rapida",
-                                    desc: "Entra in nuovi mercati internazionali senza aprire branch locali. Utilizza la nostra infrastruttura MoR per iniziare a vendere in 24 ore."
+                                    desc: "Entra in nuovi mercati internazionali senza aprire branch locali. Utilizza la nostra infrastruttura MoR per iniziare a vendere in poche settimane."
                                 },
                                 {
                                     icon: Handshake,
                                     title: "Modello Composable",
-                                    desc: "L'equilibrio perfetto tra insourcing (attività core) e outsourcing (funzioni operative/No-core) per una crescita sostenibile e controllata."
+                                    desc: "L'equilibrio perfetto tra insourcing (attività core) e outsourcing (funzioni operative/No-core) per una crescita sostenibile e controllata. Operativi in poche settimane."
                                 }
                             ].map((item, i) => (
                                 <div key={i} style={{ padding: '32px', background: 'var(--surface)', borderRadius: '24px', border: '1px solid var(--border)', transition: 'transform 0.3s' }} onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
@@ -224,10 +224,10 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                     <motion.section id="tecnologia-detail" {...fadeInUp} style={{ padding: '80px 0', borderBottom: '1px solid var(--border)' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', alignItems: 'center' }}>
                             <div>
-                                <span className="section-label">Piattaforma AI</span>
+                                <span className="section-label">Piattaforma</span>
                                 <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1.5rem' }}>B2Vibe Admin: Il cervello del tuo business.</h2>
                                 <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--muted)', marginBottom: '1.5rem' }}>
-                                    Integriamo PIM e OMS proprietari con algoritmi di AI generativa per l'arricchimento cataloghi e il pricing dinamico.
+                                    Integriamo PIM e OMS proprietari con algoritmi per l'arricchimento cataloghi e il pricing dinamico.
                                 </p>
                                 <div style={{ display: 'flex', gap: '32px' }}>
                                     <div>
@@ -242,50 +242,18 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             </div>
                             <div style={{ background: 'var(--surface)', padding: '40px', borderRadius: '32px' }}>
                                 <div style={{ padding: '24px', background: '#fff', borderRadius: '16px', border: '1px solid var(--border)', marginBottom: '16px' }}>
-                                    <span style={{ fontSize: '12px', color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase' }}>AI Content Generation</span>
-                                    <p style={{ margin: '8px 0 0 0', fontSize: '14px', fontStyle: 'italic' }}>Schede prodotto tradotte e ottimizzate SEO in 12 lingue automaticamente.</p>
+                                    <span style={{ fontSize: '12px', color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase' }}>Logistica & Magazzino</span>
+                                    <p style={{ margin: '8px 0 0 0', fontSize: '14px' }}>Hub di 3.300 mq certificato Amazon SFP. Picking, packing, spedizioni Prime e gestione resi con tracciamento real-time.</p>
                                 </div>
                                 <div style={{ padding: '24px', background: '#fff', borderRadius: '16px', border: '1px solid var(--border)' }}>
-                                    <span style={{ fontSize: '12px', color: 'var(--dark)', fontWeight: 800, textTransform: 'uppercase' }}>Dynamic Pricing</span>
-                                    <p style={{ margin: '8px 0 0 0', fontSize: '14px', fontStyle: 'italic' }}>Algoritmi predittivi che monitorano i competitor 24/7 per massimizzare il margine.</p>
+                                    <span style={{ fontSize: '12px', color: 'var(--dark)', fontWeight: 800, textTransform: 'uppercase' }}>Marketing & Advertising</span>
+                                    <p style={{ margin: '8px 0 0 0', fontSize: '14px' }}>Strategie di marketing multicanale, gestione campagne Amazon Ads, ottimizzazione contenuti prodotto e SEO per marketplace.</p>
                                 </div>
                             </div>
                         </div>
                     </motion.section>
 
-                    {/* --- SEZIONE 5: FAQ --- */}
-                    <motion.section id="faq" {...fadeInUp} style={{ padding: '80px 0' }}>
-                        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-                            <span className="section-label">Analisi & Risposte</span>
-                            <h2 style={{ fontSize: '2.5rem', fontWeight: 900 }}>Domande Frequenti sul MoR e l'Outsourcing.</h2>
-                        </div>
-                        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-                            {[
-                                {
-                                    q: "Quali sono le politiche dei resi con B2Vibe?",
-                                    a: "Il reso è strategico per la fiducia. Offriamo 3 modalità: 1. Reso gratuito (carico B2Vibe), 2. Reso gestito (carico cliente detratto dal rimborso), 3. Reso a totale carico cliente. Gestiamo noi la logistica di rientro e il check qualità entro 14 giorni."
-                                },
-                                {
-                                    q: "In quanti mercati posso spedire realmente?",
-                                    a: "Copriamo oltre 200 paesi. Siamo particolarmente forti in Europa (1-2 giorni lavorativi) e Nord America (esenzione dazi fino a $800). Grazie alle nostre certificazioni ADR, IATA e Bio, spediamo anche merci particolari (alcolici, fragili, infiammabili)."
-                                },
-                                {
-                                    q: "Cos'è l'equilibrio tra Insourcing e Outsourcing?",
-                                    a: "Non crediamo nel 'Full Outsourcing' cieco. Noi proponiamo un modello 'Composable': tieni in-house le attività core (strategia brand, design) e delega a noi le funzioni operative 'No-Core' (fiscalità, logistica, pagamenti) per non perdere il controllo."
-                                },
-                                {
-                                    q: "Di quali strumenti si avvale il Customer Care?",
-                                    a: "Supporto multilingua (IT, EN, DE, FR, ES) via mail, chat Zendesk, telefono e social. Utilizziamo sistemi integrati con il magazzino per dare risposte certe sulla spedizione in tempo reale."
-                                },
-                                {
-                                    q: "Posso vendere in dropshipping con voi?",
-                                    a: "Sì. Supportiamo modelli di dropshipping per snellire i processi logistici, risparmiando sui costi di magazzino e ottimizzando l'inventario senza investimenti preventivi in scorte fisiche."
-                                }
-                            ].map((item, i) => (
-                                <FAQItem key={i} question={item.q} answer={item.a} />
-                            ))}
-                        </div>
-                    </motion.section>
+
 
                     {/* Call to Action Final */}
                     <motion.div {...fadeInUp} style={{ marginTop: '100px', textAlign: 'center', background: 'var(--dark)', padding: '80px 40px', borderRadius: '40px', color: '#fff' }}>
