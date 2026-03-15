@@ -63,10 +63,9 @@ export const Navbar = ({ onContactClick }) => {
 
     const links = [
         { name: 'Chi siamo', id: 'chi-siamo' },
+        { name: 'Servizi', id: 'servizi' },
         { name: 'Canali gestiti', id: 'presidio' },
-        { name: 'Vantaggi', id: 'vantaggi' },
-        { name: 'Savings', id: 'calcolatore' },
-        { name: 'Servizi', id: 'servizi' }
+        { name: 'Vantaggi', id: 'vantaggi' }
     ];
 
     return (
@@ -289,7 +288,6 @@ export const Footer = ({ onCookieClick, onContactClick }) => (
                         <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Merchant of Record</a></li>
                         <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Logistica e Magazzino</a></li>
                         <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Customer Care Multilingua</a></li>
-                        <li><button onClick={onContactClick} style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: 0, textDecoration: 'none', color: 'var(--primary)', fontWeight: 600, fontSize: '13px' }}>Parla con un esperto ↗</button></li>
                     </ul>
                 </div>
 
@@ -305,9 +303,6 @@ export const Footer = ({ onCookieClick, onContactClick }) => (
                         <div>
                             <p style={{ fontWeight: 600, color: 'var(--dark)', marginBottom: '4px' }}>Contatti</p>
                             <p><strong>E.</strong> info@b2vibe.com</p>
-                        </div>
-                        <div>
-                            <button onClick={onContactClick} className="btn-ghost" style={{ padding: '8px 16px', fontSize: '12px' }}>Parla con un esperto</button>
                         </div>
                     </div>
                 </div>

@@ -57,7 +57,6 @@ export const Hero = ({ onContactClick }) => (
                     <button className="primary" onClick={onContactClick}>
                         Parla con un esperto
                     </button>
-                    <a href="#servizi" className="btn-ghost">Scopri i servizi</a>
                 </motion.div>
             </motion.div>
         </div>
@@ -193,7 +192,7 @@ const SERVICES = [
         items: [
             'Analisi e strategia presidio canali',
             'Sviluppo marketing multicanale (Amazon, eBay, etc.)',
-            'Pricing dinamico e sync real-time magazzino',
+            'Sync real-time magazzino e disponibilità',
             'Definizione promozioni e advertising',
             'SEO e ottimizzazione contenuti prodotto',
         ],
@@ -340,8 +339,8 @@ export const DNASection = () => (
                 <div className="stats-grid">
                     {[
                         { n: '57M€', l: 'Fatturato generato nel 2024 a livello globale' },
-                        { n: '+1.200', l: 'Ordini gestiti giornalmente tra eshop e marketplace' },
-                        { n: '3.300', l: 'Metri quadri di magazzino certificato Prime a Paderno Dugnano (MI)' }
+                        { n: '30+', l: 'Paesi in cui operiamo oggi con il nostro MoR' },
+                        { n: 'Poche settimane', l: 'Per l\'integrazione e l\'accensione dei canali' }
                     ].map((s, i) => (
                         <motion.div
                             key={i}

@@ -40,8 +40,7 @@ const ContactModal = ({ isOpen, onClose }) => {
 
   return (
     <ModalWrap onClose={onClose}>
-      <h3 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '8px' }}>Consulenza dedicata</h3>
-      <p style={{ color: 'var(--muted)', fontSize: '15px', marginBottom: '32px' }}>Analizziamo i tuoi canali per definire una strategia di crescita globale.</p>
+      <h3 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '32px' }}>Consulenza dedicata</h3>
 
       <form style={{ display: 'grid', gap: '20px' }} onSubmit={(e) => { e.preventDefault(); alert('Grazie! La tua richiesta è stata inviata.'); onClose(); }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
@@ -307,13 +306,13 @@ export default function App() {
                 {/* 3. Il partner ideale per chi vuole crescere */}
                 <GrowthPartnerSection />
 
+                {/* 4. I Nostri Servizi */}
+                <ServicesSection onContactClick={handleOpenContact} onCalcClick={handleOpenCalc} />
+
                 {/* 5. Compare Section */}
                 <CompareSection />
 
-                {/* 6. Services Section */}
-                <ServicesSection onContactClick={handleOpenContact} onCalcClick={handleOpenCalc} />
-
-                {/* 7. Calculator Contextual Section */}
+                {/* 6. Calcolatore */}
                 <section id="calcolatore" style={{ background: 'var(--surface)', padding: '80px 0' }}>
                   <div className="container" style={{ textAlign: 'center' }}>
                     <span className="section-label">Calcolatore di Risparmio</span>
@@ -325,7 +324,7 @@ export default function App() {
                   </div>
                 </section>
 
-                {/* 8. Managed Channels */}
+                {/* 7. Managed Channels */}
                 <ManagedChannelsSection />
 
                 <FinalCTA onContactClick={handleOpenContact} />

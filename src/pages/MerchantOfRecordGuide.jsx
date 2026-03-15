@@ -3,39 +3,12 @@ import { Navbar, Footer, SectionTitle, BackToTop } from '../components/SharedLay
 import {
     ShieldCheck, Globe, Zap, Scale, ArrowRight, Users, Box, Database,
     TrendingUp, CheckCircle2, Layout, BarChart3, Lock, Cpu, Rocket,
-    Headphones, Plus, Minus, Info, ClipboardCheck, Truck, ShieldAlert,
+    Headphones, Info, ClipboardCheck, Truck, ShieldAlert,
     RotateCcw, Handshake, Check
 } from 'lucide-react';
 import { useLocation, Link as RouterLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const FAQItem = ({ question, answer }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    return (
-        <div style={{ borderBottom: '1px solid var(--border)', padding: '24px 0' }}>
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: 0 }}
-            >
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0, color: 'var(--dark)' }}>{question}</h4>
-                {isOpen ? <Minus size={20} color="var(--primary)" /> : <Plus size={20} color="var(--muted)" />}
-            </button>
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        style={{ overflow: 'hidden' }}
-                    >
-                        <p style={{ marginTop: '16px', color: 'var(--muted)', lineHeight: 1.7, fontSize: '0.95rem' }}>{answer}</p>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-};
 
 const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
     const { hash } = useLocation();
@@ -75,18 +48,18 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
             <Navbar onContactClick={onContactClick} />
 
             {/* Header Content */}
-            <header style={{ padding: '200px 5% 120px 5%', textAlign: 'center', background: 'linear-gradient(180deg, rgba(7, 235, 166, 0.08) 0%, rgba(255,255,255,0) 100%)' }}>
+            {/* Header Content */}
+            <header style={{ padding: '160px 5% 80px 5%', textAlign: 'center', background: 'linear-gradient(180deg, rgba(7, 235, 166, 0.08) 0%, rgba(255,255,255,0) 100%)' }}>
                 <div className="container" style={{ maxWidth: '1000px' }}>
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="badge" style={{ marginBottom: '1.5rem', background: 'var(--primary-glow)', border: '1px solid var(--primary)', color: 'var(--dark)' }}>E-commerce Full Outsourcing</span>
-                        <h1 className="heading-xl" style={{ marginTop: '0', marginBottom: '2rem', color: '#000', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: 1.1 }}>
+                        <h1 style={{ fontSize: 'clamp(32px, 5vw, 64px)', fontWeight: 900, marginBottom: '24px', lineHeight: 1.1, color: 'var(--dark)' }}>
                             E-commerce Full Outsourcing:<br />Guida Strategica alla Crescita
                         </h1>
-                        <p style={{ fontSize: '1.25rem', color: 'var(--muted)', maxWidth: '800px', margin: '0 auto', lineHeight: 1.8, fontWeight: 400 }}>
+                        <p style={{ fontSize: '18px', color: 'var(--muted)', maxWidth: '750px', margin: '0 auto', lineHeight: 1.6 }}>
                             Gestire la complessità operativa è l'unico vero vantaggio competitivo. Scopri come B2Vibe assume la responsabilità del tuo business online, trasformando la burocrazia fiscale in opportunità di vendita globale.
                         </p>
                     </motion.div>
@@ -112,10 +85,14 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                 </p>
                             </div>
                             <div style={{ background: 'var(--surface)', padding: '40px', borderRadius: '32px', border: '1px solid var(--border)' }}>
-                                <div style={{ marginBottom: '24px', display: 'flex', gap: '12px', alignItems: 'center' }}>
-                                    <div style={{ width: '12px', height: '12px', background: 'var(--primary)', borderRadius: '50%' }}></div>
-                                    <h4 style={{ fontWeight: 800, margin: 0 }}>Cosa fa concretamente?</h4>
-                                </div>
+                                <p style={{ fontSize: '42px', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>30</p>
+                                <p style={{ fontSize: '14px', fontWeight: 700, marginTop: '8px', marginBottom: '24px' }}>Paesi in cui operiamo</p>
+                                
+                                <p style={{ fontSize: '42px', fontWeight: 900, color: 'var(--dark)', lineHeight: 1 }}>Poche settimane</p>
+                                <p style={{ fontSize: '14px', fontWeight: 700, marginTop: '8px', marginBottom: '32px' }}>Per l'attivazione</p>
+                                
+                                <div style={{ height: '1px', background: 'var(--border)', margin: '24px 0' }} />
+                                
                                 <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '16px' }}>
                                     <li style={{ display: 'flex', gap: '12px', fontSize: '14px', color: 'var(--muted)' }}>
                                         <CheckCircle2 color="var(--primary)" size={20} style={{ flexShrink: 0 }} /> Processa i pagamenti in modo sicuro (anti-frode).
@@ -227,7 +204,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                 <span className="section-label">Piattaforma</span>
                                 <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1.5rem' }}>B2Vibe Admin: Il cervello del tuo business.</h2>
                                 <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--muted)', marginBottom: '1.5rem' }}>
-                                    Integriamo PIM e OMS proprietari con algoritmi per l'arricchimento cataloghi e il pricing dinamico.
+                                    Integriamo PIM e OMS proprietari con flussi di lavoro ottimizzati per l'arricchimento cataloghi e la sincronizzazione globale.
                                 </p>
                                 <div style={{ display: 'flex', gap: '32px' }}>
                                     <div>
