@@ -285,7 +285,7 @@ export const Footer = ({ onCookieClick, onContactClick }) => (
                     <h5 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--dark)', marginBottom: '24px' }}>Servizi</h5>
                     <ul style={{ listStyle: 'none', padding: 0, fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Ecommerce Management</a></li>
-                        <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Merchant of Record</a></li>
+                        <li><RouterLink to="/merchant-of-record-guida" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Merchant of Record</RouterLink></li>
                         <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Logistica e Magazzino</a></li>
                         <li><a href="/#servizi" style={{ textDecoration: 'none', color: 'var(--muted)', transition: 'color 0.3s' }}>Customer Care Multilingua</a></li>
                     </ul>
