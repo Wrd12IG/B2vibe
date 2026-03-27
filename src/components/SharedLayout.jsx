@@ -79,28 +79,28 @@ export const Navbar = ({ onContactClick }) => {
                     <img src="/logo.png" alt="B2Vibe" style={{ height: '22px', objectFit: 'contain' }} />
                 </RouterLink>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-                    <div style={{ display: 'flex', gap: '28px' }} className="nav-desktop-links">
-                        {links.map(link => (
-                            <a
-                                key={link.id}
-                                href={`/#${link.id}`}
-                                style={{
-                                    textDecoration: 'none',
-                                    color: activeSection === link.id ? 'var(--white)' : 'var(--muted)',
-                                    fontSize: '13px',
-                                    fontWeight: 500,
-                                    transition: 'color 0.2s',
-                                    whiteSpace: 'nowrap'
-                                }}
-                                onMouseEnter={e => e.currentTarget.style.color = 'var(--white)'}
-                                onMouseLeave={e => e.currentTarget.style.color = activeSection === link.id ? 'var(--white)' : 'var(--muted)'}
-                            >
-                                {link.name}
-                            </a>
-                        ))}
-                    </div>
+                <div style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '28px' }} className="nav-desktop-links">
+                    {links.map(link => (
+                        <a
+                            key={link.id}
+                            href={`/#${link.id}`}
+                            style={{
+                                textDecoration: 'none',
+                                color: activeSection === link.id ? 'var(--white)' : 'var(--muted)',
+                                fontSize: '13px',
+                                fontWeight: 500,
+                                transition: 'color 0.2s',
+                                whiteSpace: 'nowrap'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.color = 'var(--white)'}
+                            onMouseLeave={e => e.currentTarget.style.color = activeSection === link.id ? 'var(--white)' : 'var(--muted)'}
+                        >
+                            {link.name}
+                        </a>
+                    ))}
+                </div>
 
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', zIndex: 1010 }}>
                     <button
                         className="primary"
                         onClick={onContactClick}
