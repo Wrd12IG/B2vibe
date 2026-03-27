@@ -265,3 +265,13 @@ export const Footer = ({ onCookieClick }) => (
         `}</style>
     </footer>
 );
+
+export const SectionTitle = ({ badge, title, subtitle }) => (
+    <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+        {badge && <span className="section-label">{badge}</span>}
+        <h1 className="section-title" style={{ color: 'var(--dark)' }}>{title}</h1>
+        {subtitle && <p className="section-sub" style={{ margin: '18px auto 0 auto' }}>{subtitle}</p>}
+    </div>
+);
+
+export const BackToTop = () => null;

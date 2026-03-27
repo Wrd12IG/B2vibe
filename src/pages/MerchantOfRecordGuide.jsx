@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, Footer, SectionTitle, BackToTop } from '../components/SharedLayout';
-import {
-    ShieldCheck, Globe, Zap, Scale, ArrowRight, Users, Box, Database,
-    TrendingUp, CheckCircle2, Layout, BarChart3, Lock, Cpu, Rocket,
-    Headphones, Info, ClipboardCheck, Truck, ShieldAlert,
-    RotateCcw, Handshake, Check
-} from 'lucide-react';
-import { useLocation, Link as RouterLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ShieldCheck, Globe, Scale, ArrowRight, Database, TrendingUp, CheckCircle2, Lock, ShieldAlert, Handshake, Check } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 
 const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
