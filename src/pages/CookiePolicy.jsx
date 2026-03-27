@@ -6,11 +6,11 @@ const CookiePolicy = ({ onContactClick, onCookieClick }) => {
         window.scrollTo(0, 0);
     }, []);
 
-    const sTitle = { color: 'var(--dark)', marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 800 };
-    const pStyle = { marginBottom: '1rem' };
+    const sTitle = { color: 'var(--white)', marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 800 };
+    const pStyle = { marginBottom: '0.8rem' };
 
     return (
-        <div style={{ background: '#FFF', minHeight: '100vh' }}>
+        <div style={{ background: 'var(--dark)', minHeight: '100vh', color: 'var(--muted)' }}>
             <Navbar onContactClick={onContactClick} />
 
             <main style={{ padding: '120px 5% 80px 5%', maxWidth: '1000px', margin: '0 auto' }}>
@@ -41,12 +41,12 @@ const CookiePolicy = ({ onContactClick, onCookieClick }) => {
                             I cookie tecnici sono essenziali per il funzionamento del Sito e non possono essere disattivati nei nostri sistemi. In linea con le disposizioni del Garante per la protezione dei dati personali, questi cookie non richiedono il preventivo consenso dell'utente per essere installati.
                         </p>
 
-                        <h4 style={{ color: 'var(--dark)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.1 Cookie tecnici di navigazione o di sessione</h4>
+                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.1 Cookie tecnici di navigazione o di sessione</h4>
                         <p style={pStyle}>
                             Questi cookie garantiscono la normale navigazione e fruizione del sito web, permettendo, ad esempio, di realizzare un acquisto o autenticarsi per accedere ad aree riservate. Il Sito non può funzionare correttamente senza questi cookie.
                         </p>
 
-                        <h4 style={{ color: 'var(--dark)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.2 Cookie tecnici di funzionalità</h4>
+                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.2 Cookie tecnici di funzionalità</h4>
                         <p style={pStyle}>
                             Questi cookie consentono all'utente la navigazione in funzione di una serie di criteri selezionati (ad esempio, la lingua, i prodotti selezionati per l'acquisto) al fine di migliorare il servizio reso allo stesso.
                         </p>
@@ -60,10 +60,10 @@ const CookiePolicy = ({ onContactClick, onCookieClick }) => {
                             <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '600px' }}>
                                 <thead>
                                     <tr style={{ background: 'var(--surface)', borderBottom: '2px solid var(--border)' }}>
-                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--dark)' }}>Nome Cookie</th>
-                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--dark)' }}>Tipologia</th>
-                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--dark)' }}>Finalità</th>
-                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--dark)' }}>Durata</th>
+                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Nome Cookie</th>
+                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Tipologia</th>
+                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Finalità</th>
+                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Durata</th>
                                     </tr>
                                 </thead>
                                 <tbody>

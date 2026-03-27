@@ -39,7 +39,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
     };
 
     return (
-        <div style={{ background: '#FFF' }}>
+        <div style={{ background: 'var(--dark)', color: 'var(--muted)' }}>
             <Navbar onContactClick={onContactClick} />
 
             {/* Header Content */}
@@ -51,7 +51,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 style={{ fontSize: 'clamp(32px, 5vw, 64px)', fontWeight: 900, marginBottom: '24px', lineHeight: 1.1, color: 'var(--dark)' }}>
+                        <h1 style={{ fontSize: 'clamp(32px, 5vw, 64px)', fontWeight: 900, marginBottom: '24px', lineHeight: 1.1, color: 'var(--white)' }}>
                             E-commerce Full Outsourcing:<br />Guida Strategica alla Crescita
                         </h1>
                         <p style={{ fontSize: '18px', color: 'var(--muted)', maxWidth: '750px', margin: '0 auto', lineHeight: 1.6 }}>
@@ -71,7 +71,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                                     <span className="section-label" style={{ margin: 0 }}>Definizione</span>
                                 </div>
-                                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1.5rem', color: 'var(--dark)' }}>Chi è il Merchant of Record?</h2>
+                                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1.5rem', color: 'var(--white)' }}>Chi è il Merchant of Record?</h2>
                                 <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--muted)', marginBottom: '1.5rem' }}>
                                     Il <strong>Merchant of Record</strong> (MoR) è l'entità legale autorizzata a ricevere pagamenti e a versare le tasse per conto di un brand commerciale. Agisce come il venditore ufficiale per ogni transazione ecommerce, assumendosi la responsabilità finanziaria, amministrativa e della compliance.
                                 </p>
@@ -83,7 +83,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                 <p style={{ fontSize: '42px', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>30</p>
                                 <p style={{ fontSize: '14px', fontWeight: 700, marginTop: '8px', marginBottom: '24px' }}>Paesi in cui operiamo</p>
                                 
-                                <p style={{ fontSize: '42px', fontWeight: 900, color: 'var(--dark)', lineHeight: 1 }}>Poche settimane</p>
+                                <p style={{ fontSize: '42px', fontWeight: 900, color: 'var(--white)', lineHeight: 1 }}>Poche settimane</p>
                                 <p style={{ fontSize: '14px', fontWeight: 700, marginTop: '8px', marginBottom: '32px' }}>Per l'attivazione</p>
                                 
                                 <div style={{ height: '1px', background: 'var(--border)', margin: '24px 0' }} />
@@ -110,7 +110,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                     <motion.section id="mor-detail" {...fadeInUp} style={{ padding: '80px 0', borderBottom: '1px solid var(--border)' }}>
                         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                             <span className="section-label">Semplificazione Operativa</span>
-                            <h2 style={{ fontSize: '2.5rem', fontWeight: 900 }}>Come B2Vibe potenzia le tue vendite.</h2>
+                            <h2 style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--white)' }}>Come B2Vibe potenzia le tue vendite.</h2>
                         </div>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
                             {[
@@ -147,7 +147,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                             ].map((item, i) => (
                                 <div key={i} style={{ padding: '32px', background: 'var(--surface)', borderRadius: '24px', border: '1px solid var(--border)', transition: 'transform 0.3s' }} onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
                                     <item.icon size={32} color="var(--primary)" style={{ marginBottom: '20px' }} />
-                                    <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>{item.title}</h4>
+                                    <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem', color: 'var(--white)' }}>{item.title}</h4>
                                     <p style={{ fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.6 }}>{item.desc}</p>
                                 </div>
                             ))}
@@ -159,7 +159,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', alignItems: 'center' }}>
                             <div style={{ order: 2 }}>
                                 <span className="section-label">Logistica & Hub</span>
-                                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1.5rem' }}>Efficienza SFP Amazon Prime Certificate.</h2>
+                                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1.5rem', color: 'var(--white)' }}>Efficienza SFP Amazon Prime Certificate.</h2>
                                 <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--muted)', marginBottom: '1.5rem' }}>
                                     Disponiamo di un hub proprietario di <strong>3.300 mq</strong> a Paderno Dugnano, progettato per gestire ordini multicanale con precisione millimetrica.
                                 </p>
@@ -173,7 +173,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                         <div key={i}>
                                             <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '8px' }}>
                                                 <Check color="var(--primary)" size={16} />
-                                                <strong style={{ fontSize: '1rem' }}>{s.t}</strong>
+                                                <strong style={{ fontSize: '1rem', color: 'var(--white)' }}>{s.t}</strong>
                                             </div>
                                             <p style={{ fontSize: '0.9rem', color: 'var(--muted)' }}>{s.d}</p>
                                         </div>
@@ -181,7 +181,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                 </div>
                             </div>
                             <div style={{ order: 1, position: 'relative' }}>
-                                <div style={{ background: 'var(--dark)', padding: '50px', borderRadius: '40px', color: '#fff' }}>
+                                <div style={{ background: 'var(--surface)', padding: '50px', borderRadius: '40px', color: '#fff' }}>
                                     <img src="/amazon-prime-logo.png" alt="Amazon Prime" style={{ height: '30px', marginBottom: '24px' }} />
                                     <h3 style={{ color: '#fff', fontSize: '1.8rem', fontWeight: 900, marginBottom: '1rem' }}>SFP (Seller Fulfilled Prime)</h3>
                                     <p style={{ opacity: 0.8, lineHeight: 1.7, fontSize: '1rem' }}>
@@ -197,7 +197,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '60px', alignItems: 'center' }}>
                             <div>
                                 <span className="section-label">Piattaforma</span>
-                                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1.5rem' }}>B2Vibe Admin: Il cervello del tuo business.</h2>
+                                <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1.5rem', color: 'var(--white)' }}>B2Vibe Admin: Il cervello del tuo business.</h2>
                                 <p style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--muted)', marginBottom: '1.5rem' }}>
                                     Integriamo PIM e OMS proprietari con flussi di lavoro ottimizzati per l'arricchimento cataloghi e la sincronizzazione globale.
                                 </p>
@@ -207,19 +207,19 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                                         <h4 style={{ fontWeight: 800, fontSize: '0.9rem', textTransform: 'uppercase' }}>Centralizzazione</h4>
                                     </div>
                                     <div>
-                                        <TrendingUp color="var(--dark)" size={28} style={{ marginBottom: '12px' }} />
-                                        <h4 style={{ fontWeight: 800, fontSize: '0.9rem', textTransform: 'uppercase' }}>Profit Analysis</h4>
+                                        <TrendingUp color="var(--primary)" size={28} style={{ marginBottom: '12px' }} />
+                                        <h4 style={{ fontWeight: 800, fontSize: '0.9rem', textTransform: 'uppercase', color: 'var(--white)' }}>Profit Analysis</h4>
                                     </div>
                                 </div>
                             </div>
                             <div style={{ background: 'var(--surface)', padding: '40px', borderRadius: '32px' }}>
-                                <div style={{ padding: '24px', background: '#fff', borderRadius: '16px', border: '1px solid var(--border)', marginBottom: '16px' }}>
+                                <div style={{ padding: '24px', background: 'var(--dark)', borderRadius: '16px', border: '1px solid var(--border)', marginBottom: '16px' }}>
                                     <span style={{ fontSize: '12px', color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase' }}>Logistica & Magazzino</span>
-                                    <p style={{ margin: '8px 0 0 0', fontSize: '14px' }}>Hub di 3.300 mq certificato Amazon SFP. Picking, packing, spedizioni Prime e gestione resi con tracciamento real-time.</p>
+                                    <p style={{ margin: '8px 0 0 0', fontSize: '14px', color: 'var(--muted)' }}>Hub di 3.300 mq certificato Amazon SFP. Picking, packing, spedizioni Prime e gestione resi con tracciamento real-time.</p>
                                 </div>
-                                <div style={{ padding: '24px', background: '#fff', borderRadius: '16px', border: '1px solid var(--border)' }}>
-                                    <span style={{ fontSize: '12px', color: 'var(--dark)', fontWeight: 800, textTransform: 'uppercase' }}>Marketing & Advertising</span>
-                                    <p style={{ margin: '8px 0 0 0', fontSize: '14px' }}>Strategie di marketing multicanale, gestione campagne Amazon Ads, ottimizzazione contenuti prodotto e SEO per marketplace.</p>
+                                <div style={{ padding: '24px', background: 'var(--dark)', borderRadius: '16px', border: '1px solid var(--border)' }}>
+                                    <span style={{ fontSize: '12px', color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase' }}>Marketing & Advertising</span>
+                                    <p style={{ margin: '8px 0 0 0', fontSize: '14px', color: 'var(--muted)' }}>Strategie di marketing multicanale, gestione campagne Amazon Ads, ottimizzazione contenuti prodotto e SEO per marketplace.</p>
                                 </div>
                             </div>
                         </div>

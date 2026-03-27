@@ -6,11 +6,11 @@ const PrivacyPolicy = ({ onContactClick, onCookieClick }) => {
         window.scrollTo(0, 0);
     }, []);
 
-    const sTitle = { color: 'var(--dark)', marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 800 };
-    const pStyle = { marginBottom: '1rem' };
+    const sTitle = { color: 'var(--white)', marginBottom: '1rem', fontSize: '1.5rem', fontWeight: 800 };
+    const pStyle = { marginBottom: '0.8rem' };
 
     return (
-        <div style={{ background: '#FFF', minHeight: '100vh' }}>
+        <div style={{ background: 'var(--dark)', minHeight: '100vh', color: 'var(--muted)' }}>
             <Navbar onContactClick={onContactClick} />
 
             <main style={{ padding: '120px 5% 80px 5%', maxWidth: '1000px', margin: '0 auto' }}>
@@ -35,7 +35,7 @@ const PrivacyPolicy = ({ onContactClick, onCookieClick }) => {
                     <section>
                         <h3 style={sTitle}>2. Dati raccolti e finalità del trattamento</h3>
                         
-                        <h4 style={{ color: 'var(--dark)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.1 Dati di navigazione</h4>
+                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.1 Dati di navigazione</h4>
                         <p style={pStyle}>
                             I sistemi informatici e le procedure software preposte al funzionamento del Sito acquisiscono, nel corso del loro normale esercizio, alcuni dati personali la cui trasmissione è implicita nell'uso dei protocolli di comunicazione di Internet. Si tratta di informazioni che non sono raccolte per essere associate a interessati identificati, ma che per loro stessa natura potrebbero, attraverso elaborazioni ed associazioni con dati detenuti da terzi, permettere di identificare gli utenti.
                         </p>
@@ -47,12 +47,12 @@ const PrivacyPolicy = ({ onContactClick, onCookieClick }) => {
                             <li><strong>Base giuridica:</strong> legittimo interesse del Titolare (art. 6, par. 1, lett. f GDPR).</li>
                         </ul>
 
-                        <h4 style={{ color: 'var(--dark)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.2 Cookie</h4>
+                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.2 Cookie</h4>
                         <p style={pStyle}>
                             Il Sito utilizza esclusivamente cookie tecnici, necessari per garantire la normale navigazione e la fruizione del sito web. Tali cookie non richiedono il preventivo consenso dell'utente. Per maggiori informazioni si rimanda alla Cookie Policy disponibile sul Sito.
                         </p>
 
-                        <h4 style={{ color: 'var(--dark)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.3 Dati forniti volontariamente dall'utente</h4>
+                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.3 Dati forniti volontariamente dall'utente</h4>
                         <p style={pStyle}>
                             L'invio facoltativo, esplicito e volontario di messaggi agli indirizzi di contatto del Titolare, nonché la compilazione e l'invio di form presenti sul Sito, comportano l'acquisizione dei dati di contatto del mittente, necessari a rispondere, nonché di tutti i dati personali inclusi nelle comunicazioni.
                         </p>
