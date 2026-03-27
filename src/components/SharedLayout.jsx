@@ -76,7 +76,7 @@ export const Navbar = ({ onContactClick }) => {
                 transition: 'all 0.3s'
             }}>
                 <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', zIndex: 1010 }}>
-                    <img src="/logo.png" alt="B2Vibe" style={{ height: '45px', objectFit: 'contain' }} />
+                    <img src="/logo.png" alt="B2Vibe" style={{ height: '30px', objectFit: 'contain' }} />
                 </RouterLink>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
