@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { B2VibeLogo } from './Logo';
 import { Linkedin, Instagram, Menu, X, ArrowRight, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -77,7 +76,7 @@ export const Navbar = ({ onContactClick }) => {
                 transition: 'all 0.3s'
             }}>
                 <RouterLink to="/" onClick={closeMobileMenu} style={{ display: 'flex', alignItems: 'center', zIndex: 1010 }}>
-                    <B2VibeLogo height={26} style={{ color: 'var(--white)' }} />
+                    <img src="/logo.png" alt="B2Vibe" style={{ height: '45px', objectFit: 'contain' }} />
                 </RouterLink>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
@@ -192,7 +191,7 @@ export const Footer = ({ onCookieClick }) => (
 
                 {/* Col 1 — Brand */}
                 <div>
-                    <B2VibeLogo height={26} style={{ color: 'var(--white)' }} />
+                    <img src="/logo.png" alt="B2Vibe" style={{ height: '45px', objectFit: 'contain' }} />
                     <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '12px' }}>
                         Making sales effectively simple
                     </p>
