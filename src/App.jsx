@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { X, Send, Calculator, Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { X, Calculator, Mail, ArrowRight, CheckCircle2, MoveRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BrowserRouter, Routes, Route, Link as RouterLink } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
@@ -8,7 +8,7 @@ import {
   Hero, Ticker, DNASection,
   ServicesSection, CompareSection, FinalCTA,
   ScrollToTop, ProblemSolutionSection, GrowthPartnerSection,
-  ManagedChannelsSection
+  ManagedChannelsSection, CalculatorSection
 } from './components/PageSections';
 import { Navbar, Footer } from './components/SharedLayout';
 
@@ -16,16 +16,16 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import CookiePolicy from './pages/CookiePolicy';
 import MerchantOfRecordGuide from './pages/MerchantOfRecordGuide';
 
-const ModalWrap = ({ onClose, children, maxW = '600px' }) => (
+const ModalWrap = ({ onClose, children, maxW = '520px' }) => (
   <AnimatePresence>
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       onClick={onClose}
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)', zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
-      <motion.div initial={{ scale: 0.95, opacity: 0, y: 10 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.95, opacity: 0 }}
+      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)', zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+      <motion.div initial={{ scale: 0.95, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.95, opacity: 0 }}
         onClick={e => e.stopPropagation()}
-        style={{ background: '#fff', width: '100%', maxWidth: maxW, borderRadius: '24px', padding: 'clamp(32px, 5vw, 56px)', position: 'relative', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 40px 100px rgba(0,0,0,0.15)' }}>
-        <button onClick={onClose} style={{ position: 'absolute', top: '24px', right: '24px', background: 'var(--surface)', border: 'none', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--dark)', cursor: 'pointer' }}>
-          <X size={20} />
+        style={{ background: 'var(--dark2)', width: '100%', maxWidth: maxW, borderRadius: '24px', padding: 'clamp(32px, 5vw, 56px)', position: 'relative', maxHeight: '90vh', overflowY: 'auto', border: '1px solid var(--border)', boxShadow: '0 40px 100px rgba(0,0,0,0.5)' }}>
+        <button onClick={onClose} style={{ position: 'absolute', top: '24px', right: '24px', background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', fontSize: '24px' }}>
+          <X size={24} />
         </button>
         {children}
       </motion.div>
@@ -34,76 +34,56 @@ const ModalWrap = ({ onClose, children, maxW = '600px' }) => (
 );
 
 const ContactModal = ({ isOpen, onClose }) => {
+  const [success, setSuccess] = useState(false);
   if (!isOpen) return null;
-  const inputS = { width: '100%', background: '#f8f9fa', border: '1px solid #e9ecef', borderRadius: '12px', padding: '14px 18px', fontSize: '15px' };
-  const labelS = { fontSize: '13px', fontWeight: 600, color: 'var(--dark)', marginBottom: '8px', display: 'block' };
+
+  const inputS = { width: '100%', background: 'var(--dark3)', border: '1px solid var(--border)', borderRadius: '10px', padding: '13px 16px', fontSize: '15px', color: '#fff', outline: 'none' };
+  const labelS = { fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: '8px', display: 'block', textTransform: 'uppercase', letterSpacing: '0.08em' };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSuccess(true);
+    // In a real app, send data here
+  };
 
   return (
-    <ModalWrap onClose={onClose}>
-      <h3 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '32px' }}>Consulenza dedicata</h3>
+    <ModalWrap onClose={() => { onClose(); setSuccess(false); }}>
+      {!success ? (
+        <>
+          <h3 style={{ fontSize: '26px', fontWeight: 800, marginBottom: '8px', color: '#fff', fontFamily: 'Raleway' }}>Prenota la tua call</h3>
+          <p style={{ fontSize: '14px', color: 'var(--muted)', marginBottom: '28px' }}>Compila il form e ti ricontatteremo entro 24 ore per fissare la call strategica di 30 minuti.</p>
 
-      <form style={{ display: 'grid', gap: '20px' }} onSubmit={(e) => { e.preventDefault(); alert('Grazie! La tua richiesta è stata inviata.'); onClose(); }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-          <div><label style={labelS}>Nome</label><input type="text" required style={inputS} placeholder="es. Mario" /></div>
-          <div><label style={labelS}>Cognome</label><input type="text" required style={inputS} placeholder="es. Rossi" /></div>
+          <form style={{ display: 'grid', gap: '18px' }} onSubmit={handleSubmit}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+              <div><label style={labelS}>Nome *</label><input type="text" required style={inputS} placeholder="Mario" /></div>
+              <div><label style={labelS}>Cognome *</label><input type="text" required style={inputS} placeholder="Rossi" /></div>
+            </div>
+
+            <div><label style={labelS}>Ragione sociale *</label><input type="text" required style={inputS} placeholder="La tua azienda S.r.l." /></div>
+            <div><label style={labelS}>Email aziendale *</label><input type="email" required style={inputS} placeholder="mario.rossi@azienda.com" /></div>
+
+            <div><label style={labelS}>Note (opzionale)</label><textarea style={{ ...inputS, height: '80px', resize: 'none' }} placeholder="Raccontaci brevemente il tuo business o i canali su cui vendi..." /></div>
+
+            <div>
+              <label style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', cursor: 'pointer', fontSize: '12px', color: 'var(--muted)' }}>
+                <input type="checkbox" required style={{ marginTop: '4px', width: '18px', height: '18px', accentColor: 'var(--primary)' }} />
+                <span>Ho letto e accetto la <RouterLink to="/privacy-policy" style={{ color: 'var(--primary)' }}>Privacy Policy</RouterLink>. Acconsento al trattamento dei miei dati personali per essere ricontattato.</span>
+              </label>
+            </div>
+
+            <button className="primary" style={{ padding: '15px', borderRadius: '10px', justifyContent: 'center', width: '100%', fontSize: '15px', fontWeight: 800 }}>
+              Invia richiesta <MoveRight size={18} />
+            </button>
+          </form>
+        </>
+      ) : (
+        <div style={{ textAlign: 'center', padding: '20px 0' }}>
+          <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
+          <h4 style={{ fontSize: '22px', fontWeight: 800, color: '#fff', marginBottom: '10px', fontFamily: 'Raleway' }}>Richiesta inviata!</h4>
+          <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.6 }}>Grazie per il tuo interesse. Verrai ricontattato entro 24 ore per fissare la call strategica di 30 minuti con il nostro team.</p>
+          <button className="btn-ghost" onClick={() => { onClose(); setSuccess(false); }} style={{ marginTop: '24px' }}>Chiudi</button>
         </div>
-
-        <div><label style={labelS}>Email aziendale</label><input type="email" required style={inputS} placeholder="mario.rossi@azienda.com" /></div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-          <div>
-            <label style={labelS}>Tempistiche attivazione</label>
-            <select style={inputS} required>
-              <option value="">Seleziona...</option>
-              <option>Entro 3 mesi</option>
-              <option>Entro 12 mesi</option>
-              <option>Richiesta informazioni / esplorativo</option>
-            </select>
-          </div>
-          <div>
-            <label style={labelS}>Fatturato online attuale</label>
-            <select style={inputS} required>
-              <option value="">Seleziona...</option>
-              <option>Niente / Startup</option>
-              <option>&gt; 60k Euro</option>
-              <option>60k - 150k Euro</option>
-              <option>Oltre 150k Euro</option>
-            </select>
-          </div>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-          <div>
-            <label style={labelS}>Canali di vendita attivi</label>
-            <select style={inputS} required>
-              <option value="">Seleziona...</option>
-              <option>Solo eshop</option>
-              <option>Solo marketplace</option>
-              <option>Eshop e marketplace</option>
-              <option>Nessuno</option>
-            </select>
-          </div>
-          <div>
-            <label style={labelS}>Ti affidi già ad un partner?</label>
-            <select style={inputS} required>
-              <option value="">Seleziona...</option>
-              <option>Sì</option>
-              <option>No</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', cursor: 'pointer', fontSize: '13px', color: 'var(--muted)' }}>
-            <input type="checkbox" required style={{ marginTop: '4px' }} />
-            <span>Ho letto e accetto la <RouterLink to="/privacy-policy" style={{ color: 'var(--primary)' }}>Privacy Policy</RouterLink>. Acconsento al trattamento dei dati personali.</span>
-          </label>
-        </div>
-
-        <button className="primary" style={{ padding: '16px', borderRadius: '12px', justifyContent: 'center', width: '100%' }}>
-          Invia richiesta <ArrowRight size={18} />
-        </button>
-      </form>
+      )}
     </ModalWrap>
   );
 };
@@ -121,8 +101,8 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
 
   const next = () => setStep(step + 1);
   const back = () => setStep(step - 1);
-  const inputS = { width: '100%', background: '#f8f9fa', border: '1px solid #e9ecef', borderRadius: '12px', padding: '12px 16px', fontSize: '15px' };
-  const labelS = { fontSize: '13px', fontWeight: 600, color: 'var(--dark)', marginBottom: '8px', display: 'block' };
+  const inputS = { width: '100%', background: 'var(--dark3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '12px 16px', fontSize: '15px', color: '#fff', outline: 'none' };
+  const labelS = { fontSize: '13px', fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: '8px', display: 'block' };
 
   const mktOptions = ['Amazon', 'eBay', 'Decathlon', 'ManoMano', 'Leroy Merlin', 'Altro'];
 
@@ -131,15 +111,15 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
       <div style={{ textAlign: 'center', marginBottom: '32px' }}>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '16px' }}>
           {[1, 2, 3, 4, 5].map(s => (
-            <div key={s} style={{ width: '40px', height: '4px', background: step >= s ? 'var(--primary)' : '#eee', borderRadius: '2px' }} />
+            <div key={s} style={{ width: '40px', height: '4px', background: step >= s ? 'var(--primary)' : '#333', borderRadius: '2px' }} />
           ))}
         </div>
-        <h3 style={{ fontSize: '24px', fontWeight: 800 }}>Analisi di Risparmio</h3>
+        <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#fff' }}>Analisi di Risparmio</h3>
       </div>
 
       {step === 1 && (
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Partiamo dal tuo attuale E-commerce di proprietà.</p>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)', textAlign: 'center' }}>Partiamo dal tuo attuale E-commerce di proprietà.</p>
           <div style={{ display: 'grid', gap: '20px' }}>
             <div><label style={labelS}>Ordini medi al giorno</label><input type="number" style={inputS} placeholder="es. 20" value={data.ecoOrders} onChange={e => setData({ ...data, ecoOrders: e.target.value })} /></div>
             <div><label style={labelS}>AOV (Valore medio carrello)</label><input type="number" style={inputS} placeholder="es. 85 €" value={data.ecoAov} onChange={e => setData({ ...data, ecoAov: e.target.value })} /></div>
@@ -150,7 +130,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
 
       {step === 2 && (
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Presenza sui Marketplace.</p>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)', textAlign: 'center' }}>Presenza sui Marketplace.</p>
           <div style={{ display: 'grid', gap: '20px' }}>
             <div><label style={labelS}>Su quanti marketplace vendi?</label><input type="number" style={inputS} value={data.mktCount} onChange={e => setData({ ...data, mktCount: e.target.value })} /></div>
             <div>
@@ -160,7 +140,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
                   <button key={m} onClick={() => {
                     const next = data.mktSelected.includes(m) ? data.mktSelected.filter(x => x !== m) : [...data.mktSelected, m];
                     setData({ ...data, mktSelected: next });
-                  }} style={{ padding: '8px 12px', borderRadius: '20px', border: '1px solid', borderColor: data.mktSelected.includes(m) ? 'var(--primary)' : '#eee', background: data.mktSelected.includes(m) ? 'var(--primary-glow)' : '#fff', fontSize: '13px', cursor: 'pointer' }}>{m}</button>
+                  }} style={{ padding: '8px 12px', borderRadius: '20px', border: '1px solid', borderColor: data.mktSelected.includes(m) ? 'var(--primary)' : 'var(--border)', background: data.mktSelected.includes(m) ? 'var(--primary-glow)' : 'transparent', color: data.mktSelected.includes(m) ? 'var(--primary)' : 'var(--muted)', fontSize: '13px', cursor: 'pointer', transition: 'all 0.2s' }}>{m}</button>
                 ))}
               </div>
             </div>
@@ -178,7 +158,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
 
       {step === 3 && (
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Gestione Logistica.</p>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)', textAlign: 'center' }}>Gestione Logistica.</p>
           <div style={{ display: 'grid', gap: '20px' }}>
             <div>
               <label style={labelS}>Attuale tipo di logistica</label>
@@ -190,7 +170,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
               </select>
             </div>
             <div>
-              <label style={labelS}>Interesse a passare ad una logistica 3PL specializzata?</label>
+              <label style={labelS}>Interesse a passare ad una logistica 3PL?</label>
               <select style={inputS} value={data.interest3PL} onChange={e => setData({ ...data, interest3PL: e.target.value })}>
                 <option value="">Seleziona...</option>
                 <option>Sì, assolutamente</option>
@@ -208,7 +188,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
 
       {step === 4 && (
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Dati Statistici.</p>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)', textAlign: 'center' }}>Dati Statistici.</p>
           <div style={{ display: 'grid', gap: '20px' }}>
             <div>
               <label style={labelS}>Settore merceologico</label>
@@ -232,7 +212,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
 
       {step === 5 && (
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
-          <p style={{ marginBottom: '24px', color: 'var(--muted)' }}>Abbiamo elaborato il tuo profilo di risparmio.</p>
+          <p style={{ marginBottom: '24px', color: 'var(--muted)', textAlign: 'center' }}>Abbiamo elaborato il tuo profilo di risparmio.</p>
           <div style={{ background: 'var(--primary-glow)', padding: '24px', borderRadius: '16px', marginBottom: '24px', border: '1px dashed var(--primary)' }}>
             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--primary)', textAlign: 'center' }}>
               ✅ Analisi Pronta! Inserisci la tua email per sbloccarla.
@@ -248,19 +228,11 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
   );
 };
 
-const FloatingSupport = ({ onContactClick }) => (
-  <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 1000, display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-end' }}>
-    <button className="primary" onClick={onContactClick} style={{ borderRadius: '50px', boxShadow: '0 12px 32px rgba(0,0,0,0.1)', padding: '14px 24px', gap: '10px' }}>
-      <Mail size={20} /> Parla con un esperto
-    </button>
-  </div>
-);
-
 const CookieBanner = ({ isVisible, onAccept }) => {
   if (!isVisible) return null;
   return (
-    <div style={{ position: 'fixed', bottom: '24px', left: '24px', right: '24px', background: '#fff', border: '1px solid var(--border)', padding: '24px', borderRadius: '16px', zIndex: 9999, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }}>
-      <p style={{ fontSize: '14px', color: 'var(--muted)', flex: '1' }}>Utilizziamo cookie per migliorare la tua esperienza sul sito. <RouterLink to="/cookie-policy" style={{ color: 'var(--dark)' }}>Cookie Policy</RouterLink>.</p>
+    <div style={{ position: 'fixed', bottom: '24px', left: '24px', right: '24px', background: 'var(--dark2)', border: '1px solid var(--border)', padding: '24px', borderRadius: '16px', zIndex: 9999, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.5)' }}>
+      <p style={{ fontSize: '14px', color: 'var(--muted)', flex: '1' }}>Utilizziamo cookie per migliorare la tua esperienza sul sito. <RouterLink to="/cookie-policy" style={{ color: 'var(--white)' }}>Cookie Policy</RouterLink>.</p>
       <button className="primary" onClick={onAccept} style={{ padding: '10px 24px' }}>Accetta Tutto</button>
     </div>
   );
@@ -272,33 +244,31 @@ export default function App() {
   const [cookie, setCookie] = useState(false);
 
   useEffect(() => {
-    console.log("B2Vibe App Mounted");
     if (!localStorage.getItem('cookie-consent')) setCookie(true);
   }, []);
 
   const handleOpenContact = () => setModal(true);
   const handleOpenCalc = () => setCalc(true);
-  const handleOpenCookie = () => setCookie(true);
 
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Helmet>
-          <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2310b981;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2334d399;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext y='75' x='10' font-family='Outfit, sans-serif' font-weight='800' font-size='80' fill='url(%23g)'%3EB%3C/text%3E%3C/svg%3E" />
+          <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%332EFFA0;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%2300ffa6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext y='75' x='10' font-family='Outfit, sans-serif' font-weight='800' font-size='80' fill='url(%23g)'%3EB%3C/text%3E%3C/svg%3E" />
           <title>B2Vibe | Making Sales Effectively Simple</title>
         </Helmet>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={
-            <div style={{ background: '#fff' }}>
+            <>
               <Navbar onContactClick={handleOpenContact} />
               <SEO title="E-commerce Full Outsourcing & Merchant of Record" />
-              <main style={{ paddingTop: '70px' }}>
+              <main>
                 <Hero onContactClick={handleOpenContact} />
                 <Ticker />
 
-                {/* 1. Vendere online è complesso */}
-                <ProblemSolutionSection onContactClick={handleOpenContact} />
+                {/* 1. Il problema */}
+                <ProblemSolutionSection />
 
                 {/* 2. Il nostro DNA */}
                 <DNASection />
@@ -307,35 +277,26 @@ export default function App() {
                 <GrowthPartnerSection />
 
                 {/* 4. I Nostri Servizi */}
-                <ServicesSection onContactClick={handleOpenContact} onCalcClick={handleOpenCalc} />
+                <ServicesSection />
 
                 {/* 5. Compare Section */}
                 <CompareSection />
 
                 {/* 6. Calcolatore */}
-                <section id="calcolatore" style={{ background: 'var(--surface)', padding: '80px 0' }}>
-                  <div className="container" style={{ textAlign: 'center' }}>
-                    <span className="section-label">Calcolatore di Risparmio</span>
-                    <h2 className="section-title">Gestione insourcing o outsourcing?</h2>
-                    <p className="section-sub" style={{ margin: '0 auto 40px auto' }}>Stima quanto risparmi con una gestione professionale esterna.</p>
-                    <button className="primary" onClick={handleOpenCalc} style={{ minWidth: '300px', padding: '18px 40px' }}>
-                      Calcola quanto risparmi →
-                    </button>
-                  </div>
-                </section>
+                <CalculatorSection onCalcClick={handleOpenCalc} />
 
                 {/* 7. Managed Channels */}
                 <ManagedChannelsSection />
 
+                {/* 8. Final CTA */}
                 <FinalCTA onContactClick={handleOpenContact} />
               </main>
-              <Footer onCookieClick={handleOpenCookie} onContactClick={handleOpenContact} />
-              <FloatingSupport onContactClick={handleOpenContact} />
-            </div>
+              <Footer />
+            </>
           } />
-          <Route path="/privacy-policy" element={<PrivacyPolicy onContactClick={handleOpenContact} onCookieClick={handleOpenCookie} />} />
-          <Route path="/cookie-policy" element={<CookiePolicy onContactClick={handleOpenContact} onCookieClick={handleOpenCookie} />} />
-          <Route path="/merchant-of-record-guida" element={<MerchantOfRecordGuide onContactClick={handleOpenContact} onCookieClick={handleOpenCookie} />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy onContactClick={handleOpenContact} />} />
+          <Route path="/cookie-policy" element={<CookiePolicy onContactClick={handleOpenContact} />} />
+          <Route path="/merchant-of-record-guida" element={<MerchantOfRecordGuide onContactClick={handleOpenContact} />} />
         </Routes>
         <ContactModal isOpen={modal} onClose={() => setModal(false)} />
         <SavingsCalculator isOpen={calc} onClose={() => setCalc(false)} />
