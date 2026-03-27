@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { B2VibeLogo } from './Logo';
-import { Linkedin, Instagram, Menu, X, ArrowRight, MoveRight, Phone, Mail } from 'lucide-react';
+import { Linkedin, Instagram, Menu, X, ArrowRight, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar = ({ onContactClick }) => {

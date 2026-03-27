@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { B2VibeLogo } from './Logo';
-import { Linkedin, Instagram, Menu, X, ArrowRight, CheckCircle2, Globe, ShieldCheck, Box, Headset, Check, MousePointer2, Calculator, MessageSquare, TrendingUp, Sparkles, MoveRight } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Globe, Box, Headset, MousePointer2, Calculator, MessageSquare, TrendingUp, MoveRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 /* ── HERO ────────────────────────────────────────────────── */

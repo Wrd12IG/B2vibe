@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { X, Calculator, Mail, ArrowRight, CheckCircle2, MoveRight } from 'lucide-react';
+import { X, ArrowRight, MoveRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BrowserRouter, Routes, Route, Link as RouterLink } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
