@@ -141,6 +141,16 @@ const CookiePolicy = ({ onContactClick, onCookieClick }) => {
                 </div>
             </main>
 
+            <style>{`
+                .policy-content li {
+                    margin-bottom: 4px;
+                    line-height: 1.6;
+                }
+                .policy-content ul {
+                    margin-top: 4px;
+                }
+            `}</style>
+
             <BackToTop />
             <Footer onCookieClick={onCookieClick} onContactClick={onContactClick} />
         </div>
