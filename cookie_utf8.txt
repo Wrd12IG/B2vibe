@@ -1,0 +1,48 @@
+COOKIE POLICY
+Informativa sull'uso dei cookie
+La presente Cookie Policy fornisce informazioni dettagliate sull'uso dei cookie sul sito web https://www.b2vibe.com (di seguito, il "Sito"), gestito da B2Vibe S.r.l. (di seguito, il "Titolare").
+1. Cosa sono i cookie
+I cookie sono piccoli file di testo che i siti web visitati inviano al terminale dell'utente (solitamente al browser), dove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla successiva visita del medesimo utente. I cookie possono essere utilizzati per diverse finalità: esecuzione di autenticazioni informatiche, monitoraggio di sessioni, memorizzazione di informazioni su specifiche configurazioni riguardanti gli utenti che accedono al server, facilitazione nella fruizione dei contenuti online, etc.
+2. Tipologie di cookie utilizzati dal Sito
+Il Sito utilizza esclusivamente cookie tecnici, necessari per garantire la normale navigazione e fruizione del sito web. Tali cookie consentono al Sito di funzionare correttamente e permettono all'utente di visualizzare i contenuti sul proprio dispositivo.
+I cookie tecnici sono essenziali per il funzionamento del Sito e non possono essere disattivati nei nostri sistemi. In linea con le disposizioni del Garante per la protezione dei dati personali, questi cookie non richiedono il preventivo consenso dell'utente per essere installati.
+2.1 Cookie tecnici di navigazione o di sessione
+Questi cookie garantiscono la normale navigazione e fruizione del sito web, permettendo, ad esempio, di realizzare un acquisto o autenticarsi per accedere ad aree riservate. Il Sito non può funzionare correttamente senza questi cookie.
+2.2 Cookie tecnici di funzionalità
+Questi cookie consentono all'utente la navigazione in funzione di una serie di criteri selezionati (ad esempio, la lingua, i prodotti selezionati per l'acquisto) al fine di migliorare il servizio reso allo stesso.
+3. Elenco dei cookie tecnici utilizzati
+Di seguito l'elenco dei cookie tecnici utilizzati dal Sito:
+Nome Cookie
+Tipologia
+Finalità
+Durata
+session_id
+Tecnico di sessione
+Mantenimento della sessione utente durante la navigazione
+Sessione
+cookie_consent
+Tecnico
+Memorizzazione delle preferenze dell'utente relative ai cookie
+12 mesi
+I cookie di sessione vengono eliminati automaticamente alla chiusura del browser, mentre i cookie persistenti rimangono memorizzati sul dispositivo dell'utente per il periodo indicato.
+4. Cookie di terze parti
+Il Sito non utilizza cookie di profilazione, cookie analitici o cookie di terze parti per finalità di marketing o pubblicitarie.
+5. Come gestire i cookie
+Sebbene i cookie tecnici siano essenziali per il corretto funzionamento del Sito, l'utente può comunque gestire le proprie preferenze attraverso le impostazioni del proprio browser.
+La maggior parte dei browser è configurata per accettare automaticamente i cookie, ma l'utente può modificare tali impostazioni per bloccare i cookie o per essere avvisato quando un cookie viene inviato al proprio dispositivo. Si tenga presente che la disabilitazione dei cookie tecnici potrebbe compromettere o impedire l'accesso a determinate funzionalità del Sito.
+Di seguito i link alle guide per la gestione dei cookie nei principali browser:
+Google Chrome: https://support.google.com/chrome/answer/95647
+Mozilla Firefox: https://support.mozilla.org/it/kb/Gestione%20dei%20cookie
+Safari: https://support.apple.com/it-it/guide/safari/sfri11471/mac
+Microsoft Edge: https://support.microsoft.com/it-it/microsoft-edge
+6. Riferimenti normativi
+La presente Cookie Policy è redatta in conformità a:
+Regolamento UE 2016/679 (GDPR);
+D.Lgs. 196/2003 (Codice Privacy) come modificato dal D.Lgs. 101/2018;
+Provvedimento del Garante per la protezione dei dati personali dell'8 maggio 2014 pubblicato sulla G.U. n. 126 del 3 giugno 2014;
+Linee guida cookie e altri strumenti di tracciamento del 10 giugno 2021 del Garante per la protezione dei dati personali.
+7. Aggiornamenti della Cookie Policy
+La presente Cookie Policy può essere aggiornata periodicamente. Si invita l'utente a consultare regolarmente questa pagina per prendere visione di eventuali modifiche o aggiornamenti.
+8. Contatti
+Per qualsiasi informazione relativa alla presente Cookie Policy o per esercitare i diritti previsti dalla normativa applicabile, l'utente può contattare il Titolare del trattamento all'indirizzo email: privacy@b2vibe.com.
+Per ulteriori informazioni sul trattamento dei dati personali, si rimanda all'Informativa Privacy disponibile sul Sito.
