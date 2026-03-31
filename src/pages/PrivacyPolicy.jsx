@@ -112,8 +112,11 @@ const PrivacyPolicy = ({ onContactClick, onCookieClick }) => {
 
             <style>{`
                 .policy-content li {
-                    margin-bottom: 0px;
-                    line-height: 1.4;
+                    margin-top: 0px !important;
+                    margin-bottom: 0px !important;
+                    padding-top: 0px !important;
+                    padding-bottom: 0px !important;
+                    line-height: 1.3 !important;
                 }
                 .policy-content ul {
                     margin-top: 4px;
