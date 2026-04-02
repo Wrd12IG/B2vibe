@@ -498,7 +498,7 @@ button.primary:hover,
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: clamp(12px, 2vw, 14px);
-  color: rgba(255, 255, 255, 0.45);
+  color: #888888;
   transition: all 0.2s;
 }
 
