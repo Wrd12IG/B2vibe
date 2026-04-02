@@ -218,7 +218,7 @@ button.primary:hover,
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.28);
+  color: #e0e0e0;
   white-space: nowrap;
   letter-spacing: 0.06em;
 }
