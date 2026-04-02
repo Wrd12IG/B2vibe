@@ -37,7 +37,7 @@ export const Hero = ({ onContactClick }) => (
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
                     className="section-sub"
-                    style={{ margin: '24px auto 40px auto', textAlign: 'center', maxWidth: '600px' }}
+                    style={{ margin: '24px auto 40px auto', textAlign: 'center', maxWidth: '600px', color: 'var(--text)' }}
                 >
                     Gestiamo la complessità dell'ecommerce multicanale — amministrazione, fiscalità, logistica e customer care — generando entrate costanti così la tua azienda può scalare focalizzandosi sul proprio brand.
                 </motion.p>
