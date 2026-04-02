@@ -38,7 +38,7 @@ const ContactModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const inputS = { width: '100%', background: 'var(--dark3)', border: '1px solid var(--border)', borderRadius: '10px', padding: '13px 16px', fontSize: '15px', color: '#fff', outline: 'none' };
-  const labelS = { fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: '8px', display: 'block', textTransform: 'uppercase', letterSpacing: '0.08em' };
+  const labelS = { fontSize: '12px', fontWeight: 600, color: '#e0e0e0', marginBottom: '8px', display: 'block', textTransform: 'uppercase', letterSpacing: '0.08em' };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -102,7 +102,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
   const next = () => setStep(step + 1);
   const back = () => setStep(step - 1);
   const inputS = { width: '100%', background: 'var(--dark3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '12px 16px', fontSize: '15px', color: '#fff', outline: 'none' };
-  const labelS = { fontSize: '13px', fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: '8px', display: 'block' };
+  const labelS = { fontSize: '13px', fontWeight: 600, color: '#e0e0e0', marginBottom: '8px', display: 'block' };
 
   const mktOptions = ['Amazon', 'eBay', 'Decathlon', 'ManoMano', 'Leroy Merlin', 'Altro'];
 
