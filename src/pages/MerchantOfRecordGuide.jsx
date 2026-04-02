@@ -230,7 +230,7 @@ const MerchantOfRecordGuide = ({ onContactClick, onCookieClick }) => {
                     {/* Call to Action Final */}
                     <motion.div {...fadeInUp} style={{ marginTop: '100px', textAlign: 'center', background: 'var(--dark)', padding: '80px 40px', borderRadius: '40px', color: '#fff' }}>
                         <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', fontWeight: 900, color: '#fff' }}>Pronto per l'E-commerce Zero Pensieri?</h2>
-                        <p style={{ opacity: 0.7, fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 3rem auto' }}>
+                        <p style={{ color: '#e0e0e0', fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '700px', margin: '0 auto 3rem auto' }}>
                             Parla con un consulente B2Vibe per definire la strategia ideale per il tuo brand. Analizzeremo il tuo potenziale di crescita internazionale.
                         </p>
                         <button className="primary" onClick={onContactClick} style={{ padding: '20px 50px', fontSize: '1.1rem', gap: '15px' }}>
