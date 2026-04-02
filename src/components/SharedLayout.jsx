@@ -209,7 +209,7 @@ export const Footer = ({ onCookieClick }) => (
 
                 {/* Col 2 — Links */}
                 <div>
-                    <h5 style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#888888', marginBottom: '14px' }}>Servizi</h5>
+                    <h5 style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#e0e0e0', marginBottom: '14px' }}>Servizi</h5>
                     <ul style={{ listStyle: 'none', padding: 0, fontSize: '13px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         <li><a href="/#servizi" style={{ color: 'var(--muted)' }}>Ecommerce Management</a></li>
                         <li><RouterLink to="/merchant-of-record-guida" style={{ color: 'var(--muted)' }}>Merchant of Record</RouterLink></li>
@@ -221,7 +221,7 @@ export const Footer = ({ onCookieClick }) => (
                 {/* Col 3 — Details */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }} className="footer-right-grid">
                     <div>
-                        <h5 style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#888888', marginBottom: '14px' }}>Azienda</h5>
+                        <h5 style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#e0e0e0', marginBottom: '14px' }}>Azienda</h5>
                         <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.9 }}>
                             <p style={{ fontWeight: 600, color: 'var(--white)', marginBottom: '4px' }}>B2VIBE S.R.L.</p>
                             <p>Via Paradiso, 5 — 20831</p>
@@ -231,7 +231,7 @@ export const Footer = ({ onCookieClick }) => (
                         </div>
                     </div>
                     <div>
-                        <h5 style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#888888', marginBottom: '14px' }}>Contatti</h5>
+                        <h5 style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#e0e0e0', marginBottom: '14px' }}>Contatti</h5>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13px' }}>
                             <a href="mailto:info@b2vibe.com" style={{ color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '8px' }}><Mail size={14} /> info@b2vibe.com</a>
                             <a href="tel:+390280016631" style={{ color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '8px' }}><Phone size={14} /> +39 02 80016631</a>
@@ -243,10 +243,10 @@ export const Footer = ({ onCookieClick }) => (
 
         <div style={{ borderTop: '1px solid var(--border)', padding: '24px 0' }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
-                <p style={{ fontSize: '11px', color: '#888888' }}>© {new Date().getFullYear()} B2Vibe S.r.l. — Cap. Soc. € 1.000.000</p>
+                <p style={{ fontSize: '11px', color: '#e0e0e0' }}>© {new Date().getFullYear()} B2Vibe S.r.l. — Cap. Soc. € 1.000.000</p>
                 <div style={{ display: 'flex', gap: '24px' }}>
-                    <RouterLink to="/privacy-policy" style={{ fontSize: '12px', color: '#888888' }}>Privacy Policy</RouterLink>
-                    <RouterLink to="/cookie-policy" style={{ fontSize: '12px', color: '#888888' }}>Cookie Policy</RouterLink>
+                    <RouterLink to="/privacy-policy" style={{ fontSize: '12px', color: '#e0e0e0' }}>Privacy Policy</RouterLink>
+                    <RouterLink to="/cookie-policy" style={{ fontSize: '12px', color: '#e0e0e0' }}>Cookie Policy</RouterLink>
                 </div>
             </div>
         </div>
