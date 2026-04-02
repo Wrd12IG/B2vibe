@@ -261,6 +261,10 @@ button.primary:hover,
   margin-bottom: 18px;
 }
 
+.problem-card h3 {
+  margin-bottom: 14px;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -338,6 +342,10 @@ button.primary:hover,
   letter-spacing: 0.06em;
 }
 
+.target-card h3 {
+  margin-bottom: 14px;
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -387,12 +395,17 @@ button.primary:hover,
   letter-spacing: 0.1em;
 }
 
+.service-card h3 {
+  margin-bottom: 14px;
+}
+
 .service-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top: auto;
+  padding-top: 24px;
 }
 
 .service-list li {
