@@ -287,7 +287,8 @@ button.primary:hover,
 }
 
 .stat-item.featured .stat-label {
-  color: rgba(10, 10, 10, 0.6);
+  color: var(--dark);
+  font-weight: bold;
 }
 
 .stat-num {
