@@ -11,6 +11,7 @@ import {
   ManagedChannelsSection, CalculatorSection
 } from './components/PageSections';
 import { Navbar, Footer } from './components/SharedLayout';
+import CookieConsent from './components/CookieConsent';
 
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CookiePolicy from './pages/CookiePolicy';
@@ -35,15 +36,41 @@ const ModalWrap = ({ onClose, children, maxW = '520px' }) => (
 
 const ContactModal = ({ isOpen, onClose }) => {
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   if (!isOpen) return null;
 
   const inputS = { width: '100%', background: 'var(--dark3)', border: '1px solid var(--border)', borderRadius: '10px', padding: '13px 16px', fontSize: '15px', color: '#fff', outline: 'none' };
   const labelS = { fontSize: '12px', fontWeight: 600, color: '#e0e0e0', marginBottom: '8px', display: 'block', textTransform: 'uppercase', letterSpacing: '0.08em' };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSuccess(true);
-    // In a real app, send data here
+    setLoading(true);
+    setError('');
+    const fd = new FormData(e.target);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: fd.get('nome'),
+          cognome: fd.get('cognome'),
+          ragioneSociale: fd.get('ragioneSociale'),
+          email: fd.get('email'),
+          telefono: fd.get('telefono'),
+          note: fd.get('note'),
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Errore durante l\'invio');
+      }
+      setSuccess(true);
+    } catch (err) {
+      setError(err.message || 'Si è verificato un errore. Riprova.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,14 +82,17 @@ const ContactModal = ({ isOpen, onClose }) => {
 
           <form style={{ display: 'grid', gap: '18px' }} onSubmit={handleSubmit}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-              <div><label style={labelS}>Nome *</label><input type="text" required style={inputS} placeholder="Mario" /></div>
-              <div><label style={labelS}>Cognome *</label><input type="text" required style={inputS} placeholder="Rossi" /></div>
+              <div><label style={labelS}>Nome *</label><input name="nome" type="text" required style={inputS} placeholder="Mario" /></div>
+              <div><label style={labelS}>Cognome *</label><input name="cognome" type="text" required style={inputS} placeholder="Rossi" /></div>
             </div>
 
-            <div><label style={labelS}>Ragione sociale *</label><input type="text" required style={inputS} placeholder="La tua azienda S.r.l." /></div>
-            <div><label style={labelS}>Email aziendale *</label><input type="email" required style={inputS} placeholder="mario.rossi@azienda.com" /></div>
+            <div><label style={labelS}>Ragione sociale *</label><input name="ragioneSociale" type="text" required style={inputS} placeholder="La tua azienda S.r.l." /></div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+              <div><label style={labelS}>Email aziendale *</label><input name="email" type="email" required style={inputS} placeholder="mario.rossi@azienda.com" /></div>
+              <div><label style={labelS}>Telefono *</label><input name="telefono" type="tel" required style={inputS} placeholder="+39 347 1234567" /></div>
+            </div>
 
-            <div><label style={labelS}>Note (opzionale)</label><textarea style={{ ...inputS, height: '80px', resize: 'none' }} placeholder="Raccontaci brevemente il tuo business o i canali su cui vendi..." /></div>
+            <div><label style={labelS}>Note (opzionale)</label><textarea name="note" style={{ ...inputS, height: '80px', resize: 'none' }} placeholder="Raccontaci brevemente il tuo business o i canali su cui vendi..." /></div>
 
             <div>
               <label style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', cursor: 'pointer', fontSize: '12px', color: 'var(--muted)' }}>
@@ -71,8 +101,10 @@ const ContactModal = ({ isOpen, onClose }) => {
               </label>
             </div>
 
-            <button className="primary" style={{ padding: '15px', borderRadius: '10px', justifyContent: 'center', width: '100%', fontSize: '15px', fontWeight: 800 }}>
-              Invia richiesta <MoveRight size={18} />
+            {error && <p style={{ color: '#ff4d4f', fontSize: '13px', margin: 0, padding: '10px 14px', background: 'rgba(255,77,79,0.1)', borderRadius: '8px', border: '1px solid rgba(255,77,79,0.3)' }}>{error}</p>}
+
+            <button className="primary" disabled={loading} style={{ padding: '15px', borderRadius: '10px', justifyContent: 'center', width: '100%', fontSize: '15px', fontWeight: 800, opacity: loading ? 0.6 : 1, pointerEvents: loading ? 'none' : 'auto' }}>
+              {loading ? 'Invio in corso...' : <> Invia richiesta <MoveRight size={18} /></>}
             </button>
           </form>
         </>
@@ -94,8 +126,11 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
     ecoOrders: '', ecoAov: '',
     mktCount: '', mktSelected: [], mktOrders: '', mktAov: '',
     logistics: '', interest3PL: '',
-    sector: '', email: ''
+    sector: '', email: '', telefono: ''
   });
+  const [calcLoading, setCalcLoading] = useState(false);
+  const [calcError, setCalcError] = useState('');
+  const [calcSuccess, setCalcSuccess] = useState(false);
 
   if (!isOpen) return null;
 
@@ -210,7 +245,7 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
         </motion.div>
       )}
 
-      {step === 5 && (
+      {step === 5 && !calcSuccess && (
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
           <p style={{ marginBottom: '24px', color: 'var(--muted)', textAlign: 'center' }}>Abbiamo elaborato il tuo profilo di risparmio.</p>
           <div style={{ background: 'var(--primary-glow)', padding: '24px', borderRadius: '16px', marginBottom: '24px', border: '1px dashed var(--primary)' }}>
@@ -219,33 +254,53 @@ const SavingsCalculator = ({ isOpen, onClose }) => {
             </p>
           </div>
           <div style={{ display: 'grid', gap: '20px' }}>
-            <div><label style={labelS}>La tua Email aziendale</label><input type="email" style={inputS} placeholder="mario.rossi@azienda.com" value={data.email} onChange={e => setData({ ...data, email: e.target.value })} /></div>
-            <button className="primary" onClick={() => { alert('Grazie! Ti abbiamo inviato il report completo a ' + data.email); onClose(); setStep(1); }} style={{ width: '100%', justifyContent: 'center' }}>Ricevi Report Analisi</button>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+              <div><label style={labelS}>Email aziendale</label><input type="email" style={inputS} placeholder="mario.rossi@azienda.com" value={data.email} onChange={e => setData({ ...data, email: e.target.value })} /></div>
+              <div><label style={labelS}>Telefono</label><input type="tel" style={inputS} placeholder="+39 347 1234567" value={data.telefono} onChange={e => setData({ ...data, telefono: e.target.value })} /></div>
+            </div>
+            {calcError && <p style={{ color: '#ff4d4f', fontSize: '13px', margin: 0, padding: '10px 14px', background: 'rgba(255,77,79,0.1)', borderRadius: '8px', border: '1px solid rgba(255,77,79,0.3)' }}>{calcError}</p>}
+            <button className="primary" disabled={calcLoading} onClick={async () => {
+              if (!data.email) return;
+              setCalcLoading(true);
+              setCalcError('');
+              try {
+                const res = await fetch('/api/calculator', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(data),
+                });
+                if (!res.ok) {
+                  const d = await res.json().catch(() => ({}));
+                  throw new Error(d.error || 'Errore durante l\'invio');
+                }
+                setCalcSuccess(true);
+              } catch (err) {
+                setCalcError(err.message || 'Si è verificato un errore. Riprova.');
+              } finally {
+                setCalcLoading(false);
+              }
+            }} style={{ width: '100%', justifyContent: 'center', opacity: calcLoading ? 0.6 : 1, pointerEvents: calcLoading ? 'none' : 'auto' }}>{calcLoading ? 'Invio in corso...' : 'Ricevi Report Analisi'}</button>
           </div>
+        </motion.div>
+      )}
+
+      {calcSuccess && (
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ textAlign: 'center', padding: '20px 0' }}>
+          <div style={{ fontSize: '48px', marginBottom: '16px' }}>📊</div>
+          <h4 style={{ fontSize: '22px', fontWeight: 800, color: '#fff', marginBottom: '10px', fontFamily: 'Raleway' }}>Analisi inviata!</h4>
+          <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.6 }}>Grazie! Riceverai il report completo all'indirizzo <strong style={{ color: 'var(--primary)' }}>{data.email}</strong>. Il nostro team ti contatterà per discutere i risultati.</p>
+          <button className="btn-ghost" onClick={() => { onClose(); setStep(1); setCalcSuccess(false); setCalcError(''); }} style={{ marginTop: '24px' }}>Chiudi</button>
         </motion.div>
       )}
     </ModalWrap>
   );
 };
 
-const CookieBanner = ({ isVisible, onAccept }) => {
-  if (!isVisible) return null;
-  return (
-    <div style={{ position: 'fixed', bottom: '24px', left: '24px', right: '24px', background: 'var(--dark2)', border: '1px solid var(--border)', padding: '24px', borderRadius: '16px', zIndex: 9999, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px', boxShadow: '0 10px 40px rgba(0,0,0,0.5)' }}>
-      <p style={{ fontSize: '14px', color: 'var(--muted)', flex: '1' }}>Utilizziamo cookie per migliorare la tua esperienza sul sito. <RouterLink to="/cookie-policy" style={{ color: 'var(--white)' }}>Cookie Policy</RouterLink>.</p>
-      <button className="primary" onClick={onAccept} style={{ padding: '10px 24px' }}>Accetta Tutto</button>
-    </div>
-  );
-};
+
 
 export default function App() {
   const [modal, setModal] = useState(false);
   const [calc, setCalc] = useState(false);
-  const [cookie, setCookie] = useState(false);
-
-  useEffect(() => {
-    if (!localStorage.getItem('cookie-consent')) setCookie(true);
-  }, []);
 
   const handleOpenContact = () => setModal(true);
   const handleOpenCalc = () => setCalc(true);
@@ -300,7 +355,7 @@ export default function App() {
         </Routes>
         <ContactModal isOpen={modal} onClose={() => setModal(false)} />
         <SavingsCalculator isOpen={calc} onClose={() => setCalc(false)} />
-        <CookieBanner isVisible={cookie} onAccept={() => { setCookie(false); localStorage.setItem('cookie-consent', 'true'); }} />
+        <CookieConsent />
       </BrowserRouter>
     </HelmetProvider>
   );

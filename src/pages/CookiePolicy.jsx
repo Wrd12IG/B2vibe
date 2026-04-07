@@ -35,62 +35,58 @@ const CookiePolicy = ({ onContactClick, onCookieClick }) => {
                     <section>
                         <h3 style={sTitle}>2. Tipologie di cookie utilizzati dal Sito</h3>
                         <p style={pStyle}>
-                            Il Sito utilizza esclusivamente cookie tecnici, necessari per garantire la normale navigazione e fruizione del sito web. Tali cookie consentono al Sito di funzionare correttamente e permettono all'utente di visualizzare i contenuti sul proprio dispositivo.
-                        </p>
-                        <p style={pStyle}>
-                            I cookie tecnici sono essenziali per il funzionamento del Sito e non possono essere disattivati nei nostri sistemi. In linea con le disposizioni del Garante per la protezione dei dati personali, questi cookie non richiedono il preventivo consenso dell'utente per essere installati.
+                            Il Sito utilizza diverse tipologie di cookie, suddivise nelle seguenti categorie:
                         </p>
 
-                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.1 Cookie tecnici di navigazione o di sessione</h4>
+                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.1 Cookie tecnici necessari (sempre attivi)</h4>
                         <p style={pStyle}>
-                            Questi cookie garantiscono la normale navigazione e fruizione del sito web, permettendo, ad esempio, di realizzare un acquisto o autenticarsi per accedere ad aree riservate. Il Sito non può funzionare correttamente senza questi cookie.
+                            Questi cookie sono essenziali per il funzionamento del sito web. Garantiscono la navigazione, il mantenimento della sessione e la memorizzazione delle preferenze cookie dell'utente. Non possono essere disattivati e, in conformità alle disposizioni del Garante per la protezione dei dati personali, non richiedono il preventivo consenso dell'utente.
                         </p>
 
-                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.2 Cookie tecnici di funzionalità</h4>
+                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.2 Cookie analitici (opzionali)</h4>
                         <p style={pStyle}>
-                            Questi cookie consentono all'utente la navigazione in funzione di una serie di criteri selezionati (ad esempio, la lingua, i prodotti selezionati per l'acquisto) al fine di migliorare il servizio reso allo stesso.
+                            Questi cookie, attivabili solo con il consenso dell'utente, permettono di raccogliere informazioni in forma anonima su come i visitatori utilizzano il Sito. Servono a migliorare l'esperienza di navigazione e le funzionalità offerte.
+                        </p>
+
+                        <h4 style={{ color: 'var(--white)', fontWeight: 700, marginTop: '1.5rem', marginBottom: '0.5rem' }}>2.3 Cookie di marketing (opzionali)</h4>
+                        <p style={pStyle}>
+                            Questi cookie, attivabili solo con il consenso dell'utente, possono essere utilizzati per mostrare annunci pertinenti e misurare l'efficacia delle campagne pubblicitarie. Possono essere impostati da partner pubblicitari attraverso il nostro Sito.
                         </p>
                     </section>
 
                     <section>
-                        <h3 style={sTitle}>3. Elenco dei cookie tecnici utilizzati</h3>
-                        <p style={pStyle}>Di seguito l'elenco dei cookie tecnici utilizzati dal Sito:</p>
+                        <h3 style={sTitle}>3. Elenco dei cookie utilizzati</h3>
+                        <p style={pStyle}>Di seguito l'elenco dei cookie utilizzati dal Sito:</p>
                         
                         <div style={{ overflowX: 'auto', marginBottom: '1.5rem' }}>
                             <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '600px' }}>
                                 <thead>
                                     <tr style={{ background: 'var(--surface)', borderBottom: '2px solid var(--border)' }}>
                                         <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Nome Cookie</th>
-                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Tipologia</th>
+                                        <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Categoria</th>
                                         <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Finalità</th>
                                         <th style={{ padding: '12px', fontWeight: 700, color: 'var(--white)' }}>Durata</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr style={{ borderBottom: '1px solid var(--border)' }}>
-                                        <td style={{ padding: '12px' }}><code>session_id</code></td>
-                                        <td style={{ padding: '12px' }}>Tecnico di sessione</td>
-                                        <td style={{ padding: '12px' }}>Mantenimento della sessione utente durante la navigazione</td>
-                                        <td style={{ padding: '12px' }}>Sessione</td>
-                                    </tr>
-                                    <tr style={{ borderBottom: '1px solid var(--border)' }}>
-                                        <td style={{ padding: '12px' }}><code>cookie_consent</code></td>
-                                        <td style={{ padding: '12px' }}>Tecnico</td>
-                                        <td style={{ padding: '12px' }}>Memorizzazione delle preferenze dell'utente relative ai cookie</td>
-                                        <td style={{ padding: '12px' }}>12 mesi</td>
+                                        <td style={{ padding: '12px' }}><code>b2vibe-cookie-consent</code></td>
+                                        <td style={{ padding: '12px' }}>Tecnico necessario</td>
+                                        <td style={{ padding: '12px' }}>Memorizzazione delle preferenze cookie dell'utente (localStorage)</td>
+                                        <td style={{ padding: '12px' }}>Persistente</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <p style={pStyle}>
-                            I cookie di sessione vengono eliminati automaticamente alla chiusura del browser, mentre i cookie persistenti rimangono memorizzati sul dispositivo dell'utente per il periodo indicato.
+                            Le preferenze dell'utente vengono salvate nel browser tramite localStorage e persistono fino alla cancellazione manuale dei dati del browser o alla modifica delle preferenze tramite il pannello di gestione cookie del Sito.
                         </p>
                     </section>
 
                     <section>
                         <h3 style={sTitle}>4. Cookie di terze parti</h3>
                         <p style={pStyle}>
-                            Il Sito non utilizza cookie di profilazione, cookie analitici o cookie di terze parti per finalità di marketing o pubblicitarie.
+                            Allo stato attuale, il Sito non installa cookie di terze parti per finalità di marketing o pubblicitarie. Qualora in futuro venissero introdotti cookie analitici o di marketing di terze parti, essi saranno attivati solo previo consenso esplicito dell'utente, modificabile in qualsiasi momento tramite il pannello "Preferenze Cookie" accessibile dal pulsante presente in ogni pagina del Sito.
                         </p>
                     </section>
 
